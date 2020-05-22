@@ -1,0 +1,88 @@
+{
+  "posts": {
+    "iqtQgd7hZdTDfhQjZaxj8DgEB3y1": {
+      "-M5P_Kexdox2mGmwhwhX": {
+        "author": "patito",
+        "content": "test",
+        "created": 1587436411635,
+        "creationDate": "Mon Apr 20 2020 20:33:31 GMT-0600 (Central Standard Time)",
+        "img": "https://placeimg.com/320/240/any/sepia",
+        "title": "test"
+      },
+      "-M5P_OXJcC5S3z-EaAq1": {
+        "author": "patito",
+        "content": "aasdasdasd",
+        "created": 1587436427466,
+        "creationDate": "Mon Apr 20 2020 20:33:47 GMT-0600 (Central Standard Time)",
+        "img": "https://placeimg.com/320/240/any/sepia",
+        "title": "asdasdas"
+      },
+      "-M5P_SFcTERc6SgaG69Y": {
+        "author": "patito",
+        "content": "dfsdfsdfs",
+        "created": 1587436442718,
+        "creationDate": "Mon Apr 20 2020 20:34:02 GMT-0600 (Central Standard Time)",
+        "img": "https://placeimg.com/320/240/any/sepia",
+        "title": "sdfsdfsdf"
+      },
+      "-M5PaCRbGDKSpBQdjagg": {
+        "author": "patito",
+        "content": "asdasdasd",
+        "created": 1587436640089,
+        "creationDate": "Mon Apr 20 2020 20:37:20 GMT-0600 (Central Standard Time)",
+        "img": "https://placeimg.com/320/240/any/sepia",
+        "title": "asdasd"
+      },
+      "-M5PaFJ9pppsqj4NjtmF": {
+        "author": "patito",
+        "content": "asdasd",
+        "created": 1587436651836,
+        "creationDate": "Mon Apr 20 2020 20:37:31 GMT-0600 (Central Standard Time)",
+        "img": "https://placeimg.com/320/240/any/sepia",
+        "title": "asdasdasd"
+      },
+      "-M5Pcl8qn4HBWkNmeayF": {
+        "author": "patito",
+        "content": "asdasdasd",
+        "created": 1587437310633,
+        "creationDate": "Mon Apr 20 2020 20:48:30 GMT-0600 (Central Standard Time)",
+        "img": "https://placeimg.com/320/240/any/sepia",
+        "title": "asdasdas"
+      },
+      "-M5PcvwyJDJvCWr1EFZn": {
+        "author": "patito",
+        "content": "asdasdasd",
+        "created": 1587437354864,
+        "creationDate": "Mon Apr 20 2020 20:49:14 GMT-0600 (Central Standard Time)",
+        "img": "https://placeimg.com/320/240/any/sepia",
+        "title": "asdasd"
+      },
+      "-M5Pd2n8RxHgxQWnvolP": {
+        "author": "patito",
+        "content": "asdasdasd",
+        "created": 1587437387007,
+        "creationDate": "Mon Apr 20 2020 20:49:47 GMT-0600 (Central Standard Time)",
+        "img": "https://placeimg.com/320/240/any/sepia",
+        "title": "asdasd"
+      },
+      "xyz": {
+        "author": "patito",
+        "content": "Mensajito",
+        "created": 1587425842014,
+        "creationDate": "Mon Apr 20 2020 17:49:03 GMT-0600 (Central Standard Time)",
+        "img": "https://placeimg.com/320/240/any/sepia",
+        "title": "Un titulo"
+      }
+    }
+  },
+  "users": {
+    "iqtQgd7hZdTDfhQjZaxj8DgEB3y1": {
+      "created": 1587425842014,
+      "email": "test@mailinator.com",
+      "fullName": "Juan Perez",
+      "img": "https://placeimg.com/320/240/any",
+      "lastUpdate": 1587425842014,
+      "userName": "patito"
+    }
+  }
+}

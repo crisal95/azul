@@ -1,8 +1,8 @@
-    <form class="user" (ngSubmit)="onSubmit(f)" #f="ngForm">
-      <div class="card" style="width: 30rem">
-        <div class="card-body">
-          <h4 class="card-title">BlueTweet</h4>
-          <p class="card-description"> Bienvenido! </p>
+<form class="user" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <div class="card" style="width: 30rem">
+    <div class="card-body">
+      <h4 class="card-title">BlueTweet</h4>
+      <p class="card-description"> Bienvenido! </p>
       <div class="form-group">
         <input
           type="email"
@@ -10,7 +10,7 @@
           id="email"
           name="email"
           email
-          placeholder="Correo"
+          placeholder="Ingrese su dirección de correo"
           ngModel
           required
         />
@@ -23,13 +23,20 @@
           class="form-control"
           ngModel
           required
-          placeholder="Password"
+          placeholder="Ingrese su contraseña"
         />
       </div>
-          <div>  <button type="submit" class="btn btn-success mr-2" (submit)="onSubmit(f)" [disabled]="!f.valid">Iniciar sesión</button></div>
-         <div> <a href="#" class="stretched-link">Crear cuenta nueva</a> </div>
-          <div> <a href="#" class="stretched-link">¿Has olvidado tu contraseña?</a> </div>
-        </div>
+      <div>
+        <button type="submit" class="btn btn-primary mr-2" (submit)="onSubmit(f)" [disabled]="!f.valid">Iniciar sesión</button>
       </div>
-    </form>
+      <div>
+        <a href="#" class="nav-link">¿Has olvidado tu contraseña?</a>
+      </div>
+      <div class="col text-center">
+        <button type="submit" class="btn btn-secondary mr-2"  style="margin-top: 20px">Crear cuenta nueva</button>
+      </div>
+    </div>
+  </div>
+</form>
+
 

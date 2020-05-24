@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-
     this.firebaseAuth
       .signInWithEmailAndPassword(email, password)
       .then(userData => {
@@ -35,16 +34,6 @@ export class LoginComponent implements OnInit {
         this.notificationService.showErrorMessage('Error iniciando sesión', error.message);
       });
 
-    // if (email === 'test@test.com' && password === 'test123') {
-    //   console.log('usuario correcto');
-    //   this.userService.performLogin();
-    //   this.router.navigate(['/home']);
-    // } else {
-    //   // Notificar con un Toast
-    //   this.notificationService.showErrorMessage('Error!!', 'Error al hacer login');
 
-    //   // Notificar con un banner casero
-    //   // this.notificationService.displayBanner('error', 'Error al hacer login');
-    // }
   }
 }

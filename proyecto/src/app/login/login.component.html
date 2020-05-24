@@ -1,43 +1,99 @@
-<body>
-<form class="user" (ngSubmit)="onSubmit(f)" #f="ngForm">
-  <div class="card">
-    <div class="card-body">
-      <h4 class="card-title">BlueTweet</h4>
-      <p class="card-description"> Bienvenido! </p>
-      <div class="form-group">
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          name="email"
-          email
-          placeholder="Ingrese su dirección de correo"
-          ngModel
-          required
-        />
+
+<!DOCTYPE html>
+<html lang="en" class="bg-gradient-primary">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+
+</head>
+
+<body class="bg-gradient-primary">
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">¡Bienvenido!</h1>
+                  </div>
+                  <form class="user" (ngSubmit)="onSubmit(f)" #f="ngForm">
+                  <div class="form-group">
+                    <input
+                      type="email"
+                      class="form-control form-control-user"
+                      id="email"
+                      name="email"
+                      email
+                      placeholder="Ingrese su dirección de correo"
+                      ngModel
+                      required
+                    />
+                  </div>
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        class="form-control form-control-user"
+                        ngModel
+                        required
+                        placeholder="Ingrese su contraseña"
+                      />
+                    </div>
+                    <a class="btn btn-primary btn-user btn-block" (click)="onSubmit(f)" (disabled)="!f.valid">
+                      Iniciar sesión
+                    </a>
+                    <hr>
+                  </form>
+                  <hr>
+                  <div class="text-center">
+                    <a class="small" >¿Olvidaste tu contraseña?</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" >¡Crear una cuenta nueva!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="form-group">
-        <input
-          type="password"
-          name="password"
-          id="password"
-          class="form-control"
-          ngModel
-          required
-          placeholder="Ingrese su contraseña"
-        />
-      </div>
-      <div>
-        <button type="submit" class="btn btn-primary mr-2" (submit)="onSubmit(f)" [disabled]="!f.valid">Iniciar sesión</button>
-      </div>
-      <div>
-        <a href="#" class="nav-link">¿Has olvidado tu contraseña?</a>
-      </div>
-      <div class="col text-center">
-        <button type="submit" class="btn btn-secondary mr-2"  style="margin-top: 20px">Crear cuenta nueva</button>
-      </div>
+
     </div>
+
   </div>
-</form>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
 </body>
 
+</html>

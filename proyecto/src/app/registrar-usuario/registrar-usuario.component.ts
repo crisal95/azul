@@ -3,7 +3,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
 import {UserService} from '../shared/user.service';
 import {NotificationService} from '../shared/notification.service';
-import {FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule, NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-registrar-usuario',
@@ -11,16 +11,14 @@ import {FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/
   styleUrls: ['./registrar-usuario.component.css']
 })
 export class RegistrarUsuarioComponent implements OnInit {
+  registerForm: FormGroup;
   constructor(
     private firebaseAuth: AngularFireAuth,
     private userService: UserService,
     private router: Router,
     private notificationService: NotificationService,
     private formBuilder: FormBuilder
-  ) {}
-
-  registerForm: FormGroup;
-  ngOnInit() {
+  ) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -29,6 +27,12 @@ export class RegistrarUsuarioComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       userName: ['', Validators.required]
     });
+
+  }
+
+
+  ngOnInit() {
+
   }
 
   onSubmit() {

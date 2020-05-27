@@ -1,9 +1,3 @@
-::ng-deep body,
-::ng-deep html {
-  height:100%;
-  margin: 0;
-  background-color:#4e73df;
-}
 
 .bg-login-image {
   background: url(https://www.familyhandyman.com/wp-content/uploads/2019/06/BNBbyc17_johnPizniur.jpg);

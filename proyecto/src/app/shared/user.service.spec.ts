@@ -6,6 +6,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {NgForm} from '@angular/forms';
 
 describe('UserService', () => {
   beforeEach(() =>
@@ -13,7 +14,8 @@ describe('UserService', () => {
       imports: [
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
-        AngularFireDatabaseModule
+        AngularFireDatabaseModule,
+        NgForm
       ]
     })
   );

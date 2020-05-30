@@ -2,6 +2,7 @@ import {Injectable, EventEmitter} from '@angular/core';
 import {UserData} from './models';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
+import {FormGroup} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +42,26 @@ export class UserService {
       .ref('users')
       .child(uid)
       .once('value');
+  }
+
+  setUserDataOnFirebase(uid: string, form: FormGroup) {
+    const firebaseUserId = uid;
+    const imgUrl =
+      'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png';
+
+    const newPostEntry = {
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      userName: form.value.userName,
+      created: new Date().getTime(),
+      lastUpdate: new Date().getTime(),
+      img: imgUrl,
+      fullName: form.value.firstName + ' ' + form.value.lastName
+    };
+
+    const updates = {};
+    updates[`users/${firebaseUserId}`] = newPostEntry;
+
+    this.firebaseDatabase.database.ref().update(updates);
   }
 }

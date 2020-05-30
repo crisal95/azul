@@ -1,17 +1,19 @@
-<app-wrapper></app-wrapper>
+<app-header></app-header>
+<main role="main">
+  <!-- Banner con mensajes -->
+  <app-notification></app-notification>
 
-<!-- Banner con mensajes -->
-<app-notification></app-notification>
+  <!-- AQUI SE EXPANDE LA VISTA DEL COMPONENTE -->
+  <router-outlet></router-outlet>
 
-<!-- AQUI SE EXPANDE LA VISTA DEL COMPONENTE -->
-<router-outlet></router-outlet>
-
-<!-- El spinner que espera cuando creo un post-->
-<ngx-spinner
-  name="mainSpinner"
-  [fullScreen]="true"
-  bdColor="rgba(0, 0, 0, 0.8)"
-  size="medium"
-  color="#fff"
-  type="pacman"
-></ngx-spinner>
+  <!-- El spinner que espera cuando creo un post-->
+  <ngx-spinner
+    name="mainSpinner"
+    [fullScreen]="true"
+    bdColor="rgba(0, 0, 0, 0.8)"
+    size="medium"
+    color="#fff"
+    type="pacman"
+  ></ngx-spinner>
+</main>
+<!-- /.container -->

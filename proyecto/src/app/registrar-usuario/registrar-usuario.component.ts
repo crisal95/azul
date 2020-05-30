@@ -3,7 +3,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
 import {UserService} from '../shared/user.service';
 import {NotificationService} from '../shared/notification.service';
-import {FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule, NgForm} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-registrar-usuario',

@@ -1,31 +1,31 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {FileUploaderComponent} from './file-uploader.component';
+import {WrapperComponent} from './wrapper.component';
+import {SidebarComponent} from '../sidebar/sidebar.component';
+import {ContentWrapperComponent} from '../content-wrapper/content-wrapper.component';
 
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {AngularFireStorageModule} from '@angular/fire/storage';
 
-xdescribe('FileUploaderComponent', () => {
-  let component: FileUploaderComponent;
-  let fixture: ComponentFixture<FileUploaderComponent>;
+describe('WrapperComponent', () => {
+  let component: WrapperComponent;
+  let fixture: ComponentFixture<WrapperComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FileUploaderComponent],
       imports: [
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
-        AngularFireDatabaseModule,
-        AngularFireStorageModule
-      ]
+        AngularFireDatabaseModule
+      ],
+      declarations: [WrapperComponent, SidebarComponent, ContentWrapperComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FileUploaderComponent);
+    fixture = TestBed.createComponent(WrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -24,6 +24,9 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { WrapperComponent } from './wrapper/wrapper.component';
+import { ContentWrapperComponent } from './content-wrapper/content-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import {environment} from '../environments/environment';
     HeaderComponent,
     AuthorComponent,
     NotificationComponent,
-    FileUploaderComponent
+    FileUploaderComponent,
+    SidebarComponent,
+    WrapperComponent,
+    ContentWrapperComponent
   ],
   imports: [
     BrowserModule,

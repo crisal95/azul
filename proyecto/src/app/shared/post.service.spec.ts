@@ -6,7 +6,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 
-describe('PostService', () => {
+xdescribe('PostService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [

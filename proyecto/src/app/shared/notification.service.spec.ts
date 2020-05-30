@@ -3,7 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {NotificationService} from './notification.service';
 import {ToastrModule} from 'ngx-toastr';
 
-describe('NotificationService', () => {
+xdescribe('NotificationService', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [ToastrModule.forRoot()]

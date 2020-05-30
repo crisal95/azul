@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserService} from './shared/user.service';
 import {RouteGuard} from './shared/route-guard';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -24,6 +24,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
+import { EditarInformacionModalComponent } from './editar-informacion-modal/editar-informacion-modal.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +34,14 @@ import {environment} from '../environments/environment';
     HeaderComponent,
     AuthorComponent,
     NotificationComponent,
-    FileUploaderComponent
+    FileUploaderComponent,
+    EditarInformacionModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,

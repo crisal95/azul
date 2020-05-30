@@ -13,6 +13,7 @@ export interface UserData {
   lastUpdate: number;
   email: string;
   userName: string;
-  fullName: string;
+  firstName: string;
+  lastName: string;
   img: string;
 }

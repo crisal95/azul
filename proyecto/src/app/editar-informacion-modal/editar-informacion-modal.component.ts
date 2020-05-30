@@ -29,7 +29,6 @@ export class EditarInformacionModalComponent implements OnInit {
     private firebaseStorage: AngularFireStorage,
     private firebaseAuth: AngularFireAuth
   ) {
-
   }
 
   ngOnInit() {

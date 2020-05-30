@@ -14,28 +14,22 @@
                 <h1 class="h4 text-gray-900 mb-4">¡Aquí puedes crear tu cuenta!</h1>
               </div>
               <form [formGroup]="registerForm" >
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="form-group">
                     <input type="text" class="form-control form-control-user" formControlName="firstName"  required placeholder="Nombre">
                   </div>
-                  <div class="col-sm-6">
+                    <div class="form-group">
                     <input type="text" class="form-control form-control-user" formControlName="lastName" required placeholder="Apellidos">
                   </div>
-                  <div class="col-sm-6">
+                  <div class="form-group">
                     <input type="text" class="form-control form-control-user" formControlName="userName" required placeholder="Nombre de usuario">
                   </div>
-                </div>
+
                 <div class="form-group">
                   <input type="email" class="form-control form-control-user" formControlName="email" required placeholder="Dirección de correo">
                 </div>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="form-group">
                     <input type="password" class="form-control form-control-user" formControlName="password" required placeholder="Contraseña">
                   </div>
-                  <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" formControlName="confirmPassword" required placeholder="Repita la contraseña">
-                  </div>
-                </div>
                 <button href="login" class="btn btn-primary btn-user btn-block" [disabled]="!registerForm.valid" (click)="onSubmit()">
                   Registrar cuenta
                 </button>
@@ -70,3 +64,18 @@
 </div>
 
 
+
+<div *ngIf="firstName.invalid && (name.dirty || name.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="name.errors.required">
+    Name is required.
+  </div>
+  <div *ngIf="name.errors.minlength">
+    Name must be at least 4 characters long.
+  </div>
+  <div *ngIf="name.errors.forbiddenName">
+    Name cannot be Bob.
+  </div>
+
+</div>

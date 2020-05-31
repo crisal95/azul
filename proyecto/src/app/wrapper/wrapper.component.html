@@ -1,13 +1,16 @@
 <!-- Page Wrapper -->
-<div id="wrapper" *ngIf="isLoggedIn">
+<div id="wrapper">
   <!-- Sidebar -->
-  <app-sidebar></app-sidebar>
+  <app-sidebar class="sidebar">
+
+  </app-sidebar>
   <!-- End of Sidebar -->
 
   <!-- Content Wrapper -->
-  <app-content-wrapper [userData]="userData"></app-content-wrapper>
+  <app-content-wrapper class="topbar" [userData]="userData" [isLoggedIn]="isLoggedIn"></app-content-wrapper>
   <!-- End of Content Wrapper -->
 </div>
+
 <!-- End of Page Wrapper -->
 
 <!-- Scroll to Top Button-->
@@ -37,7 +40,7 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-        <a class="btn btn-primary" href="login.html">Logout</a>
+        <button class="btn btn-primary" (click)="logout()">Logout</button>
       </div>
     </div>
   </div>

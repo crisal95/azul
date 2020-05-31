@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ContentWrapperComponent} from './content-wrapper.component';
+import { RouterTestingModule } from '@angular/router/testing';
 // import {WrapperComponent} from '../wrapper/wrapper.component';
 // import {SidebarComponent} from '../sidebar/sidebar.component';
 
@@ -10,6 +11,7 @@ describe('ContentWrapperComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ContentWrapperComponent]
     }).compileComponents();
   }));

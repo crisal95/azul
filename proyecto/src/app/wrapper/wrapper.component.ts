@@ -24,5 +24,7 @@ export class WrapperComponent implements OnInit {
       }
     });
   }
-
+logout(){
+  this.userService.performLogout();
+}
 }

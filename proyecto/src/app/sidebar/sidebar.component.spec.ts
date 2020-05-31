@@ -1,14 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidebarComponent } from './sidebar.component';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {AngularFireStorage} from '@angular/fire/storage';
 
-xdescribe('SidebarComponent', () => {
+describe('SidebarComponent', () => {
   let component: SidebarComponent;
   let fixture: ComponentFixture<SidebarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidebarComponent ]
+      declarations: [ SidebarComponent ],
+      providers: [
+        {provide: AngularFireAuth, useValue: mockAngularFireAuth},
+        {provide: AngularFireDatabase, useValue: mockDatabase},
+        {provide: AngularFireStorage, useValue: null}
+      ]
     })
     .compileComponents();
   }));
@@ -23,3 +31,23 @@ xdescribe('SidebarComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+ // Mock de los datos de un usuario
+ const datosUsuario = {
+  uid: 'patito'
+};
+
+// Mock del objeto AngularFireAuth
+const mockAngularFireAuth: any = {
+  currentUser: Promise.resolve(datosUsuario)
+};
+
+// Mock de la base de datos
+const mockDatabase: any = {
+  list() {
+    return {
+      snapshotChanges() {
+        return {subscribe() {}};
+      }
+    };
+  }
+};

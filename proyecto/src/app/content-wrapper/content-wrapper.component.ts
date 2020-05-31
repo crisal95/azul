@@ -8,6 +8,7 @@ import {UserData} from '../shared/models';
 })
 export class ContentWrapperComponent implements OnInit {
   @Input() userData: UserData;
+@Input() isLoggedIn;
 
   constructor() {}
 

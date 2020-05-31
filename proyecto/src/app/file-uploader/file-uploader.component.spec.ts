@@ -8,7 +8,7 @@ import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 
-xdescribe('FileUploaderComponent', () => {
+describe('FileUploaderComponent', () => {
   let component: FileUploaderComponent;
   let fixture: ComponentFixture<FileUploaderComponent>;
 

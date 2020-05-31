@@ -39,12 +39,14 @@ export class EditarInformacionModalComponent implements OnInit {
       this.user = userData.uid;
     });
 
-    this.registerForm.setValue({
-      firstName: this.userData.firstName,
-      lastName: this.userData.lastName,
-      userName: this.userData.userName
-    });
-    this.fileUrl = this.userData.img;
+    if (this.userData) {
+      this.registerForm.setValue({
+        firstName: this.userData.firstName,
+        lastName: this.userData.lastName,
+        userName: this.userData.userName
+      });
+      this.fileUrl = this.userData.img;
+    }
   }
 
   onImagePicked(imageUrl: string) {

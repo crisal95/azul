@@ -1,20 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-.botonbonito {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 112, 121, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
+.container {
+  padding-top:100px;
 }
 
-.botonbonito:hover {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(121, 9, 72, 1) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
-}

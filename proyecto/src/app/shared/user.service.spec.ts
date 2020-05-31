@@ -6,6 +6,8 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
 
 describe('UserService', () => {
   beforeEach(() =>
@@ -13,8 +15,11 @@ describe('UserService', () => {
       imports: [
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
-        AngularFireDatabaseModule
-      ]
+        AngularFireDatabaseModule,
+        FormsModule,
+        ReactiveFormsModule
+      ],
+      declarations: [RegistrarUsuarioComponent]
     })
   );
 

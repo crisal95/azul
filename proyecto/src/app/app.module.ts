@@ -5,7 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
-import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {UserService} from './shared/user.service';
 import {RouteGuard} from './shared/route-guard';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -27,6 +27,7 @@ import {environment} from '../environments/environment';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { ContentWrapperComponent } from './content-wrapper/content-wrapper.component';
+import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 
 @NgModule({
   declarations: [
@@ -39,9 +40,12 @@ import { ContentWrapperComponent } from './content-wrapper/content-wrapper.compo
     FileUploaderComponent,
     SidebarComponent,
     WrapperComponent,
-    ContentWrapperComponent
+    ContentWrapperComponent,
+    RegistrarUsuarioComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

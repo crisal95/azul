@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SidebarComponent } from './sidebar.component';
+import {SidebarComponent} from './sidebar.component';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireStorage} from '@angular/fire/storage';
@@ -11,14 +11,13 @@ describe('SidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidebarComponent ],
+      declarations: [SidebarComponent],
       providers: [
         {provide: AngularFireAuth, useValue: mockAngularFireAuth},
         {provide: AngularFireDatabase, useValue: mockDatabase},
         {provide: AngularFireStorage, useValue: null}
       ]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -31,8 +30,8 @@ describe('SidebarComponent', () => {
     expect(component).toBeTruthy();
   });
 });
- // Mock de los datos de un usuario
- const datosUsuario = {
+// Mock de los datos de un usuario
+const datosUsuario = {
   uid: 'patito'
 };
 

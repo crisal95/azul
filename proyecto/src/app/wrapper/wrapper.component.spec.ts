@@ -8,6 +8,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {RouterTestingModule} from '@angular/router/testing';
 
 describe('WrapperComponent', () => {
   let component: WrapperComponent;
@@ -18,7 +19,8 @@ describe('WrapperComponent', () => {
       imports: [
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
-        AngularFireDatabaseModule
+        AngularFireDatabaseModule,
+        RouterTestingModule
       ],
       declarations: [WrapperComponent, SidebarComponent, ContentWrapperComponent]
     }).compileComponents();

@@ -24,7 +24,6 @@ export class RegistrarUsuarioComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
       userName: ['', Validators.required]
     });
 

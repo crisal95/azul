@@ -1,0 +1,79 @@
+<ul
+  class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+  id="accordionSidebar"
+  *ngIf="isLoggedIn"
+>
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon rotate-n-15">
+      <em class="fas fa-crow"></em>
+    </div>
+    <div class="sidebar-brand-text mx-3">BlueTweet</div>
+  </a>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0" />
+
+  <!-- Nav Item - Home -->
+  <li class="nav-item active">
+    <a class="nav-link" href="index.html">
+      <em class="fas fa-fw fa-home"></em>
+      <span>Home</span></a
+    >
+  </li>
+
+  <!-- Nav Item - Profile -->
+  <li class="nav-item">
+    <a class="nav-link" href="charts.html">
+      <em class="fas fa-fw fa-user"></em>
+      <span>Profile</span></a
+    >
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider" />
+
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-light btn-icon-split"
+      data-toggle="modal"
+      data-target="#exampleModal"
+    >
+      <span class="icon text-gray-600">
+        <em class="fas fa-plus"></em>
+      </span>
+      <span class="text">Tweet</span>
+    </button>
+  </div>
+</ul>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

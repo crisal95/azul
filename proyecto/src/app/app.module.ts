@@ -24,6 +24,9 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { WrapperComponent } from './wrapper/wrapper.component';
+import { ContentWrapperComponent } from './content-wrapper/content-wrapper.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 
 @NgModule({
@@ -35,6 +38,9 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     AuthorComponent,
     NotificationComponent,
     FileUploaderComponent,
+    SidebarComponent,
+    WrapperComponent,
+    ContentWrapperComponent,
     RegistrarUsuarioComponent
   ],
   imports: [

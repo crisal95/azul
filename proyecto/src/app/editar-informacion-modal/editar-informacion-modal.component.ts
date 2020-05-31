@@ -23,13 +23,11 @@ export class EditarInformacionModalComponent implements OnInit {
   fileUrl = '';
   uploadStatus = '';
 
-
   constructor(
     private formBuilder: FormBuilder,
     private firebaseStorage: AngularFireStorage,
     private firebaseAuth: AngularFireAuth
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -40,6 +38,13 @@ export class EditarInformacionModalComponent implements OnInit {
     this.firebaseAuth.currentUser.then(userData => {
       this.user = userData.uid;
     });
+
+    this.registerForm.setValue({
+      firstName: this.userData.firstName,
+      lastName: this.userData.lastName,
+      userName: this.userData.userName
+    });
+    this.fileUrl = this.userData.img;
   }
 
   onImagePicked(imageUrl: string) {

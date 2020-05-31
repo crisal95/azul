@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { UserData } from '../shared/models';
-import { UserService } from '../shared/user.service';
+import {Component, OnInit, Input} from '@angular/core';
+import {UserData} from '../shared/models';
+import {UserService} from '../shared/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,7 +11,7 @@ export class SidebarComponent implements OnInit {
   isLoggedIn = false;
   userData: UserData;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.userService.statusChange.subscribe((userData: UserData) => {
@@ -24,5 +24,4 @@ export class SidebarComponent implements OnInit {
       }
     });
   }
-
 }

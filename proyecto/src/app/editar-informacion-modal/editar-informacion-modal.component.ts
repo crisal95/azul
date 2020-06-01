@@ -26,7 +26,8 @@ export class EditarInformacionModalComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private firebaseStorage: AngularFireStorage,
-    private firebaseAuth: AngularFireAuth
+    private firebaseAuth: AngularFireAuth,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
@@ -97,5 +98,9 @@ export class EditarInformacionModalComponent implements OnInit {
     const text = chance.string({length: 8, casing: 'upper', alpha: true, numeric: true});
 
     return text;
+  }
+
+  onSubmit(){
+    this.userService.modifyUserDataOnFirebase(this.user,this.registerForm);
   }
 }

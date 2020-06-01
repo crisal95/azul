@@ -21,10 +21,8 @@ export class AuthorComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.snapshot.queryParamMap.get('authorName');
 
+    this.authorName = this.activatedRoute.snapshot.queryParamMap.get('authorName');
 
-      this.authorName = this.activatedRoute.snapshot.queryParamMap.get('authorName');
-
-      // this.posts = this.postService.getPostsByAuthor(this.authorName);
-
+    // this.posts = this.postService.getPostsByAuthor(this.authorName);
   }
 }

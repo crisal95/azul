@@ -9,7 +9,7 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
 export const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [RouteGuard]},
   {path: 'home', component: HomeComponent, canActivate: [RouteGuard]},
-  {path: 'author/:authorName', component: AuthorComponent, canActivate: [RouteGuard]},
+  {path: 'author', component: AuthorComponent, canActivate: [RouteGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegistrarUsuarioComponent}
 ];

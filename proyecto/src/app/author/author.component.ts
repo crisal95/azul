@@ -19,15 +19,12 @@ export class AuthorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe(params => {
-      if (!params.has('authorName')) {
-        this.router.navigate(['/home']);
-        return;
-      }
+    this.activatedRoute.snapshot.queryParamMap.get('authorName');
 
-      this.authorName = params.get('authorName');
+
+      this.authorName = this.activatedRoute.snapshot.queryParamMap.get('authorName');
 
       // this.posts = this.postService.getPostsByAuthor(this.authorName);
-    });
+
   }
 }

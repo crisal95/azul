@@ -1,7 +1,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
   <!-- Sidebar -->
-  <app-sidebar class="sidebar" *ngIf="isLoggedIn"> </app-sidebar>
+  <app-sidebar class="sidebar" [userData]="userData" *ngIf="isLoggedIn"> </app-sidebar>
   <!-- End of Sidebar -->
 
   <!-- Content Wrapper -->

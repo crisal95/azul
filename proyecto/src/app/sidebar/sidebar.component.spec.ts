@@ -4,6 +4,8 @@ import {SidebarComponent} from './sidebar.component';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireStorage} from '@angular/fire/storage';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
@@ -11,6 +13,8 @@ describe('SidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterModule,
+      RouterTestingModule],
       declarations: [SidebarComponent],
       providers: [
         {provide: AngularFireAuth, useValue: mockAngularFireAuth},

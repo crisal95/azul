@@ -4,6 +4,13 @@ import { EditarInformacionModalComponent } from './editar-informacion-modal.comp
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireStorage} from '@angular/fire/storage';
+import { HomeComponent } from '../home/home.component';
+import {routes} from '../app-routing.module';
+import {RouterTestingModule} from '@angular/router/testing';
+import { AuthorComponent } from '../author/author.component';
+import { LoginComponent } from '../login/login.component';
+import { FileUploaderComponent } from '../file-uploader/file-uploader.component';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 describe('EditarInformacionModalComponent', () => {
   let component: EditarInformacionModalComponent;
@@ -12,16 +19,18 @@ describe('EditarInformacionModalComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule,
-      ReactiveFormsModule
+      ReactiveFormsModule,
+      RouterTestingModule.withRoutes(routes)
       //AngularFireModule.initializeApp(environment.firebaseConfig),
       //AngularFireAuthModule,
       //AngularFireDatabaseModule,
       //AngularFireStorageModule
     ],
-      declarations: [ EditarInformacionModalComponent ],
+      declarations: [ EditarInformacionModalComponent, HomeComponent, AuthorComponent, LoginComponent, FileUploaderComponent],
       providers: [
         {provide: AngularFireAuth, useValue: mockAngularFireAuth},
-        {provide: AngularFireStorage, useValue: null}
+        {provide: AngularFireStorage, useValue: null},
+        {provide: AngularFireDatabase, useValue: mockDatabase}
       ]
     })
     .compileComponents();
@@ -46,3 +55,13 @@ describe('EditarInformacionModalComponent', () => {
   const mockAngularFireAuth: any = {
     currentUser: Promise.resolve(datosUsuario)
   };
+    // Mock de la base de datos
+    const mockDatabase: any = {
+      list() {
+        return {
+          snapshotChanges() {
+            return {subscribe() {}};
+          }
+        };
+      }
+    };

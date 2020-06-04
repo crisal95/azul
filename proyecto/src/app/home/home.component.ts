@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
       // console.log('userData en el componente', userData);
       if (!!userData && 'uid' in userData && !!userData.uid) {
         this.author = userData.uid;
+        console.log(userData.uid);
 
         this.firebaseDatabase
           .list(`posts/${this.author}`, ref => ref.limitToLast(100).orderByChild('created'))
@@ -46,6 +47,7 @@ export class HomeComponent implements OnInit {
                 ...(e.payload.val() as PostData)
               };
             });
+            console.log(this.posts);
           });
       }
     });

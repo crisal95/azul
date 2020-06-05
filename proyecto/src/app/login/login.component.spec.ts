@@ -13,6 +13,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
+import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -29,7 +30,7 @@ describe('LoginComponent', () => {
         AngularFireAuthModule,
         AngularFireDatabaseModule
       ],
-      declarations: [LoginComponent, HomeComponent, AuthorComponent, FileUploaderComponent, RegistrarUsuarioComponent]
+      declarations: [LoginComponent, HomeComponent, AuthorComponent, FileUploaderComponent, RegistrarUsuarioComponent, CrearPublicacionComponent]
     }).compileComponents();
   }));
 

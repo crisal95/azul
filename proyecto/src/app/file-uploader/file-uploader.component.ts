@@ -17,8 +17,14 @@ export class FileUploaderComponent implements OnInit {
   uploadStatus = '';
 
   constructor(private firebaseStorage: AngularFireStorage) {}
+  uploadedFileUrl = '';
 
   ngOnInit() {}
+
+  onImagePicked(imageUrl: string) {
+    console.log('url en firebase listo para guardar en la base de datos', imageUrl);
+    this.uploadedFileUrl = imageUrl;
+  }
 
   onUploadImage() {
     // Forzar un click en el campo input para mostrar el dialogo del S.O. para subir archivos
@@ -31,12 +37,8 @@ export class FileUploaderComponent implements OnInit {
 
     if (fileList.length > 0) {
       const file: File = fileList[0];
-      // Por si nos interesa el tipo de archivo (e.g. image/jpeg)
-      // const fileType = file.type;
 
-      // const author = firebase.auth().currentUser.uid;
-
-      const fileName = `posts/${this.author}/${this.generateRandomName()}.jpg`;
+      const fileName = `postsImages/${this.generateRandomName()}.jpg`;
 
       const storageRef = this.firebaseStorage.storage.ref();
       this.uploadTask = storageRef.child(fileName).put(file);
@@ -62,7 +64,6 @@ export class FileUploaderComponent implements OnInit {
       );
     }
   }
-
   generateRandomName() {
     const chance = new Chance();
     const text = chance.string({length: 8, casing: 'upper', alpha: true, numeric: true});

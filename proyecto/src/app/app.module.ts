@@ -28,6 +28,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { WrapperComponent } from './wrapper/wrapper.component';
 import { ContentWrapperComponent } from './content-wrapper/content-wrapper.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
+import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
     SidebarComponent,
     WrapperComponent,
     ContentWrapperComponent,
-    RegistrarUsuarioComponent
+    RegistrarUsuarioComponent,
+    CrearPublicacionComponent
   ],
   imports: [
     ReactiveFormsModule,

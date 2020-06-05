@@ -1,5 +1,4 @@
-<img class="preview-img" [src]="fileUrl" />
 <button class="btn btn-danger" (click)="onUploadImage()">
-  Subir Archivo {{ this.uploadStatus }}
+  Subir imagen {{ this.uploadStatus }}
 </button>
-<input type="file" accept="image/jpeg" #filePicker (change)="onFileChosen($event)" />
+<input type="file" accept="image/jpeg" #filePicker (change)="onFileChosen($event)" hidden />

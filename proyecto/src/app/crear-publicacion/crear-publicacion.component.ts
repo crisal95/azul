@@ -37,7 +37,7 @@ export class CrearPublicacionComponent implements OnInit {
           this.postService
             .addNewPostAsync(this.publicacionForm.value.texto, this.uploadedFileUrl)
             .then(results => {
-              this.notificationServie.showSuccessMessage('Todo bien!', 'Publicación Creada');
+              this.notificationServie.showSuccessMessage('Genial!', 'Publicación Creada exitosamente');
               // this.posts = this.postService.getAllPosts();
               this.spinnerService.hideMainSpinner();
               this.publicacionForm.reset;

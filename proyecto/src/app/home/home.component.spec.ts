@@ -1,11 +1,11 @@
-import {async, ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, fakeAsync} from '@angular/core/testing';
 
 import {HomeComponent} from './home.component';
 import {routes} from '../app-routing.module';
 import {RouterTestingModule} from '@angular/router/testing';
 import {AuthorComponent} from '../author/author.component';
 import {LoginComponent} from '../login/login.component';
-import {FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FileUploaderComponent} from '../file-uploader/file-uploader.component';
 import {ToastrModule} from 'ngx-toastr';
 
@@ -72,9 +72,6 @@ describe('HomeComponent', () => {
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-
-    spinnerService = fixture.debugElement.injector.get(SpinnerService);
-    spinnerSpy = spyOn(spinnerService, 'showMainSpinner'); //.and.returnValue()
   });
 
   it('should create', () => {

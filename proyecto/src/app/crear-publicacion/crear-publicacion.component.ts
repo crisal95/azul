@@ -40,7 +40,7 @@ export class CrearPublicacionComponent implements OnInit {
               this.notificationServie.showSuccessMessage('Genial!', 'Publicación Creada exitosamente');
               // this.posts = this.postService.getAllPosts();
               this.spinnerService.hideMainSpinner();
-              this.publicacionForm.reset;
+              this.publicacionForm.reset();
             })
             .catch(error => {
               this.notificationServie.showErrorMessage('Error!!!', 'Error creando publicación');

@@ -29,6 +29,14 @@ jobs:
         working-directory: proyecto
         run: npm run build
 
+      - name: Deploy a firebase
+        uses: w9jds/firebase-action@v1.3.1
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{secrets.FIREBASE_TOKEN}}
+          PROJECT_PATH: proyecto
+
       # - name: Notificar en Slack
       #   uses: rtCamp/action-slack-notify@v2.0.2
       #   env:

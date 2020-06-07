@@ -9,6 +9,9 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FileUploaderComponent } from '../file-uploader/file-uploader.component';
 
 describe('WrapperComponent', () => {
   let component: WrapperComponent;
@@ -20,9 +23,11 @@ describe('WrapperComponent', () => {
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
         AngularFireDatabaseModule,
-        RouterTestingModule
+        RouterTestingModule,
+        ReactiveFormsModule,
+        FormsModule
       ],
-      declarations: [WrapperComponent, SidebarComponent, ContentWrapperComponent]
+      declarations: [WrapperComponent, SidebarComponent, ContentWrapperComponent, CrearPublicacionComponent, FileUploaderComponent]
     }).compileComponents();
   }));
 

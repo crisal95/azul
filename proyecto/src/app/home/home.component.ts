@@ -76,37 +76,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    const title = form.value.title;
-    const content = form.value.content;
 
-    // this.postService.addNewPost(title, content);
-
-    // Refrescar lista de posts
-    // this.posts = this.postService.getAllPosts();
-
-    this.spinnerService.showMainSpinner();
-
-    this.firebaseAuth.currentUser
-      .then(authData => {
-        this.userService.getUserDataFromFirebase(authData.uid).then(userData => {
-          this.postService
-            .addNewPostAsync(title, content, userData.val().userName, this.uploadedFileUrl)
-            .then(results => {
-              this.notificationServie.showSuccessMessage('Todo bien!', 'Publicación Creada');
-              // this.posts = this.postService.getAllPosts();
-              this.spinnerService.hideMainSpinner();
-            })
-            .catch(error => {
-              this.notificationServie.showErrorMessage('Error!!!', 'Error creando publicación');
-              this.spinnerService.hideMainSpinner();
-            });
-        });
-      })
-      .catch(err => {
-        this.spinnerService.hideMainSpinner();
-        this.notificationServie.showErrorMessage('Error', err);
-      });
-    form.reset();
   }
 
   onImagePicked(imageUrl: string) {

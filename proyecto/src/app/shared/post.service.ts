@@ -30,7 +30,7 @@ export class PostService {
   //   this.posts.push(newPost);
   // }
 
-  addNewPostAsync(title: string, content: string, author: string, imgUrl: string) {
+  addNewPostAsync(content: string, imgUrl: string) {
     return this.firebaseAuth.currentUser.then(userData => {
       const firebaseUserId = userData.uid;
       const newPostKey = this.firebaseDatabase.database
@@ -38,14 +38,10 @@ export class PostService {
         .child(`posts/${firebaseUserId}`)
         .push().key;
 
-      if (imgUrl === '') {
-        imgUrl = 'https://placeimg.com/320/240/any/sepia';
-      }
+
 
       const newPostEntry = {
-        author: author,
         content: content,
-        title: title,
         created: new Date().getTime(),
         creationDate: new Date().toString(),
         img: imgUrl

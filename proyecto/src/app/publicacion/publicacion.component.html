@@ -1,16 +1,20 @@
-<div class="card w-75  mx-auto d-block">
+<div class="card  mx-auto d-block">
   <div class="card-header">
-    <img
-    class="img-profile rounded-circle"
-    src="
-    https://firebasestorage.googleapis.com/v0/b/proyectoazul-dc9d3.appspot.com/o/bluebird.png?alt=media&token=7aa091e7-fa7c-4c70-9d3f-b09b92ae5fa6
-    "
-    alt="Foto de perfil"
-    style="height: 35px; width: 35px;"
-  />  {{this.userData.fullName}}
+    <div class="text-xs font-weight-bold text-primary text-uppercase mb-3">
+      <img
+        class="img-profile rounded-circle"
+        src="{{ this.userData.img }}"
+        alt="Foto de perfil"
+        style="height: 35px; width: 35px;"
+      />
+      {{ this.userData.fullName }}
+    </div>
   </div>
   <div class="card-body">
-    <p class="card-text">{{this.postData.content}}</p>
+    <p class="card-text">{{ this.postData.content }}</p>
+    <div *ngIf="this.postData.img != null && this.postData.img != ''">
+      <img class="img" src="{{ this.postData.img }}" alt="imagen publicacion" />
+    </div>
     <!--  boton de comentario, textbox con form de comentario para publicar y lista de comentarios -->
   </div>
 </div>

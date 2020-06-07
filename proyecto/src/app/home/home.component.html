@@ -1,79 +1,101 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <table class="table table-bordered" width="100%" cellspacing="0">
-        <thead>
-          <tr>
-            <th>Key</th>
-            <th>Fecha</th>
-            <th>Autor</th>
-            <th>Título</th>
-            <th>Contenido</th>
-            <th>Img</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let post of this.posts">
-            <td>{{ post.key }}</td>
-            <td>{{ post.creationDate | date: 'medium' }}</td>
-            <td>
-              <a routerLink="/author/{{ post.author }}">{{ post.author }}</a>
-            </td>
-            <td>{{ post.title }}</td>
-            <td>{{ post.content }}</td>
-            <td><img [src]="post.img" style="width:100px;" alt="imagen" /></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div class="container-fluid">
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Home</h1>
   </div>
+<app-crear-publicacion></app-crear-publicacion>
+  
   <div class="row">
-    <div class="col-6">
-      <form class="user" (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <div class="form-group">
-          <div class="col-6">
-            Título
-          </div>
-          <div class="col-6">
-            <input
-              type="text"
-              class="form-control"
-              id="title"
-              name="title"
-              placeholder="Título"
-              ngModel
-              required
-            />
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-6">
-            Contenido
-          </div>
-          <div class="col-6">
-            <textarea
-              ngModel
-              id="content"
-              name="content"
-              required
-              placeholder="Contenido"
-            ></textarea>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-3">
+                <img
+                  class="img-profile rounded-circle mr-2"
+                  alt="Profile picture."
+                  src="https://picsum.photos/50/50.jpg"
+                />
+                User (@username)
+              </div>
+              <div class="text-gray-800">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet ligula
+                bibendum, ultricies orci vel, tincidunt arcu. Ut eu mattis quam, quis congue nunc.
+                Vestibulum quis tellus aliquam leo tristique mollis. Ut auctor turpis auctor,
+                accumsan lorem sed, vulputate.
+              </div>
+            </div>
           </div>
         </div>
-        <div class="form-group">
-          <div class="col-sm-2 mb-3 mb-sm-0">
-            <button type="submit" class="btn btn-success btn-icon-split" [disabled]="!f.valid">
-              Publicar
-            </button>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
-    <div class="col-6">
-      <app-file-uploader
-        [author]="this.author"
-        (imagePick)="onImagePicked($event)"
-      ></app-file-uploader>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-3">
+                <img
+                  class="img-profile rounded-circle mr-2"
+                  alt="Profile picture."
+                  src="https://picsum.photos/50/50.jpg"
+                />
+                User (@username)
+              </div>
+              <div class="text-gray-800">
+                vitae justo eget magna fermentum iaculis eu non diam phasellus vestibulum lorem sed
+                risus ultricies tristique nulla aliquet enim tortor at auctor urna nunc id
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-3">
+                <img
+                  class="img-profile rounded-circle mr-2"
+                  alt="Profile picture."
+                  src="https://picsum.photos/50/50.jpg"
+                />
+                User (@username)
+              </div>
+              <div class="text-gray-800">
+                ipsum dolor sit amet consectetur adipiscing elit ut aliquam purus sit amet luctus
+                venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non enim
+                praesent elementum facilisis leo vel fringilla
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-3">
+                <img
+                  class="img-profile rounded-circle mr-2"
+                  alt="Profile picture."
+                  src="https://picsum.photos/50/50.jpg"
+                />
+                User (@username)
+              </div>
+              <div class="text-gray-800">
+                nisi quis eleifend quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus
+                urna neque viverra justo nec ultrices dui sapien eget mi proin sed libero enim sed
+                faucibus
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

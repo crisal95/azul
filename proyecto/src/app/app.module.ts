@@ -5,7 +5,11 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HomeComponent} from './home/home.component';
+<<<<<<< HEAD
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+=======
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+>>>>>>> master
 import {UserService} from './shared/user.service';
 import {RouteGuard} from './shared/route-guard';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -25,6 +29,12 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {environment} from '../environments/environment';
 import { EditarInformacionModalComponent } from './editar-informacion-modal/editar-informacion-modal.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { WrapperComponent } from './wrapper/wrapper.component';
+import { ContentWrapperComponent } from './content-wrapper/content-wrapper.component';
+import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
+import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
+import { PublicacionComponent } from './publicacion/publicacion.component';
 
 @NgModule({
   declarations: [
@@ -35,9 +45,17 @@ import { EditarInformacionModalComponent } from './editar-informacion-modal/edit
     AuthorComponent,
     NotificationComponent,
     FileUploaderComponent,
-    EditarInformacionModalComponent
+    EditarInformacionModalComponent,
+    SidebarComponent,
+    WrapperComponent,
+    ContentWrapperComponent,
+    RegistrarUsuarioComponent,
+    CrearPublicacionComponent,
+    PublicacionComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

@@ -10,8 +10,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
   public posts: PostData[] = [];
@@ -36,17 +35,19 @@ export class HomeComponent implements OnInit {
       // console.log('userData en el componente', userData);
       if (!!userData && 'uid' in userData && !!userData.uid) {
         this.author = userData.uid;
+        //console.log(userData.uid);
 
         this.firebaseDatabase
           .list(`posts/${this.author}`, ref => ref.limitToLast(100).orderByChild('created'))
           .snapshotChanges()
           .subscribe(data => {
-            console.log(data);
+            //console.log(data);
             this.posts = data.map(e => {
               return {
                 ...(e.payload.val() as PostData)
               };
             });
+            //console.log(this.posts);
           });
       }
     });
@@ -75,41 +76,10 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    const title = form.value.title;
-    const content = form.value.content;
 
-    // this.postService.addNewPost(title, content);
-
-    // Refrescar lista de posts
-    // this.posts = this.postService.getAllPosts();
-
-    this.spinnerService.showMainSpinner();
-
-    this.firebaseAuth.currentUser
-      .then(authData => {
-        this.userService.getUserDataFromFirebase(authData.uid).then(userData => {
-          this.postService
-            .addNewPostAsync(title, content, userData.val().userName, this.uploadedFileUrl)
-            .then(results => {
-              this.notificationServie.showSuccessMessage('Todo bien!', 'Publicación Creada');
-              // this.posts = this.postService.getAllPosts();
-              this.spinnerService.hideMainSpinner();
-            })
-            .catch(error => {
-              this.notificationServie.showErrorMessage('Error!!!', 'Error creando publicación');
-              this.spinnerService.hideMainSpinner();
-            });
-        });
-      })
-      .catch(err => {
-        this.spinnerService.hideMainSpinner();
-        this.notificationServie.showErrorMessage('Error', err);
-      });
-    form.reset();
   }
 
   onImagePicked(imageUrl: string) {
-    console.log('url en firebase listo para guardar en la base de datos', imageUrl);
     this.uploadedFileUrl = imageUrl;
   }
 }

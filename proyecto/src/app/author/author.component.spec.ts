@@ -6,7 +6,7 @@ import {routes} from '../app-routing.module';
 import {RouterTestingModule} from '@angular/router/testing';
 import {HomeComponent} from '../home/home.component';
 import {LoginComponent} from '../login/login.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FileUploaderComponent} from '../file-uploader/file-uploader.component';
 
 import {AngularFireModule} from '@angular/fire';
@@ -15,6 +15,8 @@ import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {RouteGuard} from '../shared/route-guard';
+import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
+import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
 
 describe('AuthorComponent', () => {
   let component: AuthorComponent;
@@ -25,12 +27,13 @@ describe('AuthorComponent', () => {
       imports: [
         RouterTestingModule.withRoutes(routes),
         FormsModule,
+        ReactiveFormsModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
         AngularFireDatabaseModule,
         AngularFireStorageModule
       ],
-      declarations: [AuthorComponent, HomeComponent, LoginComponent, FileUploaderComponent],
+      declarations: [AuthorComponent, HomeComponent, LoginComponent, FileUploaderComponent, RegistrarUsuarioComponent, CrearPublicacionComponent],
       providers: [RouteGuard]
     }).compileComponents();
   }));

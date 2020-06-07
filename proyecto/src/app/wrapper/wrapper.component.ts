@@ -15,7 +15,6 @@ export class WrapperComponent implements OnInit {
 
   ngOnInit() {
     this.userService.statusChange.subscribe((userData: UserData) => {
-      // console.log('userData', userData);
       if (userData) {
         this.userData = userData;
         this.isLoggedIn = true;

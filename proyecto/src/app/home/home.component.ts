@@ -35,17 +35,19 @@ export class HomeComponent implements OnInit {
       // console.log('userData en el componente', userData);
       if (!!userData && 'uid' in userData && !!userData.uid) {
         this.author = userData.uid;
+        //console.log(userData.uid);
 
         this.firebaseDatabase
           .list(`posts/${this.author}`, ref => ref.limitToLast(100).orderByChild('created'))
           .snapshotChanges()
           .subscribe(data => {
-            console.log(data);
+            //console.log(data);
             this.posts = data.map(e => {
               return {
                 ...(e.payload.val() as PostData)
               };
             });
+            //console.log(this.posts);
           });
       }
     });
@@ -78,7 +80,6 @@ export class HomeComponent implements OnInit {
   }
 
   onImagePicked(imageUrl: string) {
-    console.log('url en firebase listo para guardar en la base de datos', imageUrl);
     this.uploadedFileUrl = imageUrl;
   }
 }

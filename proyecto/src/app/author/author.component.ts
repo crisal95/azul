@@ -12,8 +12,9 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class AuthorComponent implements OnInit {
   private userId = null;
   private posts: PostData[];
+  public userExist: boolean;
   public user: UserData;
-  public visitor;
+  public visitor: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -21,7 +22,6 @@ export class AuthorComponent implements OnInit {
     private firebaseDatabase: AngularFireDatabase,
     private firebaseAuth: AngularFireAuth
   ) {
-
     if (this.user == null) {
       this.user = {
         created: null,
@@ -31,7 +31,8 @@ export class AuthorComponent implements OnInit {
         fullName: null,
         img: null
       };
-      }
+    }
+    this.userExist = true;
   }
 
   ngOnInit() {
@@ -42,9 +43,14 @@ export class AuthorComponent implements OnInit {
         .object(`users/${this.userId}`)
         .valueChanges()
         .subscribe(user => {
-          this.user = user as UserData;
+          if (user !== null) {
+            this.user = user as UserData;
+          } else {
+            // console.log('User dont exist.');
+            this.userExist = false;
+          }
         });
-      //this.getPosts();
+      // this.getPosts();
     } else {
       this.firebaseAuth.currentUser.then(userData => {
         // console.log('userData en el componente', userData);
@@ -52,7 +58,6 @@ export class AuthorComponent implements OnInit {
           this.userId = userData.uid;
           console.log(userData.uid);
         }
-
         this.firebaseDatabase
           .object(`users/${this.userId}`)
           .valueChanges()

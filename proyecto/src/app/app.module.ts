@@ -29,6 +29,7 @@ import { WrapperComponent } from './wrapper/wrapper.component';
 import { ContentWrapperComponent } from './content-wrapper/content-wrapper.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
+import { PublicacionComponent } from './publicacion/publicacion.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion
     WrapperComponent,
     ContentWrapperComponent,
     RegistrarUsuarioComponent,
-    CrearPublicacionComponent
+    CrearPublicacionComponent,
+    PublicacionComponent
   ],
   imports: [
     ReactiveFormsModule,

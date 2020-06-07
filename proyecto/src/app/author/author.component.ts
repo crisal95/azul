@@ -56,7 +56,6 @@ export class AuthorComponent implements OnInit {
         // console.log('userData en el componente', userData);
         if (!!userData && 'uid' in userData && !!userData.uid) {
           this.userId = userData.uid;
-          console.log(userData.uid);
         }
         this.firebaseDatabase
           .object(`users/${this.userId}`)

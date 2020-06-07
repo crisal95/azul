@@ -4,8 +4,12 @@ import {SidebarComponent} from './sidebar.component';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireStorage} from '@angular/fire/storage';
-import { RouterModule } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import {RouterModule} from '@angular/router';
+import {RouterTestingModule} from '@angular/router/testing';
+import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import {FileUploaderComponent} from '../file-uploader/file-uploader.component';
+import {ToastrModule} from 'ngx-toastr';
 
 describe('SidebarComponent', () => {
   let component: SidebarComponent;
@@ -13,9 +17,14 @@ describe('SidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterModule,
-      RouterTestingModule],
-      declarations: [SidebarComponent],
+      imports: [
+        RouterModule,
+        RouterTestingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        ToastrModule.forRoot()
+      ],
+      declarations: [SidebarComponent, CrearPublicacionComponent, FileUploaderComponent],
       providers: [
         {provide: AngularFireAuth, useValue: mockAngularFireAuth},
         {provide: AngularFireDatabase, useValue: mockDatabase},

@@ -16,6 +16,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {RouteGuard} from '../shared/route-guard';
 import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
+import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
 
 describe('AuthorComponent', () => {
   let component: AuthorComponent;
@@ -32,7 +33,7 @@ describe('AuthorComponent', () => {
         AngularFireDatabaseModule,
         AngularFireStorageModule
       ],
-      declarations: [AuthorComponent, HomeComponent, LoginComponent, FileUploaderComponent, RegistrarUsuarioComponent],
+      declarations: [AuthorComponent, HomeComponent, LoginComponent, FileUploaderComponent, RegistrarUsuarioComponent, CrearPublicacionComponent],
       providers: [RouteGuard]
     }).compileComponents();
   }));

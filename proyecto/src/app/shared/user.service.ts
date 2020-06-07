@@ -44,6 +44,27 @@ export class UserService {
       .once('value');
   }
 
+  setUserDataOnFirebase(uid: string, form: FormGroup) {
+    const firebaseUserId = uid;
+    const imgUrl =
+      'https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png';
+
+    const newPostEntry = {
+      firstName: form.value.firstName,
+      lastName: form.value.lastName,
+      userName: form.value.userName,
+      created: new Date().getTime(),
+      lastUpdate: new Date().getTime(),
+      img: imgUrl,
+      fullName: form.value.firstName + ' ' + form.value.lastName
+    };
+
+    const updates = {};
+    updates[`users/${firebaseUserId}`] = newPostEntry;
+
+    this.firebaseDatabase.database.ref().update(updates);
+  }
+
   modifyUserDataOnFirebase(uid: string, form: FormGroup) {
     const firebaseUserId = uid;
 

@@ -16,12 +16,9 @@
       <div class="modal-body">
 <div class="imagen">
   <div class="text-center">
-    <img src="{{fileUrl}}" class="rounded img-fluid" >
+    <img src="{{fileUrl}}" class="rounded img-fluid" alt="Foto de perfil">
   </div>
-  <button class="btn btn-danger" (click)="onUploadImage()">
-    Subir Archivo {{ this.uploadStatus }}
-  </button>
-  <input type="file" accept="image/jpeg" #filePicker (change)="onFileChosen($event)" hidden />
+ <app-file-uploader *ngIf="this.userData" [userId] = this.user  [type] = true (imagePick)="onImagePicked($event)"></app-file-uploader>
 
 </div>
       <div class="datos">

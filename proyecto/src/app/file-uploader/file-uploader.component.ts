@@ -11,7 +11,8 @@ import Chance from 'chance';
 export class FileUploaderComponent implements OnInit {
   @ViewChild('filePicker', {static: false}) filePickerRef: ElementRef<HTMLInputElement>;
   @Output() imagePick = new EventEmitter<string>();
-  @Input() author = '';
+  @Input() type = false;
+  @Input() userId;
   uploadTask: firebase.storage.UploadTask;
   fileUrl = '';
   uploadStatus = '';
@@ -34,11 +35,17 @@ export class FileUploaderComponent implements OnInit {
 
   onFileChosen(event) {
     const fileList: FileList = event.target.files;
+    let fileName = '';
 
     if (fileList.length > 0) {
       const file: File = fileList[0];
 
-      const fileName = `postsImages/${this.generateRandomName()}.jpg`;
+      if(this.type){
+         fileName = `profilePictures/${this.userId}/${this.generateRandomName()}.jpg`;
+      }else {
+         fileName = `postsImages/${this.generateRandomName()}.jpg`;
+      }
+
 
       const storageRef = this.firebaseStorage.storage.ref();
       this.uploadTask = storageRef.child(fileName).put(file);

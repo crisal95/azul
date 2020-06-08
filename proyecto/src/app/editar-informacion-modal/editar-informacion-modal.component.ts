@@ -1,8 +1,6 @@
 import {Component, OnInit, ViewChild, ElementRef, Output, EventEmitter, Input} from '@angular/core';
 import * as firebase from 'firebase';
-import {AngularFireStorage} from '@angular/fire/storage';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import Chance from 'chance';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {UserService} from '../shared/user.service';
 import {UserData} from '../shared/models';

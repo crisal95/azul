@@ -1,11 +1,14 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {PostData} from '../shared/models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
+  private posts: PostData[];
+
   constructor(
     private firebaseDatabase: AngularFireDatabase,
     private firebaseAuth: AngularFireAuth
@@ -38,8 +41,6 @@ export class PostService {
         .child(`posts/${firebaseUserId}`)
         .push().key;
 
-
-
       const newPostEntry = {
         content: content,
         created: new Date().getTime(),
@@ -52,6 +53,7 @@ export class PostService {
 
       return this.firebaseDatabase.database.ref().update(updates);
     });
+
     // const firebaseUserId = firebase.auth().currentUser.uid;
     // const newPostKey = firebase
     //   .database()
@@ -96,8 +98,8 @@ export class PostService {
   }
 
   getPostsByAuthor(author: string) {
-    // return this.posts.filter(post => {
-    //   return post.author === author;
-    // });
+    return this.firebaseDatabase
+      .list(`posts/${author}`, ref => ref.limitToLast(100).orderByChild('created'))
+      .snapshotChanges();
   }
 }

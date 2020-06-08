@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div *ngIf="userExist; else elseBlock">
     <div class="row">
+      <!-- User Information -->
       <div class="col-lg-3">
-        <!-- Basic Card Example -->
         <div class="card shadow mb-4">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary text-center">
@@ -22,6 +22,14 @@
           </div>
         </div>
       </div>
+
+      <!-- User posts -->
+      <app-publicacion
+        *ngFor="let post of this.posts"
+        [userData]="this.user"
+        [postData]="post"
+      ></app-publicacion>
+
       <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
           <div class="card-body">
@@ -114,39 +122,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-12">
-        <h1>Publicaciones de {{ this.user.userName }}</h1>
-      </div>
-      <div class="col-12">
-        <table class="table table-bordered" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>Key</th>
-              <th>Fecha</th>
-              <th>Autor</th>
-              <th>Título</th>
-              <th>Contenido</th>
-              <th>Img</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let post of posts">
-              <td>{{ post.key }}</td>
-              <td>{{ post.creationDate | date: 'medium' }}</td>
-              <!-- <td>{{ post.author }}</td> -->
-              <td>
-                <a routerLink="/author/{{ post.author }}">{{ post.author }}</a>
-              </td>
-              <td>{{ post.title }}</td>
-              <td>{{ post.content }}</td>
-              <td><img [src]="post.img" style="width:100px;" alt="imagen" /></td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>

@@ -23,6 +23,7 @@ export class EditarInformacionModalComponent implements OnInit {
   fileUrl = '';
   uploadStatus = '';
 
+
   constructor(
     private formBuilder: FormBuilder,
     private firebaseStorage: AngularFireStorage,
@@ -37,7 +38,9 @@ export class EditarInformacionModalComponent implements OnInit {
       userName: ['', Validators.minLength(1)]
     });
     this.firebaseAuth.currentUser.then(userData => {
-      this.user = userData.uid;
+      if(userData){
+        this.user = userData.uid;
+      }
     });
 
     if (this.userData) {
@@ -101,6 +104,7 @@ export class EditarInformacionModalComponent implements OnInit {
   }
 
   onSubmit(){
-    this.userService.modifyUserDataOnFirebase(this.user,this.registerForm);
+    this.userService.setUserDataOnFirebase(this.user,this.registerForm, this.fileUrl);
+    window.location.reload();
   }
 }

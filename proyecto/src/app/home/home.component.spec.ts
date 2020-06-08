@@ -15,6 +15,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {SpinnerService} from '../shared/spinner.service';
 import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
 import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
+import { EditarInformacionModalComponent } from '../editar-informacion-modal/editar-informacion-modal.component';
 
 
 describe('HomeComponent', () => {
@@ -58,7 +59,7 @@ describe('HomeComponent', () => {
         // AngularFireDatabaseModule,
         // AngularFireStorageModule
       ],
-      declarations: [HomeComponent, AuthorComponent, LoginComponent, FileUploaderComponent, RegistrarUsuarioComponent, CrearPublicacionComponent],
+      declarations: [HomeComponent, AuthorComponent, LoginComponent, FileUploaderComponent, RegistrarUsuarioComponent, CrearPublicacionComponent, EditarInformacionModalComponent],
       // Aqui le paso los mocks al componente
       providers: [
         {provide: AngularFireAuth, useValue: mockAngularFireAuth},

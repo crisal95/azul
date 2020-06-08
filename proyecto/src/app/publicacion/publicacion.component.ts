@@ -18,7 +18,9 @@ export class PublicacionComponent implements OnInit {
         email: null,
         userName: null,
         fullName: null,
-        img: null
+        img: null,
+        firstName: null,
+        lastName: null
       };
     }
     if (this.postData == null) {

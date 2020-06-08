@@ -13,5 +13,6 @@ export interface UserData {
   userName: string;
   firstName: string;
   lastName: string;
+  fullName: string;
   img: string;
 }

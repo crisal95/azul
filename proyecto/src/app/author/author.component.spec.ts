@@ -15,8 +15,10 @@ import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {RouteGuard} from '../shared/route-guard';
-import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
-import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
+import {RegistrarUsuarioComponent} from '../registrar-usuario/registrar-usuario.component';
+import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
+import {EditarInformacionModalComponent} from '../editar-informacion-modal/editar-informacion-modal.component';
+import {UserData} from '../shared/models';
 
 describe('AuthorComponent', () => {
   let component: AuthorComponent;
@@ -33,7 +35,15 @@ describe('AuthorComponent', () => {
         AngularFireDatabaseModule,
         AngularFireStorageModule
       ],
-      declarations: [AuthorComponent, HomeComponent, LoginComponent, FileUploaderComponent, RegistrarUsuarioComponent, CrearPublicacionComponent],
+      declarations: [
+        AuthorComponent,
+        HomeComponent,
+        LoginComponent,
+        FileUploaderComponent,
+        RegistrarUsuarioComponent,
+        CrearPublicacionComponent,
+        EditarInformacionModalComponent
+      ],
       providers: [RouteGuard]
     }).compileComponents();
   }));
@@ -41,10 +51,22 @@ describe('AuthorComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AuthorComponent);
     component = fixture.componentInstance;
+    component.user = userData;
     fixture.detectChanges();
+
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
+let userData: UserData = {
+  fullName: 'prueba',
+  created: 0,
+  lastName: 'prueba',
+  firstName: 'prueba',
+  userName: 'prueba1',
+  lastUpdate: 0,
+  email: '',
+  img: ''
+};

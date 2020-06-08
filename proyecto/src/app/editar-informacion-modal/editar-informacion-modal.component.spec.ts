@@ -11,6 +11,8 @@ import { AuthorComponent } from '../author/author.component';
 import { LoginComponent } from '../login/login.component';
 import { FileUploaderComponent } from '../file-uploader/file-uploader.component';
 import {AngularFireDatabase} from '@angular/fire/database';
+import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
+import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
 
 describe('EditarInformacionModalComponent', () => {
   let component: EditarInformacionModalComponent;
@@ -26,7 +28,7 @@ describe('EditarInformacionModalComponent', () => {
       //AngularFireDatabaseModule,
       //AngularFireStorageModule
     ],
-      declarations: [ EditarInformacionModalComponent, HomeComponent, AuthorComponent, LoginComponent, FileUploaderComponent],
+      declarations: [ EditarInformacionModalComponent, HomeComponent, AuthorComponent, LoginComponent, FileUploaderComponent, RegistrarUsuarioComponent, CrearPublicacionComponent],
       providers: [
         {provide: AngularFireAuth, useValue: mockAngularFireAuth},
         {provide: AngularFireStorage, useValue: null},

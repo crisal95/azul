@@ -15,6 +15,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {ToastrModule} from 'ngx-toastr';
+import { EditarInformacionModalComponent } from '../editar-informacion-modal/editar-informacion-modal.component';
 
 describe('CrearPublicacionComponent', () => {
   let component: CrearPublicacionComponent;
@@ -26,7 +27,7 @@ describe('CrearPublicacionComponent', () => {
       FormsModule,
     AppRoutingModule,
     ToastrModule.forRoot()],
-      declarations: [ CrearPublicacionComponent, SidebarComponent, RegistrarUsuarioComponent, AuthorComponent, LoginComponent, WrapperComponent, FileUploaderComponent, SidebarComponent, HomeComponent, ContentWrapperComponent],
+      declarations: [ CrearPublicacionComponent, SidebarComponent, RegistrarUsuarioComponent, AuthorComponent, LoginComponent, WrapperComponent, FileUploaderComponent, SidebarComponent, HomeComponent, ContentWrapperComponent, EditarInformacionModalComponent],
       providers: [
         {provide: AngularFireAuth, useValue: mockAngularFireAuth},
         {provide: AngularFireDatabase, useValue: mockDatabase},

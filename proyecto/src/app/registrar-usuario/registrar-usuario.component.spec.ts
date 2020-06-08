@@ -14,6 +14,7 @@ import { AuthorComponent } from '../author/author.component';
 import { FileUploaderComponent } from '../file-uploader/file-uploader.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
+import { EditarInformacionModalComponent } from '../editar-informacion-modal/editar-informacion-modal.component';
 
 describe('RegistrarUsuarioComponent', () => {
   let component: RegistrarUsuarioComponent;
@@ -28,7 +29,7 @@ describe('RegistrarUsuarioComponent', () => {
         AngularFireAuthModule,
         AngularFireDatabaseModule,
       AppRoutingModule],
-      declarations: [ RegistrarUsuarioComponent, HomeComponent, LoginComponent, AuthorComponent, FileUploaderComponent, CrearPublicacionComponent ]
+      declarations: [ RegistrarUsuarioComponent, HomeComponent, LoginComponent, AuthorComponent, FileUploaderComponent, CrearPublicacionComponent, EditarInformacionModalComponent ]
     })
     .compileComponents();
   }));

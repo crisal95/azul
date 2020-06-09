@@ -24,16 +24,7 @@ export class AuthorComponent implements OnInit {
     private firebaseAuth: AngularFireAuth,
     private postService: PostService
   ) {
-    if (this.user == null) {
-      this.user = {
-        created: null,
-        lastUpdate: null,
-        email: null,
-        userName: null,
-        fullName: null,
-        img: null
-      };
-    }
+
     this.userExist = true;
   }
 

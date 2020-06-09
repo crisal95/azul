@@ -13,9 +13,11 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {SpinnerService} from '../shared/spinner.service';
-import {RegistrarUsuarioComponent} from '../registrar-usuario/registrar-usuario.component';
-import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
+import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
+import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
+import { EditarInformacionModalComponent } from '../editar-informacion-modal/editar-informacion-modal.component';
 import { PublicacionComponent } from '../publicacion/publicacion.component';
+
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -58,6 +60,7 @@ describe('HomeComponent', () => {
         // AngularFireDatabaseModule,
         // AngularFireStorageModule
       ],
+
       declarations: [
         HomeComponent,
         AuthorComponent,
@@ -65,8 +68,10 @@ describe('HomeComponent', () => {
         FileUploaderComponent,
         RegistrarUsuarioComponent,
         CrearPublicacionComponent,
-        PublicacionComponent
+        PublicacionComponent,
+        EditarInformacionModalComponent
       ],
+
       // Aqui le paso los mocks al componente
       providers: [
         {provide: AngularFireAuth, useValue: mockAngularFireAuth},

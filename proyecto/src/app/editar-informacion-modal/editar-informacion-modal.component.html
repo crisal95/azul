@@ -1,0 +1,49 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Editar información
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Editar información</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+<div class="imagen">
+  <div class="text-center">
+    <img src="{{fileUrl}}" class="rounded img-fluid" alt="Foto de perfil">
+  </div>
+ <app-file-uploader *ngIf="this.userData" [userId] = this.user  [type] = true (imagePick)="onImagePicked($event)"></app-file-uploader>
+
+</div>
+      <div class="datos">
+        <form [formGroup]="registerForm" >
+          <div class="form-group">
+            <div class="col-sm-10">
+              <label class="label" for="firstName">Nombre: </label>
+              <input type="text" class="form-control form-control-user" formControlName="firstName" id="firstName" required placeholder="Nombre">
+            </div>
+            <div class="col-sm-10">
+              <label class="label" for="lastName">Apellidos: </label>
+              <input type="text" class="form-control form-control-user" formControlName="lastName" id="lastName" required placeholder="Apellidos">
+            </div>
+            <div class="col-sm-10">
+              <label class="label" for="userName">Nombre de usuario: </label>
+              <input type="text" class="form-control form-control-user" formControlName="userName" id="userName" required placeholder="Nombre de usuario">
+            </div>
+          </div>
+        </form>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">Editar información</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,12 +9,14 @@ import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AppRoutingModule} from '../app-routing.module';
 import {HomeComponent} from '../home/home.component';
-import {LoginComponent} from '../login/login.component';
-import {AuthorComponent} from '../author/author.component';
-import {FileUploaderComponent} from '../file-uploader/file-uploader.component';
-import {ToastrModule} from 'ngx-toastr';
-import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
+import { LoginComponent } from '../login/login.component';
+import { AuthorComponent } from '../author/author.component';
+import { FileUploaderComponent } from '../file-uploader/file-uploader.component';
+import { ToastrModule } from 'ngx-toastr';
+import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
+import { EditarInformacionModalComponent } from '../editar-informacion-modal/editar-informacion-modal.component';
 import { PublicacionComponent } from '../publicacion/publicacion.component';
+
 
 describe('RegistrarUsuarioComponent', () => {
   let component: RegistrarUsuarioComponent;
@@ -38,7 +40,8 @@ describe('RegistrarUsuarioComponent', () => {
         AuthorComponent,
         FileUploaderComponent,
         CrearPublicacionComponent,
-        PublicacionComponent
+        PublicacionComponent,
+        EditarInformacionModalComponent
       ]
     }).compileComponents();
   }));

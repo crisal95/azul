@@ -1,0 +1,11 @@
+.label {
+  padding-top: 10px;
+}
+
+.imagen {
+  object-fit: contain;
+}
+
+#botonImagen {
+  margin-top: 5px;
+}

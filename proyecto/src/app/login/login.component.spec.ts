@@ -14,8 +14,9 @@ import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {RegistrarUsuarioComponent} from '../registrar-usuario/registrar-usuario.component';
 import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
+import { PublicacionComponent } from '../publicacion/publicacion.component';
 
-xdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
@@ -36,7 +37,8 @@ xdescribe('LoginComponent', () => {
         AuthorComponent,
         FileUploaderComponent,
         RegistrarUsuarioComponent,
-        CrearPublicacionComponent
+        CrearPublicacionComponent,
+        PublicacionComponent
       ]
     }).compileComponents();
   }));

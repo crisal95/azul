@@ -15,8 +15,9 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {ToastrModule} from 'ngx-toastr';
+import { PublicacionComponent } from '../publicacion/publicacion.component';
 
-xdescribe('CrearPublicacionComponent', () => {
+describe('CrearPublicacionComponent', () => {
   let component: CrearPublicacionComponent;
   let fixture: ComponentFixture<CrearPublicacionComponent>;
 
@@ -33,7 +34,8 @@ xdescribe('CrearPublicacionComponent', () => {
         FileUploaderComponent,
         SidebarComponent,
         HomeComponent,
-        ContentWrapperComponent
+        ContentWrapperComponent,
+        PublicacionComponent
       ],
       providers: [
         {provide: AngularFireAuth, useValue: mockAngularFireAuth},

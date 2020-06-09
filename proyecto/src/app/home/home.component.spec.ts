@@ -15,8 +15,9 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {SpinnerService} from '../shared/spinner.service';
 import {RegistrarUsuarioComponent} from '../registrar-usuario/registrar-usuario.component';
 import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
+import { PublicacionComponent } from '../publicacion/publicacion.component';
 
-xdescribe('HomeComponent', () => {
+describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
@@ -63,7 +64,8 @@ xdescribe('HomeComponent', () => {
         LoginComponent,
         FileUploaderComponent,
         RegistrarUsuarioComponent,
-        CrearPublicacionComponent
+        CrearPublicacionComponent,
+        PublicacionComponent
       ],
       // Aqui le paso los mocks al componente
       providers: [

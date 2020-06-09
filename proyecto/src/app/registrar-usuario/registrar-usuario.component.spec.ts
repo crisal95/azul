@@ -14,8 +14,9 @@ import {AuthorComponent} from '../author/author.component';
 import {FileUploaderComponent} from '../file-uploader/file-uploader.component';
 import {ToastrModule} from 'ngx-toastr';
 import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
+import { PublicacionComponent } from '../publicacion/publicacion.component';
 
-xdescribe('RegistrarUsuarioComponent', () => {
+describe('RegistrarUsuarioComponent', () => {
   let component: RegistrarUsuarioComponent;
   let fixture: ComponentFixture<RegistrarUsuarioComponent>;
 
@@ -36,7 +37,8 @@ xdescribe('RegistrarUsuarioComponent', () => {
         LoginComponent,
         AuthorComponent,
         FileUploaderComponent,
-        CrearPublicacionComponent
+        CrearPublicacionComponent,
+        PublicacionComponent
       ]
     }).compileComponents();
   }));

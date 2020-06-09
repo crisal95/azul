@@ -8,6 +8,7 @@ import {HomeComponent} from '../home/home.component';
 import {LoginComponent} from '../login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FileUploaderComponent} from '../file-uploader/file-uploader.component';
+import {PublicacionComponent} from '../publicacion/publicacion.component';
 
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -19,6 +20,7 @@ import {RegistrarUsuarioComponent} from '../registrar-usuario/registrar-usuario.
 import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
 import {EditarInformacionModalComponent} from '../editar-informacion-modal/editar-informacion-modal.component';
 import {UserData} from '../shared/models';
+
 
 describe('AuthorComponent', () => {
   let component: AuthorComponent;
@@ -42,7 +44,8 @@ describe('AuthorComponent', () => {
         FileUploaderComponent,
         RegistrarUsuarioComponent,
         CrearPublicacionComponent,
-        EditarInformacionModalComponent
+        EditarInformacionModalComponent,
+        PublicacionComponent
       ],
       providers: [RouteGuard]
     }).compileComponents();

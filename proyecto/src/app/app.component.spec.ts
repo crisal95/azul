@@ -10,8 +10,18 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { WrapperComponent } from './wrapper/wrapper.component';
+import { ContentWrapperComponent } from './content-wrapper/content-wrapper.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
+import { PublicacionComponent } from './publicacion/publicacion.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 
-xdescribe('AppComponent', () => {
+describe('AppComponent', () => {
+  let fixture;
+  let app;
+  let compiled;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -20,56 +30,51 @@ xdescribe('AppComponent', () => {
         ToastrModule.forRoot(),
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
-        AngularFireDatabaseModule
+        AngularFireDatabaseModule,
+        FormsModule,
+        ReactiveFormsModule
       ],
-      declarations: [AppComponent, HeaderComponent, NotificationComponent]
+      declarations: [AppComponent,
+         HeaderComponent,
+          NotificationComponent,
+          WrapperComponent,
+          ContentWrapperComponent,
+          SidebarComponent,
+          CrearPublicacionComponent,
+          PublicacionComponent,
+          FileUploaderComponent
+        ]
     }).compileComponents();
   }));
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    app = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
+    compiled = fixture.debugElement.nativeElement;
+  });
+
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ejemplo-clase'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('proyecto patito');
+  it(`should have as title 'BlueTweet'`, () => {
+    expect(app.title).toEqual('BlueTweet');
   });
 
-  it('should render main tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('main').textContent).toBeDefined();
-  });
-
-  it('should render app-header tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('app-header').textContent).toBeDefined();
+  it('should render app-wrapper', () => {
+    expect(compiled.querySelector('app-wrapper').textContent).toBeDefined();
   });
 
   it('should render app-notification tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('app-notification').textContent).toBeDefined();
   });
 
   it('should render router-outlet tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('router-outlet').textContent).toBeDefined();
   });
 
   it('should render ngx-spinner tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('ngx-spinner').textContent).toBeDefined();
   });
 });

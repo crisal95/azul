@@ -8,7 +8,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'proyecto patito';
+  title = 'BlueTweet';
   prueba(nombre: string) {
     // return 'hola ' + nombre;
     return `hola ${nombre}`;

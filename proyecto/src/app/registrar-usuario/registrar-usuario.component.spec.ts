@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { RegistrarUsuarioComponent } from './registrar-usuario.component';
+import {RegistrarUsuarioComponent} from './registrar-usuario.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 import {AngularFireModule} from '@angular/fire';
@@ -15,6 +15,8 @@ import { FileUploaderComponent } from '../file-uploader/file-uploader.component'
 import { ToastrModule } from 'ngx-toastr';
 import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
 import { EditarInformacionModalComponent } from '../editar-informacion-modal/editar-informacion-modal.component';
+import { PublicacionComponent } from '../publicacion/publicacion.component';
+
 
 describe('RegistrarUsuarioComponent', () => {
   let component: RegistrarUsuarioComponent;
@@ -22,16 +24,26 @@ describe('RegistrarUsuarioComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule,
+      imports: [
+        ReactiveFormsModule,
         FormsModule,
-       AngularFireModule.initializeApp(environment.firebaseConfig),
-       ToastrModule.forRoot(),
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        ToastrModule.forRoot(),
         AngularFireAuthModule,
         AngularFireDatabaseModule,
-      AppRoutingModule],
-      declarations: [ RegistrarUsuarioComponent, HomeComponent, LoginComponent, AuthorComponent, FileUploaderComponent, CrearPublicacionComponent, EditarInformacionModalComponent ]
-    })
-    .compileComponents();
+        AppRoutingModule
+      ],
+      declarations: [
+        RegistrarUsuarioComponent,
+        HomeComponent,
+        LoginComponent,
+        AuthorComponent,
+        FileUploaderComponent,
+        CrearPublicacionComponent,
+        PublicacionComponent,
+        EditarInformacionModalComponent
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

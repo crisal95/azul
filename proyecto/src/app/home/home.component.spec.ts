@@ -16,6 +16,7 @@ import {SpinnerService} from '../shared/spinner.service';
 import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
 import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
 import { EditarInformacionModalComponent } from '../editar-informacion-modal/editar-informacion-modal.component';
+import { PublicacionComponent } from '../publicacion/publicacion.component';
 
 
 describe('HomeComponent', () => {
@@ -59,7 +60,18 @@ describe('HomeComponent', () => {
         // AngularFireDatabaseModule,
         // AngularFireStorageModule
       ],
-      declarations: [HomeComponent, AuthorComponent, LoginComponent, FileUploaderComponent, RegistrarUsuarioComponent, CrearPublicacionComponent, EditarInformacionModalComponent],
+
+      declarations: [
+        HomeComponent,
+        AuthorComponent,
+        LoginComponent,
+        FileUploaderComponent,
+        RegistrarUsuarioComponent,
+        CrearPublicacionComponent,
+        PublicacionComponent,
+        EditarInformacionModalComponent
+      ],
+
       // Aqui le paso los mocks al componente
       providers: [
         {provide: AngularFireAuth, useValue: mockAngularFireAuth},
@@ -82,9 +94,4 @@ describe('HomeComponent', () => {
   it('should initialize', fakeAsync(() => {
     component.ngOnInit();
   }));
-
-
-
-
-
 });

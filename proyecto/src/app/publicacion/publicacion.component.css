@@ -1,0 +1,15 @@
+.image {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 50px;
+  max-width: 50px;
+}
+.image img {
+  position: absolute;
+  width: auto;
+  height: 100%;
+}
+
+.card-body img {
+  max-width: 100%;
+}

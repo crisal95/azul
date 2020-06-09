@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PostData, UserData} from '../shared/models';
+import {PostService} from '../shared/post.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
@@ -11,7 +12,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 })
 export class AuthorComponent implements OnInit {
   private userId = null;
-  private posts: PostData[];
+  public posts: PostData[] = [];
   public userExist: boolean;
   public user: UserData;
   public visitor: string;
@@ -20,7 +21,8 @@ export class AuthorComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private firebaseDatabase: AngularFireDatabase,
-    private firebaseAuth: AngularFireAuth
+    private firebaseAuth: AngularFireAuth,
+    private postService: PostService
   ) {
     if (this.user == null) {
       this.user = {
@@ -45,12 +47,12 @@ export class AuthorComponent implements OnInit {
         .subscribe(user => {
           if (user !== null) {
             this.user = user as UserData;
+            this.getPosts(this.userId);
           } else {
             // console.log('User dont exist.');
             this.userExist = false;
           }
         });
-      // this.getPosts();
     } else {
       this.firebaseAuth.currentUser.then(userData => {
         // console.log('userData en el componente', userData);
@@ -62,11 +64,26 @@ export class AuthorComponent implements OnInit {
           .valueChanges()
           .subscribe(user => {
             this.user = user as UserData;
+            this.getPosts(this.userId);
           });
-        this.getPosts();
       });
     }
   }
 
-  getPosts() {}
+  getPosts(userId: string) {
+    this.firebaseAuth.currentUser.then(userData => {
+      // console.log('userData en el componente', userData);
+      this.firebaseDatabase
+        .list(`posts/${userId}`, ref => ref.limitToLast(100).orderByChild('created'))
+        .snapshotChanges()
+        .subscribe(data => {
+          //console.log(data);
+          this.posts = data.map(e => {
+            return {
+              ...(e.payload.val() as PostData)
+            };
+          });
+        });
+    });
+  }
 }

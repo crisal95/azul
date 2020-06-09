@@ -1,153 +1,32 @@
 <div class="container-fluid">
-  <div *ngIf="userExist; else elseBlock">
-    <div class="row">
-      <div class="col-lg-3">
-        <!-- Basic Card Example -->
-        <div class="card shadow mb-4">
-          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary text-center">
-              {{ this.user.fullName }} (@{{ this.user.userName }})
-            </h6>
+  <div *ngIf="userExist; else elseBlock" class="row">
+    <!-- User Information -->
+    <div class="card-columns">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">
+            {{ this.user.fullName }} (@{{ this.user.userName }})
+          </h6>
+        </div>
+        <div class="card-body">
+          <div class="rounded-circle image">
+            <img
+              class="img img-responsive full-width"
+              alt="Profile picture."
+              [src]="this.user.img"
+            />
           </div>
-          <div class="card-body">
-            <div class="rounded-circle image">
-              <img
-                class="img img-responsive full-width"
-                alt="Profile picture."
-                [src]="this.user.img"
-              />
-            </div>
-            <div class="h5 mt-4 font-weight-bold text-gray-800 text-center">Following: X.XXX</div>
-            <div class="h5 mt-2 font-weight-bold text-gray-800 text-center">Followers: X.XXX</div>
-          </div>
+          <div class="h5 mt-4 font-weight-bold text-gray-800 text-center">Following: X.XXX</div>
+          <div class="h5 mt-2 font-weight-bold text-gray-800 text-center">Followers: X.XXX</div>
         </div>
       </div>
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-3">
-                  <img
-                    class="img-profile rounded-circle mr-2"
-                    alt="Profile picture."
-                    src="https://picsum.photos/50/50.jpg"
-                  />
-                  User (@username)
-                </div>
-                <div class="text-gray-800">
-                  duis tristique sollicitudin nibh sit amet commodo nulla facilisi nullam vehicula
-                  ipsum a arcu cursus vitae congue mauris rhoncus aenean vel elit scelerisque mauris
-                  pellentesque pulvinar
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-3">
-                  <img
-                    class="img-profile rounded-circle mr-2"
-                    alt="Profile picture."
-                    src="https://picsum.photos/50/50.jpg"
-                  />
-                  User (@username)
-                </div>
-                <div class="text-gray-800">
-                  diam volutpat commodo sed egestas egestas fringilla phasellus faucibus scelerisque
-                  eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum
-                  arcu vitae elementum curabitur vitae nunc sed velit dignissim sodales ut eu sem
-                  integer vitae
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-3">
-                  <img
-                    class="img-profile rounded-circle mr-2"
-                    alt="Profile picture."
-                    src="https://picsum.photos/50/50.jpg"
-                  />
-                  User (@username)
-                </div>
-                <div class="text-gray-800">
-                  quam id leo in vitae turpis massa sed elementum tempus egestas sed sed risus
-                  pretium quam vulputate dignissim suspendisse in est ante in nibh mauris cursus
-                  mattis molestie a iaculis at
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-3 col-md-6 mb-4">
-        <div class="card border-left-primary shadow h-100 py-2">
-          <div class="card-body">
-            <div class="row no-gutters align-items-center">
-              <div class="col">
-                <div class="text-xs font-weight-bold text-primary text-uppercase mb-3">
-                  <img
-                    class="img-profile rounded-circle mr-2"
-                    alt="Profile picture."
-                    src="https://picsum.photos/50/50.jpg"
-                  />
-                  User (@username)
-                </div>
-                <div class="text-gray-800">
-                  arcu odio ut sem nulla pharetra diam sit amet nisl suscipit adipiscing bibendum
-                  est ultricies integer quis auctor elit sed vulputate mi sit amet mauris commodo
-                  quis imperdiet massa tincidunt nunc pulvinar sapien
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="col-12">
-        <h1>Publicaciones de {{ this.user.userName }}</h1>
-      </div>
-      <div class="col-12">
-        <table class="table table-bordered" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>Key</th>
-              <th>Fecha</th>
-              <th>Autor</th>
-              <th>Título</th>
-              <th>Contenido</th>
-              <th>Img</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let post of posts">
-              <td>{{ post.key }}</td>
-              <td>{{ post.creationDate | date: 'medium' }}</td>
-              <!-- <td>{{ post.author }}</td> -->
-              <td>
-                <a routerLink="/author/{{ post.author }}">{{ post.author }}</a>
-              </td>
-              <td>{{ post.title }}</td>
-              <td>{{ post.content }}</td>
-              <td><img [src]="post.img" style="width:100px;" alt="imagen" /></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <!-- User posts -->
+      <app-publicacion
+        *ngFor="let post of this.posts"
+        [userData]="this.user"
+        [postData]="post"
+      ></app-publicacion>
     </div>
   </div>
   <ng-template #elseBlock>

@@ -1,20 +1,22 @@
-<div class="card  mx-auto d-block">
-  <div class="card-header">
-    <div class="text-xs font-weight-bold text-primary text-uppercase mb-3">
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <div class="rounded-circle image mb-2">
       <img
-        class="img-profile rounded-circle"
+        class="img img-responsive full-width"
+        alt="Profile picture."
         src="{{ this.userData.img }}"
-        alt="Foto de perfil"
-        style="height: 35px; width: 35px;"
       />
-      {{ this.userData.fullName }}
     </div>
+    <h6 class="m-0 font-weight-bold text-primary">
+      <div class="text-xs font-weight-bold text-primary text-uppercase">
+        {{ this.userData.fullName }} (@{{ this.userData.userName }})
+      </div>
+    </h6>
   </div>
   <div class="card-body">
-    <p class="card-text">{{ this.postData.content }}</p>
+    {{ this.postData.content }}
     <div *ngIf="this.postData.img != null && this.postData.img != ''">
-      <img class="img" src="{{ this.postData.img }}" alt="imagen publicacion" />
+      <img class="img rounded mt-2" src="{{ this.postData.img }}" alt="Post image." />
     </div>
-    <!--  boton de comentario, textbox con form de comentario para publicar y lista de comentarios -->
   </div>
 </div>

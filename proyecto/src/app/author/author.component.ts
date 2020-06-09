@@ -77,7 +77,7 @@ export class AuthorComponent implements OnInit {
         .list(`posts/${userId}`, ref => ref.limitToLast(100).orderByChild('created'))
         .snapshotChanges()
         .subscribe(data => {
-          console.log(data);
+          //console.log(data);
           this.posts = data.map(e => {
             return {
               ...(e.payload.val() as PostData)

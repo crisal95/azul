@@ -20,6 +20,7 @@ import {RegistrarUsuarioComponent} from '../registrar-usuario/registrar-usuario.
 import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
 import {EditarInformacionModalComponent} from '../editar-informacion-modal/editar-informacion-modal.component';
 import {UserData} from '../shared/models';
+import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 
 
 describe('AuthorComponent', () => {
@@ -45,7 +46,8 @@ describe('AuthorComponent', () => {
         RegistrarUsuarioComponent,
         CrearPublicacionComponent,
         EditarInformacionModalComponent,
-        PublicacionComponent
+        PublicacionComponent,
+        RecuperarPasswordComponent
       ],
       providers: [RouteGuard]
     }).compileComponents();

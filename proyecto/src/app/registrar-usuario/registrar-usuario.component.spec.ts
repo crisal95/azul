@@ -16,6 +16,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
 import { EditarInformacionModalComponent } from '../editar-informacion-modal/editar-informacion-modal.component';
 import { PublicacionComponent } from '../publicacion/publicacion.component';
+import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 
 
 describe('RegistrarUsuarioComponent', () => {
@@ -41,7 +42,8 @@ describe('RegistrarUsuarioComponent', () => {
         FileUploaderComponent,
         CrearPublicacionComponent,
         PublicacionComponent,
-        EditarInformacionModalComponent
+        EditarInformacionModalComponent,
+        RecuperarPasswordComponent
       ]
     }).compileComponents();
   }));

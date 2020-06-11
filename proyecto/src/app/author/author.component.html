@@ -30,7 +30,7 @@
               <div *ngIf="userIsFollowingVisitedProfile; else userNotFollowingVisitedProfile">
                 <a href="#" class="btn btn-danger btn-icon-split">
                   <span class="icon text-white-50">
-                    <i class="fas fa-user-times"></i>
+                    <em class="fas fa-user-times"></em>
                   </span>
                   <span class="text">Unfollow</span>
                 </a>
@@ -39,7 +39,7 @@
               <ng-template #userNotFollowingVisitedProfile>
                 <button type="button" class="btn btn-primary btn-icon-split" (click)="followUser()">
                   <span class="icon text-white-50">
-                    <i class="fas fa-plus"></i>
+                    <em class="fas fa-plus"></em>
                   </span>
                   <span class="text">Follow</span>
                 </button>

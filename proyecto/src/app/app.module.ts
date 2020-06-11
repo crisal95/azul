@@ -31,6 +31,7 @@ import { ContentWrapperComponent } from './content-wrapper/content-wrapper.compo
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 import { PublicacionComponent } from './publicacion/publicacion.component';
+import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { PublicacionComponent } from './publicacion/publicacion.component';
     ContentWrapperComponent,
     RegistrarUsuarioComponent,
     CrearPublicacionComponent,
-    PublicacionComponent
+    PublicacionComponent,
+    RecuperarPasswordComponent
   ],
   imports: [
     ReactiveFormsModule,

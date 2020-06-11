@@ -17,6 +17,7 @@ import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuari
 import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
 import { EditarInformacionModalComponent } from '../editar-informacion-modal/editar-informacion-modal.component';
 import { PublicacionComponent } from '../publicacion/publicacion.component';
+import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 
 
 describe('HomeComponent', () => {
@@ -69,7 +70,8 @@ describe('HomeComponent', () => {
         RegistrarUsuarioComponent,
         CrearPublicacionComponent,
         PublicacionComponent,
-        EditarInformacionModalComponent
+        EditarInformacionModalComponent,
+        RecuperarPasswordComponent
       ],
 
       // Aqui le paso los mocks al componente

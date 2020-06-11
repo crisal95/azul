@@ -42,24 +42,23 @@
                         placeholder="Ingrese su contraseña"
                       />
                     </div>
-                    <a class="btn btn-primary btn-user btn-block" (click)="onSubmit(f)" (disabled)="!f.valid">
+                    <button class="btn btn-primary btn-user btn-block" (click)="onSubmit(f)" [disabled]="!f.valid">
                       Iniciar sesión
-                    </a>
+                    </button>
                     <hr>
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" >¿Olvidaste tu contraseña?</a>
+                    <a class="small" routerLink="/recuperar-password" >¿Olvidaste tu contraseña?</a>
                   </div>
                   <div class="text-center">
-                    <a href="registro" class="small" >¡Crear una cuenta nueva!</a>
+                    <a routerLink="/registro" class="small" >¡Crear una cuenta nueva!</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>

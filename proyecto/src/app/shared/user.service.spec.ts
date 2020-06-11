@@ -8,6 +8,7 @@ import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RegistrarUsuarioComponent } from '../registrar-usuario/registrar-usuario.component';
+import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 
 describe('UserService', () => {
   beforeEach(() =>
@@ -19,7 +20,8 @@ describe('UserService', () => {
         FormsModule,
         ReactiveFormsModule
       ],
-      declarations: [RegistrarUsuarioComponent]
+      declarations: [RegistrarUsuarioComponent,
+      RecuperarPasswordComponent]
     })
   );
 

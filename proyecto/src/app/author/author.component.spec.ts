@@ -21,6 +21,7 @@ import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.
 import {EditarInformacionModalComponent} from '../editar-informacion-modal/editar-informacion-modal.component';
 import {UserData} from '../shared/models';
 import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 describe('AuthorComponent', () => {
@@ -36,7 +37,8 @@ describe('AuthorComponent', () => {
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
         AngularFireDatabaseModule,
-        AngularFireStorageModule
+        AngularFireStorageModule,
+        ToastrModule.forRoot()
       ],
       declarations: [
         AuthorComponent,

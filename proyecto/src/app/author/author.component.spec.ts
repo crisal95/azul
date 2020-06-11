@@ -15,12 +15,13 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import {ToastrModule} from 'ngx-toastr';
+
 import {RouteGuard} from '../shared/route-guard';
 import {RegistrarUsuarioComponent} from '../registrar-usuario/registrar-usuario.component';
 import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
 import {EditarInformacionModalComponent} from '../editar-informacion-modal/editar-informacion-modal.component';
 import {UserData} from '../shared/models';
-
 
 describe('AuthorComponent', () => {
   let component: AuthorComponent;
@@ -35,7 +36,8 @@ describe('AuthorComponent', () => {
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
         AngularFireDatabaseModule,
-        AngularFireStorageModule
+        AngularFireStorageModule,
+        ToastrModule.forRoot()
       ],
       declarations: [
         AuthorComponent,
@@ -56,7 +58,6 @@ describe('AuthorComponent', () => {
     component = fixture.componentInstance;
     component.user = userData;
     fixture.detectChanges();
-
   });
 
   it('should create', () => {

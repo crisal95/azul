@@ -19,10 +19,32 @@
           <div class="h5 mt-4 font-weight-bold text-gray-800 text-center">Following: X.XXX</div>
           <div class="h5 mt-2 font-weight-bold text-gray-800 text-center">Followers: X.XXX</div>
           <div class="text-center">
-              <app-editar-informacion-modal
-                *ngIf="user"
-                [userData]="this.user"
-              ></app-editar-informacion-modal>
+            <!-- User is visiting his profile -->
+            <app-editar-informacion-modal
+              *ngIf="userConsultingHisPersonalProfile && user; else elseFollowButton"
+              [userData]="this.user"
+            ></app-editar-informacion-modal>
+            <!-- User is visiting another user profile -->
+            <ng-template #elseFollowButton>
+              <!-- User is following the visited profile -->
+              <div *ngIf="userIsFollowingVisitedProfile; else userNotFollowingVisitedProfile">
+                <a href="#" class="btn btn-danger btn-icon-split">
+                  <span class="icon text-white-50">
+                    <em class="fas fa-user-times"></em>
+                  </span>
+                  <span class="text">Unfollow</span>
+                </a>
+              </div>
+              <!-- User is not following the visited profile -->
+              <ng-template #userNotFollowingVisitedProfile>
+                <button type="button" class="btn btn-primary btn-icon-split" (click)="followUser()">
+                  <span class="icon text-white-50">
+                    <em class="fas fa-plus"></em>
+                  </span>
+                  <span class="text">Follow</span>
+                </button>
+              </ng-template>
+            </ng-template>
           </div>
         </div>
       </div>

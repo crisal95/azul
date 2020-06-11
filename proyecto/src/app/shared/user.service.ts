@@ -46,11 +46,10 @@ export class UserService {
 
   setUserDataOnFirebase(uid: string, form: FormGroup, imgUrl: string) {
     const firebaseUserId = uid;
-    if(imgUrl === null){
+    if (imgUrl === null) {
       imgUrl =
-      'https://firebasestorage.googleapis.com/v0/b/proyectoazul-dc9d3.appspot.com/o/profile.png?alt=media&token=16c015bd-241e-43db-a53f-b5a4169f9d0f';
+        'https://firebasestorage.googleapis.com/v0/b/proyectoazul-dc9d3.appspot.com/o/profile.png?alt=media&token=16c015bd-241e-43db-a53f-b5a4169f9d0f';
     }
-
 
     const newPostEntry = {
       firstName: form.value.firstName,

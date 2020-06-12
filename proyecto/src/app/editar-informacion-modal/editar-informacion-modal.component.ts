@@ -22,7 +22,6 @@ export class EditarInformacionModalComponent implements OnInit {
   uploadTask: firebase.storage.UploadTask;
   fileUrl = '';
   uploadStatus = '';
-  changingPassword = false;
 
   constructor(
     private formBuilder: FormBuilder,

@@ -73,7 +73,7 @@ export class EditarInformacionModalComponent implements OnInit {
       .currentUser.updatePassword(this.passwordForm.value.newPassword)
       .then(userData => {
         this.notificationService.showSuccessMessage('Genial!', 'Tu contraseña ha sido cambiada con exito!');
-
+        this.passwordForm.reset();
       })
       .catch( error => {
         this.notificationService.showErrorMessage('Error al intentar cambiar tu contraseña :(', error);

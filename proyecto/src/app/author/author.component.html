@@ -28,12 +28,16 @@
             <ng-template #elseFollowButton>
               <!-- User is following the visited profile -->
               <div *ngIf="userIsFollowingVisitedProfile; else userNotFollowingVisitedProfile">
-                <a href="#" class="btn btn-danger btn-icon-split">
+                <button
+                  type="button"
+                  class="btn btn-danger btn-icon-split"
+                  (click)="unfollowUser()"
+                >
                   <span class="icon text-white-50">
                     <em class="fas fa-user-times"></em>
                   </span>
                   <span class="text">Unfollow</span>
-                </a>
+                </button>
               </div>
               <!-- User is not following the visited profile -->
               <ng-template #userNotFollowingVisitedProfile>

@@ -15,6 +15,7 @@ import {RegistrarUsuarioComponent} from '../registrar-usuario/registrar-usuario.
 import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
 import {PublicacionComponent} from '../publicacion/publicacion.component';
 import {RecuperarPasswordComponent} from '../recuperar-password/recuperar-password.component';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('EditarInformacionModalComponent', () => {
   let component: EditarInformacionModalComponent;
@@ -25,7 +26,8 @@ describe('EditarInformacionModalComponent', () => {
       imports: [
         FormsModule,
         ReactiveFormsModule,
-        RouterTestingModule.withRoutes(routes)
+        RouterTestingModule.withRoutes(routes),
+        ToastrModule.forRoot()
         //AngularFireModule.initializeApp(environment.firebaseConfig),
         //AngularFireAuthModule,
         //AngularFireDatabaseModule,

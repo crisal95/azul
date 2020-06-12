@@ -17,6 +17,7 @@ import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacio
 import { EditarInformacionModalComponent } from '../editar-informacion-modal/editar-informacion-modal.component';
 import { PublicacionComponent } from '../publicacion/publicacion.component';
 import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
+import { UsersListComponent } from '../users-list/users-list.component';
 
 
 describe('RegistrarUsuarioComponent', () => {
@@ -43,7 +44,8 @@ describe('RegistrarUsuarioComponent', () => {
         CrearPublicacionComponent,
         PublicacionComponent,
         EditarInformacionModalComponent,
-        RecuperarPasswordComponent
+        RecuperarPasswordComponent,
+        UsersListComponent
       ]
     }).compileComponents();
   }));

@@ -32,6 +32,7 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
 import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion.component';
 import { PublicacionComponent } from './publicacion/publicacion.component';
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { RecuperarPasswordComponent } from './recuperar-password/recuperar-passw
     RegistrarUsuarioComponent,
     CrearPublicacionComponent,
     PublicacionComponent,
-    RecuperarPasswordComponent
+    RecuperarPasswordComponent,
+    UsersListComponent
   ],
   imports: [
     ReactiveFormsModule,

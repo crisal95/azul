@@ -11,6 +11,8 @@ import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.
 import {EditarInformacionModalComponent} from '../editar-informacion-modal/editar-informacion-modal.component';
 import {PublicacionComponent} from '../publicacion/publicacion.component';
 import {FileUploaderComponent} from '../file-uploader/file-uploader.component';
+import {UsersListComponent} from '../users-list/users-list.component';
+
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../environments/environment';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -41,7 +43,8 @@ describe('RecuperarPasswordComponent', () => {
         CrearPublicacionComponent,
         EditarInformacionModalComponent,
         PublicacionComponent,
-        FileUploaderComponent
+        FileUploaderComponent,
+        UsersListComponent
       ]
     }).compileComponents();
   }));

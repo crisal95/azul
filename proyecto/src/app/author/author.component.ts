@@ -22,6 +22,9 @@ export class AuthorComponent implements OnInit {
   public visitor: string;
   public actualUser: string;
 
+  public listFollowing: String;
+  public listFollowers: String;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -34,6 +37,8 @@ export class AuthorComponent implements OnInit {
     this.userExist = true;
     this.userConsultingHisPersonalProfile = true;
     this.userIsFollowingVisitedProfile = false;
+    this.listFollowing = 'Following';
+    this.listFollowers = 'Followers';
   }
 
   ngOnInit() {

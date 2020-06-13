@@ -3,7 +3,8 @@ import {UserData} from '../shared/models';
 
 @Component({
   selector: 'app-content-wrapper',
-  templateUrl: './content-wrapper.component.html'
+  templateUrl: './content-wrapper.component.html',
+  styleUrls: ['./content-wrapper.component.css']
 })
 export class ContentWrapperComponent implements OnInit {
   @Input() userData: UserData;

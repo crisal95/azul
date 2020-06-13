@@ -13,7 +13,7 @@ import {SpinnerService} from '../shared/spinner.service';
   styleUrls: ['./author.component.css']
 })
 export class AuthorComponent implements OnInit {
-  private userId = null;
+  public userId = null;
   public posts: PostData[] = [];
   public userExist: boolean;
   public userConsultingHisPersonalProfile: boolean;

@@ -124,6 +124,34 @@ export class AuthorComponent implements OnInit {
     this.userIsFollowingThisUser();
   }
 
+  unfollowUser() {
+    this.firebaseAuth.currentUser
+      .then(userData => {
+        const actualUserId = userData.uid;
+        const userToFollowId = this.visitor;
+        const ref = this.firebaseDatabase.database.ref(
+          `users/${actualUserId}/following/${userToFollowId}`
+        );
+
+        ref
+          .remove()
+          .then(function() {
+            console.log('Unfollow succeeded.');
+          })
+          .catch(function(error) {
+            console.log('Unfollow failed: ' + error.message);
+          });
+
+        this.notificationService.showSuccessMessage('Great!', 'User unfollowed.');
+        this.spinnerService.hideMainSpinner();
+      })
+      .catch(error => {
+        this.notificationService.showErrorMessage('Error!!!', 'Cant unfollow this user.');
+        this.spinnerService.hideMainSpinner();
+      });
+    this.userIsFollowingThisUser();
+  }
+
   userIsFollowingThisUser() {
     this.firebaseAuth.currentUser
       .then(userData => {
@@ -135,6 +163,8 @@ export class AuthorComponent implements OnInit {
           .on('value', snapshot => {
             if (snapshot.exists()) {
               this.userIsFollowingVisitedProfile = true;
+            } else {
+              this.userIsFollowingVisitedProfile = false;
             }
           });
       })

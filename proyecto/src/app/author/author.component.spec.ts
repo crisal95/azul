@@ -25,6 +25,7 @@ import {EditarInformacionModalComponent} from '../editar-informacion-modal/edita
 import {UserData} from '../shared/models';
 import {RecuperarPasswordComponent} from '../recuperar-password/recuperar-password.component';
 
+
 describe('AuthorComponent', () => {
   let component: AuthorComponent;
   let fixture: ComponentFixture<AuthorComponent>;

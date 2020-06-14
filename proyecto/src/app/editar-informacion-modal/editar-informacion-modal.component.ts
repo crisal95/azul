@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {UserService} from '../shared/user.service';
 import {UserData} from '../shared/models';
+import { NotificationService } from '../shared/notification.service';
 
 @Component({
   selector: 'app-editar-informacion-modal',
@@ -12,6 +13,7 @@ import {UserData} from '../shared/models';
 })
 export class EditarInformacionModalComponent implements OnInit {
   registerForm: FormGroup;
+  passwordForm: FormGroup;
   uploadedFileUrl = '';
   @ViewChild('filePicker', {static: false}) filePickerRef: ElementRef<HTMLInputElement>;
   @Output() imagePick = new EventEmitter<string>();
@@ -21,11 +23,11 @@ export class EditarInformacionModalComponent implements OnInit {
   fileUrl = '';
   uploadStatus = '';
 
-
   constructor(
     private formBuilder: FormBuilder,
     private firebaseAuth: AngularFireAuth,
-    private userService: UserService
+    private userService: UserService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit() {
@@ -34,8 +36,12 @@ export class EditarInformacionModalComponent implements OnInit {
       lastName: ['', Validators.minLength(1)],
       userName: ['', Validators.minLength(1)]
     });
+
+    this.passwordForm = this.formBuilder.group({
+      newPassword: ['', Validators.required]
+    });
     this.firebaseAuth.currentUser.then(userData => {
-      if(userData){
+      if (userData) {
         this.user = userData.uid;
       }
     });
@@ -55,10 +61,21 @@ export class EditarInformacionModalComponent implements OnInit {
     this.fileUrl = imageUrl;
   }
 
-
-
-  onSubmit(){
-    this.userService.setUserDataOnFirebase(this.user,this.registerForm, this.fileUrl);
+  onSubmit() {
+    this.userService.setUserDataOnFirebase(this.user, this.registerForm, this.fileUrl);
     window.location.reload();
+  }
+
+  onSubmitPassword() {
+    firebase
+      .auth()
+      .currentUser.updatePassword(this.passwordForm.value.newPassword)
+      .then(userData => {
+        this.notificationService.showSuccessMessage('Genial!', 'Tu contraseña ha sido cambiada con exito!');
+        this.passwordForm.reset();
+      })
+      .catch( error => {
+        this.notificationService.showErrorMessage('Error al intentar cambiar tu contraseña :(', error);
+      });
   }
 }

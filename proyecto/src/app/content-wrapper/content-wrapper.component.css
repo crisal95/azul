@@ -1,0 +1,13 @@
+.contenido {
+  position: inherit;
+  max-height: calc(100vh - 5.875rem);
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.barra{
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.15);
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.15);
+  z-index: 1;
+}

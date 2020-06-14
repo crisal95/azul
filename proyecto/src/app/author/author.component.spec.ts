@@ -9,6 +9,7 @@ import {LoginComponent} from '../login/login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FileUploaderComponent} from '../file-uploader/file-uploader.component';
 import {PublicacionComponent} from '../publicacion/publicacion.component';
+import {UsersListComponent} from '../users-list/users-list.component';
 
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -22,7 +23,7 @@ import {RegistrarUsuarioComponent} from '../registrar-usuario/registrar-usuario.
 import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.component';
 import {EditarInformacionModalComponent} from '../editar-informacion-modal/editar-informacion-modal.component';
 import {UserData} from '../shared/models';
-import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
+import {RecuperarPasswordComponent} from '../recuperar-password/recuperar-password.component';
 
 
 describe('AuthorComponent', () => {
@@ -50,7 +51,8 @@ describe('AuthorComponent', () => {
         CrearPublicacionComponent,
         EditarInformacionModalComponent,
         PublicacionComponent,
-        RecuperarPasswordComponent
+        RecuperarPasswordComponent,
+        UsersListComponent
       ],
       providers: [RouteGuard]
     }).compileComponents();
@@ -68,6 +70,7 @@ describe('AuthorComponent', () => {
   });
 });
 let userData: UserData = {
+  userId: 'prueba',
   fullName: 'prueba',
   created: 0,
   lastName: 'prueba',

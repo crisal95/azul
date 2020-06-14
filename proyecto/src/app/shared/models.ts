@@ -7,6 +7,7 @@ export interface PostData {
 }
 
 export interface UserData {
+  userId: string;
   created: number;
   lastUpdate: number;
   email: string;

@@ -29,6 +29,7 @@ export class SidebarComponent implements OnInit {
 
     if (this.userData == null) {
       this.userData = {
+        userId: null,
         created: null,
         lastUpdate: null,
         email: null,

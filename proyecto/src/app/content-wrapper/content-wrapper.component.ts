@@ -14,6 +14,7 @@ export class ContentWrapperComponent implements OnInit {
   ngOnInit() {
     if (this.userData == null) {
       this.userData = {
+        userId: null,
         created: null,
         lastUpdate: null,
         email: null,

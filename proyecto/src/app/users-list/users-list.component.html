@@ -6,7 +6,7 @@
   [attr.data-target]="listType ? '#users-list-' + listType.toString().toLowerCase() : ''"
 >
   <span class="icon text-white-50">
-    10
+    {{ usersIds.length }}
   </span>
   <span class="text">{{ listType }}</span>
 </button>
@@ -22,7 +22,7 @@
   "
   aria-hidden="true"
 >
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
         <h5
@@ -37,11 +37,28 @@
       </div>
       <div class="modal-body">
         <!-- Users list -->
-        <tbody>
-          <tr *ngFor="let user of this.users">
-            <td>{{ user.userName }}</td>
-          </tr>
-        </tbody>
+        <div class="table-responsive">
+          <table class="table table-borderless table-hover">
+            <tbody>
+              <tr *ngFor="let user of this.users">
+                <td class="text-right">
+                  <img
+                    class="rounded-circle"
+                    [src]="this.user.img"
+                    style="width:70px;"
+                    alt="imagen"
+                  />
+                </td>
+                <td class="align-middle text-left">
+                  {{ this.user.fullName }} <br />
+                  <a routerLink="/author" [queryParams]="{userId: this.user.userId}">{{
+                    this.user.userName
+                  }}</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

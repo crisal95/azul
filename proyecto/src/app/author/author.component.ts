@@ -39,11 +39,25 @@ export class AuthorComponent implements OnInit {
     this.userIsFollowingVisitedProfile = false;
     this.listFollowing = 'Following';
     this.listFollowers = 'Followers';
-  }
 
-  ngOnInit() {
+    if (this.user == null) {
+      this.user = {
+        userId: null,
+        created: null,
+        lastUpdate: null,
+        email: null,
+        userName: null,
+        fullName: null,
+        img: null,
+        firstName: null,
+        lastName: null
+      };
+    }
+
+    // Gets URL param
     this.visitor = this.activatedRoute.snapshot.queryParamMap.get('userId');
 
+    // Gets user session info
     this.firebaseAuth.currentUser
       .then(authData => {
         this.actualUser = authData.uid;
@@ -52,6 +66,7 @@ export class AuthorComponent implements OnInit {
         console.log(error);
       });
 
+    // Checks ff the URL had an userId
     if (this.visitor) {
       this.userId = this.visitor;
       this.firebaseDatabase
@@ -72,10 +87,10 @@ export class AuthorComponent implements OnInit {
     } else {
       this.firebaseAuth.currentUser
         .then(userData => {
-          // console.log('userData en el componente', userData);
           if (!!userData && 'uid' in userData && !!userData.uid) {
             this.userId = userData.uid;
           }
+          // console.log('userId en el componente', this.userId);
           this.firebaseDatabase
             .object(`users/${this.userId}`)
             .valueChanges()
@@ -88,7 +103,9 @@ export class AuthorComponent implements OnInit {
           console.log(error);
         });
     }
+  }
 
+  ngOnInit() {
     this.userIsFollowingThisUser();
   }
 

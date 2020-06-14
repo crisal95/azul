@@ -69,6 +69,7 @@ describe('AuthorComponent', () => {
   });
 });
 let userData: UserData = {
+  userId: 'prueba',
   fullName: 'prueba',
   created: 0,
   lastName: 'prueba',

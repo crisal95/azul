@@ -18,9 +18,9 @@
           </div>
           <div class="text-center my-3">
             <!-- Following -->
-            <div><app-users-list [listType]="listFollowing" [userId]="userId"></app-users-list></div>
+            <div><app-users-list [listType]="this.listFollowing" [userId]="this.userId"></app-users-list></div>
             <!-- Followers -->
-            <div><app-users-list [listType]="listFollowers" [userId]="userId"></app-users-list></div>
+            <div><app-users-list [listType]="this.listFollowers" [userId]="this.userId"></app-users-list></div>
           </div>
           <!-- Button Edit|Follow|Unfollow -->
           <div class="text-center">

@@ -5,6 +5,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from 'src/environments/environment';
+import { RouterModule } from '@angular/router';
 
 describe('UsersListComponent', () => {
   let component: UsersListComponent;
@@ -16,7 +17,8 @@ describe('UsersListComponent', () => {
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
         AngularFireDatabaseModule,
-        AngularFireDatabaseModule
+        AngularFireDatabaseModule,
+        RouterModule
       ],
       declarations: [UsersListComponent]
     }).compileComponents();

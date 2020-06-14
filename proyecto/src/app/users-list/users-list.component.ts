@@ -6,16 +6,15 @@ import {UserService} from '../shared/user.service';
 
 @Component({
   selector: 'app-users-list',
-  templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  templateUrl: './users-list.component.html'
 })
 export class UsersListComponent implements OnInit {
-  @Input() listType: String;
-  @Input() userId: String;
+  @Input() listType: string;
+  @Input() userId: string;
 
   public users: UserData[] = [];
-  public usersIds: String[] = [];
-  public modalId: String;
+  public usersIds: string[] = [];
+  public modalId: string;
 
   constructor(
     private firebaseDatabase: AngularFireDatabase,
@@ -29,7 +28,7 @@ export class UsersListComponent implements OnInit {
     }
   }
 
-  getUsers(userId: String, mode: String) {
+  getUsers(userId: string, mode: string) {
     this.firebaseAuth.currentUser.then(userData => {
       // Switch starts
       switch (mode) {
@@ -40,7 +39,7 @@ export class UsersListComponent implements OnInit {
             .subscribe(data => {
               // Returns an usersIds array
               this.usersIds = data.map(e => {
-                return e.payload.val() as String;
+                return e.payload.val() as string;
               });
               // Load users in array
               this.loadUsers();

@@ -38,7 +38,13 @@
       <div class="modal-body">
         <!-- Users list -->
         <div class="table-responsive">
-          <table class="table table-borderless table-hover">
+          <table class="table table-borderless table-hover" summary="Users lists.">
+            <thead style="display: none;">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
             <tbody>
               <tr *ngFor="let user of this.users">
                 <td class="text-right">

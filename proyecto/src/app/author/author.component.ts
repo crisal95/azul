@@ -22,8 +22,8 @@ export class AuthorComponent implements OnInit {
   public visitor: string;
   public actualUser: string;
 
-  public listFollowing: String;
-  public listFollowers: String;
+  public listFollowing: string;
+  public listFollowers: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,

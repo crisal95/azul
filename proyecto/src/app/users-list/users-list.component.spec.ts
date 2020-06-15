@@ -18,7 +18,8 @@ describe('UsersListComponent', () => {
         AngularFireAuthModule,
         AngularFireDatabaseModule,
         AngularFireDatabaseModule,
-        RouterModule
+        RouterModule,
+        RouterModule.forRoot([])
       ],
       declarations: [UsersListComponent]
     }).compileComponents();

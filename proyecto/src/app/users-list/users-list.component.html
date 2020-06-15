@@ -4,6 +4,7 @@
   class="btn btn-primary btn-icon-split mb-1"
   data-toggle="modal"
   [attr.data-target]="listType ? '#users-list-' + listType.toString().toLowerCase() : ''"
+  (click)="ngOnChanges()"
 >
   <span class="icon text-white-50">
     {{ usersIds.length }}
@@ -39,7 +40,9 @@
         <!-- Users list -->
         <div class="table-responsive">
           <table class="table table-borderless table-hover">
-            <caption style="display: none;">Users lists.</caption>
+            <caption style="display: none;">
+              Users lists.
+            </caption>
             <thead style="display: none;">
               <tr>
                 <th scope="col"></th>
@@ -58,14 +61,18 @@
                 </td>
                 <td class="align-middle text-left">
                   {{ this.user.fullName }} <br />
-                  <a routerLink="/author" [queryParams]="{userId: this.user.userId}">{{
-                    this.user.userName
-                  }}</a>
+                  <a
+                    routerLink="/author"
+                    [queryParams]="{userId: this.user.userId}"
+                    (click)="closeModal()"
+                    >{{ this.user.userName }}</a
+                  >
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
+        <button id="close" #closebutton type="button" data-dismiss="modal" [hidden]="true"></button>
       </div>
     </div>
   </div>

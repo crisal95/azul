@@ -1,28 +1,34 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, Input, OnChanges, ViewChild} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {UserData} from '../shared/models';
 import {UserService} from '../shared/user.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html'
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent implements OnChanges {
   @Input() listType: string;
   @Input() userId: string;
+  @ViewChild('closebutton', {static: false}) closebutton;
 
-  public users: UserData[] = [];
-  public usersIds: string[] = [];
+  public users: Array<UserData> = [];
+  public usersIds: Array<string> = [];
   public modalId: string;
 
   constructor(
     private firebaseDatabase: AngularFireDatabase,
     private firebaseAuth: AngularFireAuth,
-    private userService: UserService
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit() {
+  ngOnChanges(): void {
+    this.users = [];
+    this.usersIds = [];
+
     if (this.userId && this.listType) {
       this.getUsers(this.userId, this.listType.toLowerCase());
     }
@@ -46,6 +52,17 @@ export class UsersListComponent implements OnInit {
             });
           break;
         case 'followers':
+          this.firebaseDatabase
+            .list(`users/${userId}/followers`)
+            .snapshotChanges()
+            .subscribe(data => {
+              // Returns an usersIds array
+              this.usersIds = data.map(e => {
+                return e.payload.val() as string;
+              });
+              // Load users in array
+              this.loadUsers();
+            });
           break;
         default:
           break;
@@ -64,5 +81,9 @@ export class UsersListComponent implements OnInit {
         }
       });
     }
+  }
+
+  closeModal() {
+    this.closebutton.nativeElement.click();
   }
 }

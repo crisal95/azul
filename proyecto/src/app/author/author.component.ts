@@ -54,6 +54,17 @@ export class AuthorComponent implements OnInit {
       };
     }
 
+    this.getParams();
+  }
+
+  ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(queryParams => {
+      this.getParams();
+      this.userIsFollowingThisUser();
+    });
+  }
+
+  getParams() {
     // Gets URL param
     this.visitor = this.activatedRoute.snapshot.queryParamMap.get('userId');
 
@@ -65,6 +76,10 @@ export class AuthorComponent implements OnInit {
       .catch(error => {
         console.log(error);
       });
+
+      if(this.visitor === this.actualUser){
+        this.visitor = null;
+      }
 
     // Checks ff the URL had an userId
     if (this.visitor) {
@@ -85,6 +100,7 @@ export class AuthorComponent implements OnInit {
           }
         });
     } else {
+      this.userConsultingHisPersonalProfile = true;
       this.firebaseAuth.currentUser
         .then(userData => {
           if (!!userData && 'uid' in userData && !!userData.uid) {
@@ -103,10 +119,6 @@ export class AuthorComponent implements OnInit {
           console.log(error);
         });
     }
-  }
-
-  ngOnInit() {
-    this.userIsFollowingThisUser();
   }
 
   getPosts(userId: string) {
@@ -135,6 +147,8 @@ export class AuthorComponent implements OnInit {
 
         updates[`users/${actualUserId}/following/${userToFollowId}`] = userToFollowId;
         this.firebaseDatabase.database.ref().update(updates);
+        updates[`users/${userToFollowId}/followers/${actualUserId}`] = actualUserId;
+        this.firebaseDatabase.database.ref().update(updates);
 
         this.notificationService.showSuccessMessage('Great!', 'User followed.');
         this.spinnerService.hideMainSpinner();
@@ -150,12 +164,26 @@ export class AuthorComponent implements OnInit {
     this.firebaseAuth.currentUser
       .then(userData => {
         const actualUserId = userData.uid;
-        const userToFollowId = this.visitor;
-        const ref = this.firebaseDatabase.database.ref(
-          `users/${actualUserId}/following/${userToFollowId}`
+        const userToUnfollowId = this.visitor;
+
+        const refActualUser = this.firebaseDatabase.database.ref(
+          `users/${actualUserId}/following/${userToUnfollowId}`
         );
 
-        ref
+        refActualUser
+          .remove()
+          .then(function() {
+            console.log('Unfollow succeeded.');
+          })
+          .catch(function(error) {
+            console.log('Unfollow failed: ' + error.message);
+          });
+
+        const refUnfollowUser = this.firebaseDatabase.database.ref(
+          `users/${userToUnfollowId}/followers/${actualUserId}`
+        );
+
+        refUnfollowUser
           .remove()
           .then(function() {
             console.log('Unfollow succeeded.');

@@ -40,20 +40,6 @@ export class AuthorComponent implements OnInit {
     this.listFollowing = 'Following';
     this.listFollowers = 'Followers';
 
-    if (this.user == null) {
-      this.user = {
-        userId: null,
-        created: null,
-        lastUpdate: null,
-        email: null,
-        userName: null,
-        fullName: null,
-        img: null,
-        firstName: null,
-        lastName: null
-      };
-    }
-
     this.getParams();
   }
 

@@ -18,14 +18,12 @@ export class UsersListComponent implements OnChanges {
   public usersIds: Array<string> = [];
   public modalId: string;
 
-
-
   constructor(
     private firebaseDatabase: AngularFireDatabase,
     private firebaseAuth: AngularFireAuth,
     private userService: UserService,
     private activatedRoute: ActivatedRoute
-  ) {  }
+  ) {}
 
   ngOnChanges(): void {
     this.users = [];
@@ -79,7 +77,6 @@ export class UsersListComponent implements OnChanges {
         if (result.exists()) {
           let userData: UserData = result.val();
           userData.userId = this.usersIds[index].toString();
-
           this.users.push(userData);
         }
       });

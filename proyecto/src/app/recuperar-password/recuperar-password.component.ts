@@ -21,7 +21,7 @@ export class RecuperarPasswordComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      email: ['',  Validators.email]
+      email: ['',  [Validators.email, Validators.required]]
     });
   }
   onSubmit() {

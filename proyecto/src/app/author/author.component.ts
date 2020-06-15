@@ -77,6 +77,7 @@ export class AuthorComponent implements OnInit {
         console.log(error);
       });
 
+
     // Checks ff the URL had an userId
     if (this.visitor) {
       this.userId = this.visitor;
@@ -96,6 +97,7 @@ export class AuthorComponent implements OnInit {
           }
         });
     } else {
+      this.userConsultingHisPersonalProfile = true;
       this.firebaseAuth.currentUser
         .then(userData => {
           if (!!userData && 'uid' in userData && !!userData.uid) {
@@ -141,8 +143,8 @@ export class AuthorComponent implements OnInit {
         const updates = {};
 
         updates[`users/${actualUserId}/following/${userToFollowId}`] = userToFollowId;
+        this.firebaseDatabase.database.ref().update(updates);
         updates[`users/${userToFollowId}/followers/${actualUserId}`] = actualUserId;
-
         this.firebaseDatabase.database.ref().update(updates);
 
         this.notificationService.showSuccessMessage('Great!', 'User followed.');

@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, ViewChild} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {UserData} from '../shared/models';
@@ -12,19 +12,22 @@ import {ActivatedRoute} from '@angular/router';
 export class UsersListComponent implements OnChanges {
   @Input() listType: string;
   @Input() userId: string;
+  @ViewChild('closebutton', {static: false}) closebutton;
 
-  public users: UserData[] = [];
-  public usersIds: string[] = [];
+  public users: Array<UserData> = [];
+  public usersIds: Array<string> = [];
   public modalId: string;
+
+
 
   constructor(
     private firebaseDatabase: AngularFireDatabase,
     private firebaseAuth: AngularFireAuth,
     private userService: UserService,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {  }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.users = [];
     this.usersIds = [];
 
@@ -76,6 +79,7 @@ export class UsersListComponent implements OnChanges {
         if (result.exists()) {
           let userData: UserData = result.val();
           userData.userId = this.usersIds[index].toString();
+
           this.users.push(userData);
         }
       });
@@ -83,6 +87,6 @@ export class UsersListComponent implements OnChanges {
   }
 
   closeModal() {
-    document.getElementById('close').click();
+    this.closebutton.nativeElement.click();
   }
 }

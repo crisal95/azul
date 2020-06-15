@@ -4,6 +4,7 @@
   class="btn btn-primary btn-icon-split mb-1"
   data-toggle="modal"
   [attr.data-target]="listType ? '#users-list-' + listType.toString().toLowerCase() : ''"
+  (click)="ngOnChanges()"
 >
   <span class="icon text-white-50">
     {{ usersIds.length }}
@@ -73,12 +74,11 @@
         </div>
         <button
           id="close"
+          #closebutton
           type="button"
-          class="btn btn-secondary"
           data-dismiss="modal"
           [hidden]="true"
         >
-          Cerrar
         </button>
       </div>
     </div>

@@ -58,7 +58,7 @@
                 </td>
                 <td class="align-middle text-left">
                   {{ this.user.fullName }} <br />
-                  <a routerLink="/author" [queryParams]="{userId: this.user.userId}">{{
+                  <a routerLink="/author" [queryParams]="{userId: this.user.userId}" (click)="closeModal()">{{
                     this.user.userName
                   }}</a>
                 </td>
@@ -66,6 +66,7 @@
             </tbody>
           </table>
         </div>
+        <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal" [hidden]="true">Cerrar</button>
       </div>
     </div>
   </div>

@@ -70,4 +70,8 @@ export class UsersListComponent implements OnChanges {
       });
     }
   }
+
+  closeModal(){
+    document.getElementById("close").click();
+  }
 }

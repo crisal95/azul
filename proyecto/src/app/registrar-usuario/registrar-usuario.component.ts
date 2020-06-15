@@ -20,11 +20,11 @@ export class RegistrarUsuarioComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.registerForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      userName: ['', Validators.required]
+      firstName: [''],
+      lastName: [''],
+      email: ['',  Validators.email],
+      password: [''],
+      userName: ['']
     });
 
   }

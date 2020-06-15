@@ -141,6 +141,8 @@ export class AuthorComponent implements OnInit {
         const updates = {};
 
         updates[`users/${actualUserId}/following/${userToFollowId}`] = userToFollowId;
+        updates[`users/${userToFollowId}/followers/${actualUserId}`] = actualUserId;
+
         this.firebaseDatabase.database.ref().update(updates);
 
         this.notificationService.showSuccessMessage('Great!', 'User followed.');
@@ -157,12 +159,26 @@ export class AuthorComponent implements OnInit {
     this.firebaseAuth.currentUser
       .then(userData => {
         const actualUserId = userData.uid;
-        const userToFollowId = this.visitor;
-        const ref = this.firebaseDatabase.database.ref(
-          `users/${actualUserId}/following/${userToFollowId}`
+        const userToUnfollowId = this.visitor;
+
+        const refActualUser = this.firebaseDatabase.database.ref(
+          `users/${actualUserId}/following/${userToUnfollowId}`
         );
 
-        ref
+        refActualUser
+          .remove()
+          .then(function() {
+            console.log('Unfollow succeeded.');
+          })
+          .catch(function(error) {
+            console.log('Unfollow failed: ' + error.message);
+          });
+
+        const refUnfollowUser = this.firebaseDatabase.database.ref(
+          `users/${userToUnfollowId}/followers/${actualUserId}`
+        );
+
+        refUnfollowUser
           .remove()
           .then(function() {
             console.log('Unfollow succeeded.');

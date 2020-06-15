@@ -39,7 +39,9 @@
         <!-- Users list -->
         <div class="table-responsive">
           <table class="table table-borderless table-hover">
-            <caption style="display: none;">Users lists.</caption>
+            <caption style="display: none;">
+              Users lists.
+            </caption>
             <thead style="display: none;">
               <tr>
                 <th scope="col"></th>
@@ -58,15 +60,26 @@
                 </td>
                 <td class="align-middle text-left">
                   {{ this.user.fullName }} <br />
-                  <a routerLink="/author" [queryParams]="{userId: this.user.userId}" (click)="closeModal()">{{
-                    this.user.userName
-                  }}</a>
+                  <a
+                    routerLink="/author"
+                    [queryParams]="{userId: this.user.userId}"
+                    (click)="closeModal()"
+                    >{{ this.user.userName }}</a
+                  >
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal" [hidden]="true">Cerrar</button>
+        <button
+          id="close"
+          type="button"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+          [hidden]="true"
+        >
+          Cerrar
+        </button>
       </div>
     </div>
   </div>

@@ -51,6 +51,17 @@ export class UsersListComponent implements OnChanges {
             });
           break;
         case 'followers':
+          this.firebaseDatabase
+            .list(`users/${userId}/followers`)
+            .snapshotChanges()
+            .subscribe(data => {
+              // Returns an usersIds array
+              this.usersIds = data.map(e => {
+                return e.payload.val() as string;
+              });
+              // Load users in array
+              this.loadUsers();
+            });
           break;
         default:
           break;
@@ -71,7 +82,7 @@ export class UsersListComponent implements OnChanges {
     }
   }
 
-  closeModal(){
-    document.getElementById("close").click();
+  closeModal() {
+    document.getElementById('close').click();
   }
 }

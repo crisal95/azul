@@ -1,14 +1,15 @@
-import {Component, OnInit, Input} from '@angular/core';
+import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {UserData} from '../shared/models';
 import {UserService} from '../shared/user.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html'
 })
-export class UsersListComponent implements OnInit {
+export class UsersListComponent implements OnChanges {
   @Input() listType: string;
   @Input() userId: string;
 
@@ -19,10 +20,14 @@ export class UsersListComponent implements OnInit {
   constructor(
     private firebaseDatabase: AngularFireDatabase,
     private firebaseAuth: AngularFireAuth,
-    private userService: UserService
+    private userService: UserService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges): void {
+    this.users = [];
+    this.usersIds = [];
+
     if (this.userId && this.listType) {
       this.getUsers(this.userId, this.listType.toLowerCase());
     }

@@ -54,6 +54,17 @@ export class AuthorComponent implements OnInit {
       };
     }
 
+    this.getParams();
+  }
+
+  ngOnInit() {
+    this.activatedRoute.queryParams.subscribe(queryParams => {
+      this.getParams();
+      this.userIsFollowingThisUser();
+    });
+  }
+
+  getParams() {
     // Gets URL param
     this.visitor = this.activatedRoute.snapshot.queryParamMap.get('userId');
 
@@ -103,10 +114,6 @@ export class AuthorComponent implements OnInit {
           console.log(error);
         });
     }
-  }
-
-  ngOnInit() {
-    this.userIsFollowingThisUser();
   }
 
   getPosts(userId: string) {

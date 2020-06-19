@@ -40,7 +40,7 @@ export class RegistrarUsuarioComponent implements OnInit {
         this.registerForm.value.password
       )
       .then(userData => {
-        this.userService.setUserDataOnFirebase(userData.user.uid, this.registerForm, null);
+        this.userService.setUserDataOnFirebase(userData.user.uid, this.registerForm, null, null);
         this.router.navigate(['home']);
       })
       .catch(error => {

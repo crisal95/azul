@@ -44,22 +44,44 @@ export class UserService {
       .once('value');
   }
 
-  setUserDataOnFirebase(uid: string, form: FormGroup, imgUrl: string) {
+  setUserDataOnFirebase(uid: string, form: FormGroup, imgUrl: string, userInfo: UserData) {
     const firebaseUserId = uid;
     if (imgUrl === null) {
       imgUrl =
         'https://firebasestorage.googleapis.com/v0/b/proyectoazul-dc9d3.appspot.com/o/profile.png?alt=media&token=16c015bd-241e-43db-a53f-b5a4169f9d0f';
     }
-
-    const newPostEntry = {
+    let newPostEntry;
+    if(userInfo){
+      if(!userInfo.followers){
+        userInfo.followers = null;
+      }
+      if(!userInfo.following){
+        userInfo.following = null;
+      }
+      newPostEntry = {
+        firstName: form.value.firstName,
+        lastName: form.value.lastName,
+        userName: form.value.userName,
+        created: new Date().getTime(),
+        lastUpdate: new Date().getTime(),
+        img: imgUrl,
+        fullName: form.value.firstName + ' ' + form.value.lastName,
+        userId: uid,
+        followers: userInfo.followers,
+        following: userInfo.following
+      };
+    }else{
+    newPostEntry = {
       firstName: form.value.firstName,
       lastName: form.value.lastName,
       userName: form.value.userName,
       created: new Date().getTime(),
       lastUpdate: new Date().getTime(),
       img: imgUrl,
-      fullName: form.value.firstName + ' ' + form.value.lastName
+      fullName: form.value.firstName + ' ' + form.value.lastName,
+      userId: uid
     };
+  }
 
     const updates = {};
     updates[`users/${firebaseUserId}`] = newPostEntry;

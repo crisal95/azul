@@ -11,6 +11,7 @@
       <!-- Topbar Search -->
       <form
         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
+        [formGroup]="inputForm"
       >
         <div class="input-group">
           <input
@@ -19,9 +20,10 @@
             placeholder="Search for..."
             aria-label="Search"
             aria-describedby="basic-addon2"
+            formControlName="searchInput"
           />
           <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
+            <button class="btn btn-primary" type="button" (click)="onClick()">
               <em class="fas fa-search fa-sm"></em>
             </button>
           </div>

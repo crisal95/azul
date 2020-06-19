@@ -33,6 +33,7 @@ import { CrearPublicacionComponent } from './crear-publicacion/crear-publicacion
 import { PublicacionComponent } from './publicacion/publicacion.component';
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import {AngularFirePerformanceModule} from '@angular/fire/performance';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { UsersListComponent } from './users-list/users-list.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    AngularFirePerformanceModule
   ],
   providers: [UserService, RouteGuard, NotificationService, PostService, SpinnerService],
   bootstrap: [AppComponent]

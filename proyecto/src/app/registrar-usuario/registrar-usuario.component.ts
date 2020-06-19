@@ -19,6 +19,11 @@ export class RegistrarUsuarioComponent implements OnInit {
     private notificationService: NotificationService,
     private formBuilder: FormBuilder
   ) {
+
+  }
+
+
+  ngOnInit() {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -26,12 +31,6 @@ export class RegistrarUsuarioComponent implements OnInit {
       password: [''],
       userName: ['', Validators.required]
     });
-
-  }
-
-
-  ngOnInit() {
-
   }
 
   onSubmit() {

@@ -1,22 +1,48 @@
 <div class="card shadow mb-4">
-  <div class="card-header py-3">
-    <div class="rounded-circle image mb-2">
-      <img
-        class="img img-responsive full-width"
-        alt="Profile picture."
-        src="{{ this.userData.img }}"
-      />
-    </div>
-    <h6 class="m-0 font-weight-bold text-primary">
-      <div class="text-xs font-weight-bold text-primary text-uppercase">
-        {{ this.userData.fullName }} (@{{ this.userData.userName }})
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col text-right mr-0 pr-0">
+          <img class="image rounded-circle" alt="Profile picture." src="{{ this.userData.img }}" />
+        </div>
+        <div class="col-9 text-left">
+          <a routerLink="/author" [queryParams]="{userId: this.userData.userId}"
+            ><h6 class="m-0 text-xs font-weight-bold text-primary text-uppercase">
+              {{ this.userData.fullName }} (@{{ this.userData.userName }})
+            </h6></a
+          >
+          <h6 class="m-0 text-xs text-uppercase">{{ this.postData.created | date: 'short' }}</h6>
+        </div>
       </div>
-    </h6>
+    </div>
+    <div class="dropdown no-arrow">
+      <a
+        class="dropdown-toggle"
+        href="#"
+        role="button"
+        id="dropdownMenuLink"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+      </a>
+      <div
+        class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+        aria-labelledby="dropdownMenuLink"
+      >
+        <div class="dropdown-header">Action:</div>
+        <a class="dropdown-item" href="#">Delete</a>
+      </div>
+    </div>
   </div>
   <div class="card-body">
     {{ this.postData.content }}
     <div *ngIf="this.postData.img != null && this.postData.img != ''">
       <img class="img rounded mt-2" src="{{ this.postData.img }}" alt="Post image." />
     </div>
+  </div>
+  <div class="card-footer text-muted">
+    [Reactions]
   </div>
 </div>

@@ -2,7 +2,7 @@
   <!-- Main Content -->
   <div id="content" *ngIf="isLoggedIn">
     <!-- Topbar -->
-    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top barra">
+    <nav class="navbar navbar-expand navbar-light bg-white topbar static-top barra">
       <!-- Sidebar Toggle (Topbar) -->
       <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <em class="fa fa-bars"></em>
@@ -273,7 +273,7 @@
   </div>
 
     <!-- Content Expand -->
-    <div [ngClass]="{'contenido': isLoggedIn == true}">
+    <div [ngClass]="{'contenido': isLoggedIn == true}" class="pt-4">
     <router-outlet></router-outlet>
   </div>
 

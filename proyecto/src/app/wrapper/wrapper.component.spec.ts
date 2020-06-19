@@ -3,7 +3,6 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {WrapperComponent} from './wrapper.component';
 import {SidebarComponent} from '../sidebar/sidebar.component';
 import {ContentWrapperComponent} from '../content-wrapper/content-wrapper.component';
-
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';

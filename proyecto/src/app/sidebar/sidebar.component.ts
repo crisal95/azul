@@ -37,7 +37,9 @@ export class SidebarComponent implements OnInit {
         fullName: null,
         img: null,
         firstName: null,
-        lastName: null
+        lastName: null,
+        followers: null,
+        following: null
       };
     }
   }

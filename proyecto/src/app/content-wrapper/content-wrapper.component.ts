@@ -15,7 +15,7 @@ export class ContentWrapperComponent implements OnInit {
   @Input() isLoggedIn;
   usersList: UserData[] = [];
   inputForm: FormGroup;
-   user: UserData;
+  user: UserData;
 
   constructor(
     private firebaseDatabase: AngularFireDatabase,
@@ -62,31 +62,29 @@ export class ContentWrapperComponent implements OnInit {
       const inputLowerCase = this.inputForm.value.searchInput.toString().toLowerCase();
       this.user = null;
       //caso nombre completo
-      this.user = this.usersList.find(
-        x => x.fullName.toLowerCase() === inputLowerCase
-      );
+      this.user = this.usersList.find(x => x.fullName.toLowerCase() === inputLowerCase);
       //caso nombre
       if (!this.user) {
-         this.user = this.usersList.find(
-          x => x.firstName.toLowerCase() === inputLowerCase
-        );
+        this.user = this.usersList.find(x => x.firstName.toLowerCase() === inputLowerCase);
+        //caso apellido
         if (!this.user) {
-           this.user = this.usersList.find(
-            x => x.lastName.toLowerCase() === inputLowerCase
-          );
-          if(!this.user) {
-            this.notificationService.showErrorMessage('Error en la busqueda', 'Usuario no encontrado!');
+          this.user = this.usersList.find(x => x.lastName.toLowerCase() === inputLowerCase);
+          if (!this.user) {
+            this.user = this.usersList.find(x => x.userName.toLowerCase() === inputLowerCase);
+            if (!this.user) {
+              this.notificationService.showErrorMessage(
+                'Error en la busqueda',
+                'Usuario no encontrado!'
+              );
+            }
           }
         }
+
+        if (this.user) {
+          this.inputForm.reset();
+          this.router.navigate(['/author'], {queryParams: {userId: this.user.userId}});
+        }
       }
-
-
-      if(this.user){
-        this.inputForm.reset;
-        this.router.navigate(['/author'], {queryParams: {userId: this.user.userId}});
-      }
-
-
     }
   }
 }

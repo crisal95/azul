@@ -7,7 +7,7 @@ import {ContentWrapperComponent} from '../content-wrapper/content-wrapper.compon
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';
-import {AngularFireDatabaseModule, AngularFireDatabase} from '@angular/fire/database';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';

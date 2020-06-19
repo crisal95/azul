@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {UserData} from '../shared/models';
 import {AngularFireDatabase} from '@angular/fire/database';
-import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import {NotificationService} from '../shared/notification.service';
 

@@ -62,7 +62,8 @@ export class EditarInformacionModalComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.setUserDataOnFirebase(this.user, this.registerForm, this.fileUrl);
+    console.log(this.userData);
+    this.userService.setUserDataOnFirebase(this.user, this.registerForm, this.fileUrl, this.userData);
     window.location.reload();
   }
 

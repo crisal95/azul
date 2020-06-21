@@ -3,7 +3,6 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {WrapperComponent} from './wrapper.component';
 import {SidebarComponent} from '../sidebar/sidebar.component';
 import {ContentWrapperComponent} from '../content-wrapper/content-wrapper.component';
-
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';
@@ -12,6 +11,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { CrearPublicacionComponent } from '../crear-publicacion/crear-publicacion.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FileUploaderComponent } from '../file-uploader/file-uploader.component';
+import {ToastrModule} from 'ngx-toastr';
 
 describe('WrapperComponent', () => {
   let component: WrapperComponent;
@@ -25,7 +25,9 @@ describe('WrapperComponent', () => {
         AngularFireDatabaseModule,
         RouterTestingModule,
         ReactiveFormsModule,
-        FormsModule
+        FormsModule,
+        ToastrModule.forRoot(),
+        AngularFireDatabaseModule
       ],
       declarations: [WrapperComponent, SidebarComponent, ContentWrapperComponent, CrearPublicacionComponent, FileUploaderComponent]
     }).compileComponents();

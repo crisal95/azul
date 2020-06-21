@@ -4,7 +4,7 @@
     <div class="card-columns">
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">
+          <h6 class="m-0 font-weight-bold text-primary" *ngIf="user">
             {{ this.user.fullName }} (@{{ this.user.userName }})
           </h6>
         </div>
@@ -14,6 +14,7 @@
               class="img img-responsive full-width"
               alt="Profile picture."
               [src]="this.user.img"
+              *ngIf="user"
             />
           </div>
           <div class="text-center my-3">

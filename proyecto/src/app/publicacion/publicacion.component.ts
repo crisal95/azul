@@ -1,5 +1,6 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {UserData, PostData} from '../shared/models';
+import {PostService} from '../shared/post.service';
 
 @Component({
   selector: 'app-publicacion',
@@ -9,34 +10,13 @@ import {UserData, PostData} from '../shared/models';
 export class PublicacionComponent implements OnInit {
   @Input() userData: UserData;
   @Input() postData: PostData;
+  @Input() userLoggedInId: string;
 
-  constructor() {
-    if (this.userData == null) {
-      this.userData = {
-        userId: null,
-        created: null,
-        lastUpdate: null,
-        email: null,
-        userName: null,
-        fullName: null,
-        img: null,
-        firstName: null,
-        lastName: null,
-        followers: null,
-        following: null
-      };
-    }
-    if (this.postData == null) {
-      this.postData = {
-        created: null,
-        img: null,
-        content: null,
-        key: null,
-        creationDate: null,
-        userId: null
-      };
-    }
-  }
+  constructor(private postService: PostService) {}
 
   ngOnInit() {}
+
+  delete(userId: string, key: string) {
+    this.postService.deletePost(userId, key);
+  }
 }

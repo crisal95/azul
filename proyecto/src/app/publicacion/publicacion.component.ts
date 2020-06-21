@@ -32,7 +32,8 @@ export class PublicacionComponent implements OnInit {
         img: null,
         content: null,
         key: null,
-        creationDate: null
+        creationDate: null,
+        userId: null
       };
     }
   }

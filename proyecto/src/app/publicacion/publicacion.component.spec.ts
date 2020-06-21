@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PublicacionComponent } from './publicacion.component';
+import {PublicacionComponent} from './publicacion.component';
+import {RouterModule} from '@angular/router';
 
 describe('PublicacionComponent', () => {
   let component: PublicacionComponent;
@@ -8,9 +9,9 @@ describe('PublicacionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PublicacionComponent ]
-    })
-    .compileComponents();
+      imports: [RouterModule, RouterModule.forRoot([])],
+      declarations: [PublicacionComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -4,6 +4,7 @@ export interface PostData {
   content: string;
   img: string;
   created: number;
+  userId: string;
 }
 
 export interface UserData {

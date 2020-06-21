@@ -1,6 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {UserData, PostData} from '../shared/models';
-import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-publicacion',

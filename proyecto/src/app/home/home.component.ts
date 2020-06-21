@@ -112,7 +112,7 @@ export class HomeComponent implements OnInit, OnChanges {
                 return a.created - b.created;
               });
               this.posts.sort((a, b) => a.created - b.created);
-              console.log('this.posts', this.posts);
+              this.posts = this.posts.reverse();
             }
           });
       }

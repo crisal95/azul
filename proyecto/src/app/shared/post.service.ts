@@ -45,7 +45,8 @@ export class PostService {
         content: content,
         created: new Date().getTime(),
         creationDate: new Date().toString(),
-        img: imgUrl
+        img: imgUrl,
+        userId: firebaseUserId
       };
 
       const updates = {};

@@ -18,4 +18,5 @@ export interface UserData {
   fullName: string;
   img: string;
   following: string[];
+  followers: string[];
 }

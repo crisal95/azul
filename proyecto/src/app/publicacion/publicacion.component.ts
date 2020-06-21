@@ -22,7 +22,8 @@ export class PublicacionComponent implements OnInit {
         fullName: null,
         img: null,
         firstName: null,
-        lastName: null
+        lastName: null,
+        following: null
       };
     }
     if (this.postData == null) {
@@ -31,7 +32,8 @@ export class PublicacionComponent implements OnInit {
         img: null,
         content: null,
         key: null,
-        creationDate: null
+        creationDate: null,
+        userId: null
       };
     }
   }

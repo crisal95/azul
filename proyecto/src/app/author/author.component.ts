@@ -63,9 +63,9 @@ export class AuthorComponent implements OnInit {
         console.log(error);
       });
 
-      if(this.visitor === this.actualUser){
-        this.visitor = null;
-      }
+    if (this.visitor === this.actualUser) {
+      this.visitor = null;
+    }
 
     // Checks ff the URL had an userId
     if (this.visitor) {

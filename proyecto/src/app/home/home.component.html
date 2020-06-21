@@ -2,6 +2,12 @@
   <div class="row">
     <div class="card-columns">
       <app-crear-publicacion></app-crear-publicacion>
+      <!-- User posts -->
+      <app-publicacion
+        *ngFor="let post of this.posts"
+        [userData]="getUserObjectFromPost(post)"
+        [postData]="post"
+      ></app-publicacion>
     </div>
   </div>
 </div>

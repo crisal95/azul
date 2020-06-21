@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {PostData} from '../shared/models';
+import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {PostData, UserData} from '../shared/models';
 import {PostService} from '../shared/post.service';
 import {NotificationService} from '../shared/notification.service';
 import {NgForm} from '@angular/forms';
@@ -12,8 +12,16 @@ import {AngularFireAuth} from '@angular/fire/auth';
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnChanges {
+  // Most important variables
   public posts: PostData[] = [];
+  public usersData: UserData[] = [];
+  // Other variables
+  private postsBuffer: PostData[] = [];
+  public userData: UserData;
+  public userId: string;
+  public usersFollowing: string[] = [];
+
   postsRef: any;
   author = '';
   uploadedFileUrl = '';
@@ -27,59 +35,91 @@ export class HomeComponent implements OnInit {
     private firebaseAuth: AngularFireAuth
   ) {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    throw new Error('Method not implemented.');
+  }
+
   ngOnInit() {
-    // this.posts = this.postService.getAllPosts();
-    // console.log(this.posts);
+    // Gets user session info
+    this.firebaseAuth.currentUser
+      .then(authData => {
+        this.userId = authData.uid;
+        this.author = authData.uid;
 
-    this.firebaseAuth.currentUser.then(userData => {
-      // console.log('userData en el componente', userData);
-      if (!!userData && 'uid' in userData && !!userData.uid) {
-        this.author = userData.uid;
-        //console.log(userData.uid);
-
+        // Gets user data and posts
         this.firebaseDatabase
-          .list(`posts/${this.author}`, ref => ref.limitToLast(100).orderByChild('created'))
+          .object(`users/${this.userId}`)
+          .valueChanges()
+          .subscribe(user => {
+            if (user !== null) {
+              this.userData = user as UserData;
+              this.getHomePosts(this.userData);
+            }
+          });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  onSubmit(form: NgForm) {}
+
+  onImagePicked(imageUrl: string) {
+    this.uploadedFileUrl = imageUrl;
+  }
+
+  getHomePosts(user: UserData) {
+    this.firebaseAuth.currentUser.then(userData => {
+      const userId = userData.uid;
+      // Adds itself to the following lists
+      Object.assign(user.following, {[userId]: userId});
+      const followingUsers = Object.keys(user.following).length;
+
+      // Gets following users data
+      for (let index = 0; index < followingUsers; index++) {
+        this.userService
+          .getUserDataFromFirebase(Object.keys(user.following)[index].toString())
+          .then(result => {
+            if (result.exists()) {
+              let bufferUserData: UserData = result.val();
+              bufferUserData.userId = Object.keys(user.following)[index].toString();
+              this.usersData.push(bufferUserData);
+            }
+          });
+
+        console.log('this.usersData', this.usersData);
+      }
+
+      // Gets following users posts
+      for (let index = 0; index < followingUsers; index++) {
+        this.postsBuffer = [];
+        this.firebaseDatabase
+          .list(`posts/${Object.keys(user.following)[index]}`, ref =>
+            ref.limitToLast(10).orderByChild('created')
+          )
           .snapshotChanges()
           .subscribe(data => {
-            //console.log(data);
-            this.posts = data.map(e => {
+            this.postsBuffer = data.map(e => {
               return {
                 ...(e.payload.val() as PostData)
               };
             });
-            //console.log(this.posts);
+
+            this.posts = this.posts.concat(this.postsBuffer);
+
+            if (index === followingUsers - 1) {
+              this.posts.sort(function(a, b) {
+                return a.created - b.created;
+              });
+              this.posts.sort((a, b) => a.created - b.created);
+              console.log('this.posts', this.posts);
+            }
           });
       }
     });
-
-    // this.author = firebase.auth().currentUser.uid;
-
-    // Creo una referencia a la coleccion de "posts" en la base de datos
-    // con ciertas reglas de cantidad y filtrado
-    // this.postsRef = firebase
-    //   .database()
-    //   .ref('posts')
-    //   .child(this.author)
-    //   .limitToLast(100)
-    //   .orderByChild('created');
-
-    // Este evento se ejecuta cada vez que la aplicacion abre por primera vez (incluyendo un refresh)
-    // o cuando se agrega un elemento a la coleccion posts/id_del_usuario en firebase
-    // this.postsRef.on('child_added', data => {
-    //   console.log(data.val());
-    //   console.log(data.key);
-
-    //   const newPost: PostData = data.val();
-    //   newPost.key = data.key;
-    //   this.posts.push(newPost);
-    // });
   }
 
-  onSubmit(form: NgForm) {
-
-  }
-
-  onImagePicked(imageUrl: string) {
-    this.uploadedFileUrl = imageUrl;
+  getUserObjectFromPost(post: PostData) {
+    return this.usersData.find(x => x.userId == post.userId);
   }
 }

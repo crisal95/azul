@@ -77,5 +77,6 @@ let userData: UserData = {
   userName: 'prueba1',
   lastUpdate: 0,
   email: '',
-  img: ''
+  img: '',
+  following: []
 };

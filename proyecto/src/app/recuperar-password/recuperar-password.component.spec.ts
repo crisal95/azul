@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, tick, fakeAsync} from '@angular/core/testing';
 
 import {RecuperarPasswordComponent} from './recuperar-password.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -18,6 +18,7 @@ import {environment} from '../../environments/environment';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { ToastrModule } from 'ngx-toastr';
+import { By } from '@angular/platform-browser';
 
 describe('RecuperarPasswordComponent', () => {
   let component: RecuperarPasswordComponent;
@@ -58,4 +59,30 @@ describe('RecuperarPasswordComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+   //prueba  form lleno y submit
+   it('should call the onSubmit method', fakeAsync(() => {
+    component.registerForm.controls['email'].setValue('prueba@prueba.com');
+    spyOn(component, 'onSubmit');
+    let button2 = fixture.debugElement.query(By.css('#boton'));
+    button2.triggerEventHandler('click', null);
+    tick();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(component.onSubmit).toHaveBeenCalledTimes(1);
+    });
+  }));
+
+  //prueba que form sin llenar sea invalido
+  it('form should be invalid', async(() => {
+    component.registerForm.controls['email'].setValue('');
+    expect(component.registerForm.valid).toBeFalsy();
+  }));
+
+  // prueba que form llenado sea valido
+  it('form should be valid', async(() => {
+    component.registerForm.controls['email'].setValue('prueba@prueba.com');
+    expect(component.registerForm.valid).toBeTruthy();
+  }));
+
 });

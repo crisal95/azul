@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, tick, fakeAsync} from '@angular/core/testing';
 
 import {EditarInformacionModalComponent} from './editar-informacion-modal.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -17,6 +17,7 @@ import {PublicacionComponent} from '../publicacion/publicacion.component';
 import {RecuperarPasswordComponent} from '../recuperar-password/recuperar-password.component';
 import { UsersListComponent } from '../users-list/users-list.component';
 import { ToastrModule } from 'ngx-toastr';
+import { By } from '@angular/platform-browser';
 
 describe('EditarInformacionModalComponent', () => {
   let component: EditarInformacionModalComponent;
@@ -63,6 +64,69 @@ describe('EditarInformacionModalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+   //prueba que boton de submit este habilitado cuando form lleno
+   it('should call the onSubmit method', fakeAsync(() => {
+    spyOn(component, 'onSubmit');
+    component.registerForm.controls['lastName'].setValue('prueba');
+    component.registerForm.controls['firstName'].setValue('prueba');
+    component.registerForm.controls['userName'].setValue('prueba');
+
+    let button2 = fixture.debugElement.query(By.css('#boton'));
+    button2.triggerEventHandler('click', null);
+    tick();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(component.onSubmit).toHaveBeenCalledTimes(1);
+    });
+  }));
+
+
+   //prueba que boton de submit este habilitado cuando form lleno
+   it('should call the onSubmit method', fakeAsync(() => {
+    spyOn(component, 'onSubmitPassword');
+    component.passwordForm.controls['newPassword'].setValue('prueba');
+
+    let button2 = fixture.debugElement.query(By.css('#botonPassword'));
+    button2.triggerEventHandler('click', null);
+    tick();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(component.onSubmitPassword).toHaveBeenCalledTimes(1);
+    });
+  }));
+
+  //prueba que form sin llenar sea invalido
+  it('form should be invalid', async(() => {
+    component.registerForm.controls['lastName'].setValue('');
+    component.registerForm.controls['firstName'].setValue('');
+    component.registerForm.controls['userName'].setValue('');
+    expect(component.registerForm.valid).toBeFalsy();
+  }));
+
+  // prueba que form llenado sea valido
+  it('form should be valid', async(() => {
+    component.registerForm.controls['lastName'].setValue('prueba');
+    component.registerForm.controls['firstName'].setValue('prueba');
+    component.registerForm.controls['userName'].setValue('prueba');
+    expect(component.registerForm.valid).toBeTruthy();
+  }));
+
+
+  //prueba que form sin llenar sea invalido
+  it('form should be invalid', async(() => {
+    component.passwordForm.controls['newPassword'].setValue('');
+    expect(component.passwordForm.valid).toBeFalsy();
+  }));
+
+  // prueba que form llenado sea valido
+  it('form should be valid', async(() => {
+    component.passwordForm.controls['newPassword'].setValue('prueba');
+    expect(component.passwordForm.valid).toBeTruthy();
+  }));
+
+
 });
 
 // Mock de los datos de un usuario

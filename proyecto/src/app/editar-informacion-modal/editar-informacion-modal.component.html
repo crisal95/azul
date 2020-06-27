@@ -81,7 +81,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button id="boton" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-primary" (click)="onSubmit()">
           Editar información
         </button>
@@ -108,7 +108,7 @@
             </div>
           </div>
         </form>
-        <button type="button" class="btn btn-primary" (click)="onSubmitPassword()" [disabled]="!passwordForm.valid">
+        <button id="botonPassword" type="button" class="btn btn-primary" (click)="onSubmitPassword()" [disabled]="!passwordForm.valid">
           Cambiar contraseña
         </button>
       </div>

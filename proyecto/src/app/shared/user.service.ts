@@ -51,11 +51,11 @@ export class UserService {
         'https://firebasestorage.googleapis.com/v0/b/proyectoazul-dc9d3.appspot.com/o/profile.png?alt=media&token=16c015bd-241e-43db-a53f-b5a4169f9d0f';
     }
     let newPostEntry;
-    if(userInfo){
-      if(!userInfo.followers){
+    if (userInfo) {
+      if (!userInfo.followers) {
         userInfo.followers = null;
       }
-      if(!userInfo.following){
+      if (!userInfo.following) {
         userInfo.following = null;
       }
       newPostEntry = {
@@ -70,18 +70,18 @@ export class UserService {
         followers: userInfo.followers,
         following: userInfo.following
       };
-    }else{
-    newPostEntry = {
-      firstName: form.value.firstName,
-      lastName: form.value.lastName,
-      userName: form.value.userName,
-      created: new Date().getTime(),
-      lastUpdate: new Date().getTime(),
-      img: imgUrl,
-      fullName: form.value.firstName + ' ' + form.value.lastName,
-      userId: uid
-    };
-  }
+    } else {
+      newPostEntry = {
+        firstName: form.value.firstName,
+        lastName: form.value.lastName,
+        userName: form.value.userName,
+        created: new Date().getTime(),
+        lastUpdate: new Date().getTime(),
+        img: imgUrl,
+        fullName: form.value.firstName + ' ' + form.value.lastName,
+        userId: uid
+      };
+    }
 
     const updates = {};
     updates[`users/${firebaseUserId}`] = newPostEntry;

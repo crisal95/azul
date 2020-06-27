@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, tick, fakeAsync} from '@angular/core/testing';
 
 import {CrearPublicacionComponent} from './crear-publicacion.component';
 import {SidebarComponent} from '../sidebar/sidebar.component';
@@ -19,6 +19,7 @@ import { EditarInformacionModalComponent } from '../editar-informacion-modal/edi
 import { PublicacionComponent } from '../publicacion/publicacion.component';
 import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 import { UsersListComponent } from '../users-list/users-list.component';
+import { By } from '@angular/platform-browser';
 
 
 describe('CrearPublicacionComponent', () => {
@@ -61,6 +62,34 @@ describe('CrearPublicacionComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+   //prueba que boton de submit este habilitado cuando form lleno
+   it('should call the onSubmit method', fakeAsync(() => {
+    spyOn(component, 'onSubmit');
+    component.publicacionForm.controls['texto'].setValue('prueba');
+    let button2 = fixture.debugElement.query(By.css('#botonPublicar'));
+    button2.triggerEventHandler('click', null);
+    tick();
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(component.onSubmit).toHaveBeenCalledTimes(1);
+    });
+  }));
+
+  //prueba que form sin llenar sea invalido
+  it('form should be invalid', async(() => {
+    component.publicacionForm.controls['texto'].setValue('');
+    expect(component.publicacionForm.valid).toBeFalsy();
+  }));
+
+  // prueba que form llenado sea valido
+  it('form should be valid', async(() => {
+    component.publicacionForm.controls['texto'].setValue('prueba');
+    expect(component.publicacionForm.valid).toBeTruthy();
+  }));
+
+
 });
 
 // Mock de los datos de un usuario

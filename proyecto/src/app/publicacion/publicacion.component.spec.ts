@@ -7,7 +7,7 @@ import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {UserData, PostData} from '../shared/models';
-import {PostService} from '../shared/post.service';
+
 
 describe('PublicacionComponent', () => {
   let component: PublicacionComponent;

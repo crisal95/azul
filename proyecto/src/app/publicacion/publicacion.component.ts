@@ -124,7 +124,7 @@ export class PublicacionComponent implements OnInit {
           });
         });
     });
-
+  }
 
   delete(userId: string, key: string) {
     this.postService.deletePost(userId, key);

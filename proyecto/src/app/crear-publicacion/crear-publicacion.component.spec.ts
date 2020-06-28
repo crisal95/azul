@@ -68,7 +68,7 @@ describe('CrearPublicacionComponent', () => {
    it('should call the onSubmit method', fakeAsync(() => {
     spyOn(component, 'onSubmit');
     component.publicacionForm.controls['texto'].setValue('prueba');
-    let button2 = fixture.debugElement.query(By.css('#botonPublicar'));
+    let button2 = fixture.debugElement.query(By.css('.botonPublicar'));
     button2.triggerEventHandler('click', null);
     tick();
     fixture.detectChanges();

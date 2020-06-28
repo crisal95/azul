@@ -17,7 +17,6 @@ describe('UsersListComponent', () => {
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireAuthModule,
         AngularFireDatabaseModule,
-        AngularFireDatabaseModule,
         RouterModule,
         RouterModule.forRoot([])
       ],

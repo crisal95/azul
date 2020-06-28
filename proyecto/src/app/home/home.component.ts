@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostData, UserData} from '../shared/models';
 import {PostService} from '../shared/post.service';
 import {NotificationService} from '../shared/notification.service';
@@ -12,7 +12,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
   selector: 'app-home',
   templateUrl: './home.component.html'
 })
-export class HomeComponent implements OnInit, OnChanges {
+export class HomeComponent implements OnInit {
   // Most important variables
   public posts: PostData[] = [];
   public usersData: UserData[] = [];
@@ -34,10 +34,6 @@ export class HomeComponent implements OnInit, OnChanges {
     private firebaseDatabase: AngularFireDatabase,
     private firebaseAuth: AngularFireAuth
   ) {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
-  }
 
   ngOnInit() {
     // Gets user session info
@@ -69,6 +65,9 @@ export class HomeComponent implements OnInit, OnChanges {
   }
 
   getHomePosts(user: UserData) {
+    this.posts = [];
+    this.usersData = [];
+
     this.firebaseAuth.currentUser.then(userData => {
       const userId = userData.uid;
       // Adds itself to the following lists
@@ -112,7 +111,7 @@ export class HomeComponent implements OnInit, OnChanges {
                 return a.created - b.created;
               });
               this.posts.sort((a, b) => a.created - b.created);
-              this.posts = this.posts.reverse();
+              this.posts.reverse();
             }
           });
       }

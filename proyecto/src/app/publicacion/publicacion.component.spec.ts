@@ -3,9 +3,10 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {PublicacionComponent} from './publicacion.component';
 import {RouterModule} from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
-import {environment} from '../../environments/environment';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {environment} from 'src/environments/environment';
+import {ToastrModule} from 'ngx-toastr';
 import {UserData, PostData} from '../shared/models';
 
 
@@ -19,8 +20,9 @@ describe('PublicacionComponent', () => {
         RouterModule,
         RouterModule.forRoot([]),
         AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule,
         AngularFireDatabaseModule,
-        AngularFireAuthModule
+        ToastrModule.forRoot()
       ],
       declarations: [PublicacionComponent]
     }).compileComponents();

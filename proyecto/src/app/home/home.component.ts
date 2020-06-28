@@ -1,4 +1,4 @@
-import {Component, OnInit, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostData, UserData} from '../shared/models';
 import {PostService} from '../shared/post.service';
 import {NotificationService} from '../shared/notification.service';

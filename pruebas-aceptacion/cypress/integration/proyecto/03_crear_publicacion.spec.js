@@ -1,7 +1,5 @@
 /// <reference types="Cypress" />
 
-import Chance from 'chance'
-const chance = new Chance()
 
 context('Crear publicacion', () => {
   beforeEach(() => {
@@ -20,18 +18,19 @@ context('Crear publicacion', () => {
     cy.get('#boton').click()
 
     // Validar que si hice log in
-    cy.get('.navbar-brand').should('contain.text', 'Cristian Alvarado')
+    cy.get('.navbar').should('contain.text', 'Cristian Alvarado')
 
-    const postTitle = chance.sentence({words: 3})
-    const postContent = chance.paragraph({sentences: 3})
+    const postContent = 'Texto  de prueba Cypress'
 
-    cy.get('[data-test=post-title]').type(postTitle)
-    cy.get('[data-test=post-content]').type(postContent)
-    cy.get('[data-test=submit-post-button').click()
+    cy.get('.texto').last().type(postContent)
+    cy.get('#noModal').contains('Publicar').click()
 
-    cy.get('tbody').should('contain.text', postTitle)
-    cy.get('tbody').should('contain.text', postContent)
+  
+    cy.get('.card-columns').should('contain.text', postContent)
 
-    cy.get('#navbarsExampleDefault a').contains('Logout').click()
+    //logout
+    cy.get('#userDropdown').click()
+    cy.get('.dropdown-item').contains('Cerrar sesión').click()
+    cy.get('.btn').contains('Salir').click()
   })
 })

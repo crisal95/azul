@@ -22,7 +22,7 @@
 
     <app-file-uploader (imagePick)="onImagePicked($event)"></app-file-uploader>
 
-    <button id="botonPublicar" type="button" class="btn btn-primary float-right" (click)="onSubmit()" [disabled]="!publicacionForm.valid">
+    <button id="{{boolModal ? 'modal': 'noModal'}}" type="button" class="btn btn-primary float-right botonPublicar" (click)="onSubmit()" [disabled]="!publicacionForm.valid">
       Publicar
     </button>
   </div>

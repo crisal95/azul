@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../shared/post.service';
 import {NotificationService} from '../shared/notification.service';
@@ -14,6 +14,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class CrearPublicacionComponent implements OnInit {
   publicacionForm: FormGroup;
   uploadedFileUrl = '';
+  @Input() boolModal;
 
   constructor(
     private formBuilder: FormBuilder,

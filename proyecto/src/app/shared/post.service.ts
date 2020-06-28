@@ -46,7 +46,8 @@ export class PostService {
         created: new Date().getTime(),
         creationDate: new Date().toString(),
         img: imgUrl,
-        userId: firebaseUserId
+        userId: firebaseUserId,
+        key: newPostKey
       };
 
       const updates = {};
@@ -54,53 +55,15 @@ export class PostService {
 
       return this.firebaseDatabase.database.ref().update(updates);
     });
-
-    // const firebaseUserId = firebase.auth().currentUser.uid;
-    // const newPostKey = firebase
-    //   .database()
-    //   .ref()
-    //   .child(`posts/${firebaseUserId}`)
-    //   .push().key;
-
-    // const newPostEntry = {
-    //   author: author,
-    //   content: content,
-    //   title: title,
-    //   created: new Date().getTime(),
-    //   creationDate: new Date().toString(),
-    //   img: imgUrl
-    // };
-
-    // // Objeto con todos los cambios por aplicar en la base de datos de Firebase
-    // // esto permite mandar varios cambios a la vez
-    // const updates = {};
-    // updates[`posts/${firebaseUserId}/${newPostKey}`] = newPostEntry;
-    // return firebase
-    //   .database()
-    //   .ref()
-    //   .update(updates);
-
-    // // const promesa = new Promise((resolve, reject) => {
-    // //   const randomNumber = Math.random();
-
-    // //   if (randomNumber > 0.5) {
-    // //     setTimeout(() => {
-    // //       this.addNewPost(title, content);
-    // //       resolve('Publicación creada');
-    // //     }, 2000);
-    // //   } else {
-    // //     setTimeout(() => {
-    // //       reject('Error en el servidor');
-    // //     }, 3000);
-    // //   }
-    // // });
-
-    // // return promesa;
   }
 
   getPostsByAuthor(author: string) {
     return this.firebaseDatabase
       .list(`posts/${author}`, ref => ref.limitToLast(100).orderByChild('created'))
       .snapshotChanges();
+  }
+
+  deletePost(userId: string, postKey: string) {
+    this.firebaseDatabase.database.ref('/posts/' + userId + '/' + postKey + '/').remove();
   }
 }

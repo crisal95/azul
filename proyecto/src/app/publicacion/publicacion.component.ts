@@ -4,6 +4,7 @@ import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {NotificationService} from '../shared/notification.service';
 import {SpinnerService} from '../shared/spinner.service';
+import {PostService} from '../shared/post.service';
 
 @Component({
   selector: 'app-publicacion',
@@ -13,6 +14,7 @@ import {SpinnerService} from '../shared/spinner.service';
 export class PublicacionComponent implements OnInit {
   @Input() userData: UserData;
   @Input() postData: PostData;
+  @Input() userLoggedInId: string;
 
   public userLikeThisPost: boolean;
   public usersReactionIds: Array<string> = [];
@@ -21,33 +23,9 @@ export class PublicacionComponent implements OnInit {
     private firebaseDatabase: AngularFireDatabase,
     private firebaseAuth: AngularFireAuth,
     private notificationService: NotificationService,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService,
+    private postService: PostService
   ) {
-    if (this.userData == null) {
-      this.userData = {
-        userId: null,
-        created: null,
-        lastUpdate: null,
-        email: null,
-        userName: null,
-        fullName: null,
-        img: null,
-        firstName: null,
-        lastName: null,
-        followers: null,
-        following: null
-      };
-    }
-    if (this.postData == null) {
-      this.postData = {
-        created: null,
-        img: null,
-        content: null,
-        key: null,
-        creationDate: null,
-        userId: null
-      };
-    }
     this.userLikeThisPost = false;
     this.getReactions();
   }
@@ -146,5 +124,9 @@ export class PublicacionComponent implements OnInit {
           });
         });
     });
+
+
+  delete(userId: string, key: string) {
+    this.postService.deletePost(userId, key);
   }
 }

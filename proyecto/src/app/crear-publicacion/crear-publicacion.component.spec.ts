@@ -89,6 +89,10 @@ describe('CrearPublicacionComponent', () => {
     expect(component.publicacionForm.valid).toBeTruthy();
   }));
 
+  it('should assign a string value', () => {
+    component.onImagePicked("Prueba");
+    expect(component.uploadedFileUrl).toBe("Prueba");
+  });
 
 });
 

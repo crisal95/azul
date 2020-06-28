@@ -48,4 +48,17 @@ describe('FileUploaderComponent', () => {
         expect(component.onUploadImage).toHaveBeenCalledTimes(1);
       });
     }));
+
+
+    it('should return a string', () => {
+      expect(component.generateRandomName()).toString();
+    });
+
+    it('should assign a string value', () => {
+      component.onImagePicked("Prueba");
+      expect(component.uploadedFileUrl).toBe("Prueba");
+    });
+    it('should return empty', () => {
+      expect(component.onUploadImage()).toBe();
+    });
 });

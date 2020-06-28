@@ -78,7 +78,7 @@ describe('EditarInformacionModalComponent', () => {
     tick();
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-      expect(component.onSubmit).toHaveBeenCalledTimes(1);
+      expect(component.onSubmit()).toHaveBeenCalledTimes(1);
     });
   }));
 
@@ -93,7 +93,7 @@ describe('EditarInformacionModalComponent', () => {
     tick();
     fixture.detectChanges();
     fixture.whenStable().then(() => {
-      expect(component.onSubmitPassword).toHaveBeenCalledTimes(1);
+      expect(component.onSubmitPassword()).toHaveBeenCalledTimes(1);
     });
   }));
 

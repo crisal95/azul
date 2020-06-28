@@ -8,6 +8,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from 'src/environments/environment';
 import {ToastrModule} from 'ngx-toastr';
 import {UserData, PostData} from '../shared/models';
+import { app } from 'firebase';
 
 
 describe('PublicacionComponent', () => {
@@ -46,6 +47,7 @@ describe('PublicacionComponent', () => {
   it('should render app-wrapper', () => {
     expect(compiled.querySelector('img').textContent).toBeDefined();
   });
+
 });
 
 let userData: UserData = {

@@ -3,7 +3,7 @@
 
 context('Crear publicacion', () => {
   beforeEach(() => {
-    cy.visit('')
+    cy.visit('localhost:4200')
   })
 
   it('Hacer login y crear publicacion', () => {
@@ -31,6 +31,7 @@ context('Crear publicacion', () => {
     //logout
     cy.get('#userDropdown').click()
     cy.get('.dropdown-item').contains('Cerrar sesión').click()
+    cy.wait(5000)
     cy.get('.btn').contains('Salir').click()
   })
 })

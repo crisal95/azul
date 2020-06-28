@@ -8,7 +8,6 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from 'src/environments/environment';
 import {ToastrModule} from 'ngx-toastr';
 import {UserData, PostData} from '../shared/models';
-import { app } from 'firebase';
 
 
 describe('PublicacionComponent', () => {

@@ -45,6 +45,7 @@
               <!-- User is following the visited profile -->
               <div *ngIf="userIsFollowingVisitedProfile; else userNotFollowingVisitedProfile">
                 <button
+                  id="buttonUnfollowUser"
                   type="button"
                   class="btn btn-danger btn-icon-split"
                   (click)="unfollowUser()"

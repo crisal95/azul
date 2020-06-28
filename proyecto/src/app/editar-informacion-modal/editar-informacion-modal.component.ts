@@ -12,7 +12,7 @@ import { NotificationService } from '../shared/notification.service';
   styleUrls: ['./editar-informacion-modal.component.css']
 })
 export class EditarInformacionModalComponent implements OnInit {
-  registerForm: FormGroup;
+  editarForm: FormGroup;
   passwordForm: FormGroup;
   uploadedFileUrl = '';
   @ViewChild('filePicker', {static: false}) filePickerRef: ElementRef<HTMLInputElement>;
@@ -31,7 +31,7 @@ export class EditarInformacionModalComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
+    this.editarForm = this.formBuilder.group({
       firstName: ['', Validators.minLength(1)],
       lastName: ['', Validators.minLength(1)],
       userName: ['', Validators.minLength(1)]
@@ -47,7 +47,7 @@ export class EditarInformacionModalComponent implements OnInit {
     });
 
     if (this.userData) {
-      this.registerForm.setValue({
+      this.editarForm.setValue({
         firstName: this.userData.firstName,
         lastName: this.userData.lastName,
         userName: this.userData.userName
@@ -62,7 +62,7 @@ export class EditarInformacionModalComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userService.setUserDataOnFirebase(this.user, this.registerForm, this.fileUrl, this.userData);
+    this.userService.setUserDataOnFirebase(this.user, this.editarForm, this.fileUrl, this.userData);
     window.location.reload();
   }
 

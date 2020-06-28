@@ -69,9 +69,9 @@ describe('EditarInformacionModalComponent', () => {
    //prueba que boton de submit este habilitado cuando form lleno
    it('should call the onSubmit method', fakeAsync(() => {
     spyOn(component, 'onSubmit');
-    component.registerForm.controls['lastName'].setValue('prueba');
-    component.registerForm.controls['firstName'].setValue('prueba');
-    component.registerForm.controls['userName'].setValue('prueba');
+    component.editarForm.controls['lastName'].setValue('n');
+    component.editarForm.controls['firstName'].setValue('l');
+    component.editarForm.controls['userName'].setValue('o');
 
     let button2 = fixture.debugElement.query(By.css('#boton'));
     button2.triggerEventHandler('click', null);
@@ -99,18 +99,18 @@ describe('EditarInformacionModalComponent', () => {
 
   //prueba que form sin llenar sea invalido
   it('form should be invalid', async(() => {
-    component.registerForm.controls['lastName'].setValue('');
-    component.registerForm.controls['firstName'].setValue('');
-    component.registerForm.controls['userName'].setValue('');
-    expect(component.registerForm.valid).toBeFalsy();
+    component.editarForm.controls['lastName'].setValue('');
+    component.editarForm.controls['firstName'].setValue('');
+    component.editarForm.controls['userName'].setValue('');
+    expect(component.editarForm.valid).toBeFalsy();
   }));
 
   // prueba que form llenado sea valido
   it('form should be valid', async(() => {
-    component.registerForm.controls['lastName'].setValue('prueba');
-    component.registerForm.controls['firstName'].setValue('prueba');
-    component.registerForm.controls['userName'].setValue('prueba');
-    expect(component.registerForm.valid).toBeTruthy();
+    component.editarForm.controls['lastName'].setValue('l');
+    component.editarForm.controls['firstName'].setValue('f');
+    component.editarForm.controls['userName'].setValue('e');
+    expect(component.editarForm.valid).toBeTruthy();
   }));
 
 

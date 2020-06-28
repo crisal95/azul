@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div class="dropdown no-arrow">
+    <div class="dropdown no-arrow" *ngIf="this.userLoggedInId === this.postData.userId">
       <a
         class="dropdown-toggle"
         href="#"
@@ -32,7 +32,9 @@
         aria-labelledby="dropdownMenuLink"
       >
         <div class="dropdown-header">Action:</div>
-        <a class="dropdown-item" href="#">Delete</a>
+        <a class="dropdown-item" (click)="delete(this.postData.userId, this.postData.key)"
+          >Delete</a
+        >
       </div>
     </div>
   </div>

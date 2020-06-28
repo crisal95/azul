@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 
 import {AuthorComponent} from './author.component';
 
@@ -24,6 +24,8 @@ import {CrearPublicacionComponent} from '../crear-publicacion/crear-publicacion.
 import {EditarInformacionModalComponent} from '../editar-informacion-modal/editar-informacion-modal.component';
 import {UserData} from '../shared/models';
 import {RecuperarPasswordComponent} from '../recuperar-password/recuperar-password.component';
+import {By} from '@angular/platform-browser';
+import {ActivatedRoute} from '@angular/router';
 
 describe('AuthorComponent', () => {
   let component: AuthorComponent;
@@ -67,7 +69,82 @@ describe('AuthorComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call unfollowUser() when #buttonUnfollowUser un clicked', fakeAsync(() => {
+    component.userConsultingHisPersonalProfile = false;
+    component.userIsFollowingVisitedProfile = true;
+    fixture.detectChanges();
+    spyOn(component, 'unfollowUser');
+    // let button = fixture.debugElement.nativeElement.querySelector('button');
+    let button = fixture.debugElement.query(By.css('#buttonUnfollowUser'));
+    button.triggerEventHandler('click', null);
+    tick(); // simulates the passage of time until all pending asynchronous activities finish
+    fixture.detectChanges();
+    expect(component.unfollowUser).toHaveBeenCalled();
+  }));
 });
+
+describe('AuthorComponentVisitedByActualUser', () => {
+  let component: AuthorComponent;
+  let fixture: ComponentFixture<AuthorComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule.withRoutes(routes),
+        FormsModule,
+        ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule,
+        AngularFireDatabaseModule,
+        AngularFireStorageModule,
+        ToastrModule.forRoot()
+      ],
+      declarations: [
+        AuthorComponent,
+        HomeComponent,
+        LoginComponent,
+        FileUploaderComponent,
+        RegistrarUsuarioComponent,
+        CrearPublicacionComponent,
+        EditarInformacionModalComponent,
+        PublicacionComponent,
+        RecuperarPasswordComponent,
+        UsersListComponent
+      ],
+      providers: [RouteGuard]
+    })
+      .compileComponents()
+      .then(() => {});
+  }));
+
+  beforeEach(() => {
+    let mockActiveRoute = {
+      snapshot: {
+        queryParams: {
+          userId: 'H01iw0h8I9cJvJYZafONCPPmujg1'
+        }
+      }
+    };
+
+    TestBed.configureTestingModule({
+      providers: [{provide: ActivatedRoute, useFactory: () => mockActiveRoute}]
+    });
+
+    fixture = TestBed.createComponent(AuthorComponent);
+    component = fixture.componentInstance;
+    component.actualUser = 'H01iw0h8I9cJvJYZafONCPPmujg1';
+    fixture.detectChanges();
+  });
+
+  it('should display users own profile', async(() => {
+    let spyOnMethod = spyOn(component, 'getParams').and.callThrough();
+    fixture.detectChanges();
+    expect(component.actualUser).toEqual('H01iw0h8I9cJvJYZafONCPPmujg1');
+    expect(component.userIsFollowingVisitedProfile).toBe(false);
+  }));
+});
+
 let userData: UserData = {
   userId: 'prueba',
   fullName: 'prueba',

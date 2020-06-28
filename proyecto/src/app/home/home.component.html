@@ -3,12 +3,26 @@
     <div class="card-columns">
       <app-crear-publicacion [boolModal]=false></app-crear-publicacion>
       <!-- User posts -->
-      <app-publicacion
-        *ngFor="let post of this.posts"
-        [userData]="getUserObjectFromPost(post)"
-        [postData]="post"
-        [userLoggedInId]="this.userId"
-      ></app-publicacion>
+      <div *ngIf="this.posts.length > 0; then postsBlock; else noPostsBlock"></div>
+      <ng-template #postsBlock>
+        <app-publicacion
+          *ngFor="let post of this.posts"
+          [userData]="getUserObjectFromPost(post)"
+          [postData]="post"
+          [userLoggedInId]="this.userId"
+        ></app-publicacion>
+      </ng-template>
+      <ng-template #noPostsBlock>
+        <div class="card shadow mb-4">
+          <div class="card-body">
+            <div class="text-center">
+              <div class="error mx-auto"><em class="fas fa-frown-open"></em></div>
+              <p class="lead text-gray-800 mb-5">You Don't Follow Any User</p>
+              <p class="text-gray-500 mb-0">Find users and follow them to see their updates.</p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

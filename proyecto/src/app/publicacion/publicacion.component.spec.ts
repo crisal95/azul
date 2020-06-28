@@ -2,6 +2,11 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {PublicacionComponent} from './publicacion.component';
 import {RouterModule} from '@angular/router';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import {environment} from 'src/environments/environment';
+import {ToastrModule} from 'ngx-toastr';
 
 describe('PublicacionComponent', () => {
   let component: PublicacionComponent;
@@ -9,7 +14,14 @@ describe('PublicacionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterModule, RouterModule.forRoot([])],
+      imports: [
+        RouterModule,
+        RouterModule.forRoot([]),
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireAuthModule,
+        AngularFireDatabaseModule,
+        ToastrModule.forRoot()
+      ],
       declarations: [PublicacionComponent]
     }).compileComponents();
   }));

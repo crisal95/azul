@@ -33,7 +33,9 @@ export class HomeComponent implements OnInit {
     private userService: UserService,
     private firebaseDatabase: AngularFireDatabase,
     private firebaseAuth: AngularFireAuth
-  ) {}
+  ) {
+    this.posts = [];
+  }
 
   ngOnInit() {
     // Gets user session info
@@ -103,6 +105,16 @@ export class HomeComponent implements OnInit {
                 ...(e.payload.val() as PostData)
               };
             });
+
+            let matchIndex = this.posts.findIndex(
+              x => x.userId === Object.keys(user.following)[index]
+            );
+            while (matchIndex !== -1) {
+              this.posts.splice(matchIndex, 1);
+              matchIndex = this.posts.findIndex(
+                x => x.userId === Object.keys(user.following)[index]
+              );
+            }
 
             this.posts = this.posts.concat(this.postsBuffer);
 

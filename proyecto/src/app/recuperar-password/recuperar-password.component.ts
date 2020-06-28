@@ -10,7 +10,7 @@ import {NotificationService} from '../shared/notification.service';
   styleUrls: ['./recuperar-password.component.css']
 })
 export class RecuperarPasswordComponent implements OnInit {
-  registerForm: FormGroup;
+  recoverPasswordForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,13 +20,13 @@ export class RecuperarPasswordComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
+    this.recoverPasswordForm = this.formBuilder.group({
       email: ['',  [Validators.email, Validators.required]]
     });
   }
   onSubmit() {
     this.firebaseAuth
-      .sendPasswordResetEmail(this.registerForm.value.email)
+      .sendPasswordResetEmail(this.recoverPasswordForm.value.email)
       .then(userData => {
         this.router.navigate(['/login']);
         this.notificationService.showSuccessMessage('¡Ya casi estas de vuelta!', "Correo de recuperación enviado correctamente.");

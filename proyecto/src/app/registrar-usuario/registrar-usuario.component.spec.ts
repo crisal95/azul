@@ -62,11 +62,11 @@ describe('RegistrarUsuarioComponent', () => {
 
    //prueba que boton de submit este habilitado cuando form lleno
    it('should call the onSubmit method', fakeAsync(() => {
-    component.registerForm.controls['email'].setValue('prueba@prueba.com');
-    component.registerForm.controls['password'].setValue('1234');
-    component.registerForm.controls['lastName'].setValue('prueba');
-    component.registerForm.controls['firstName'].setValue('prueba');
-    component.registerForm.controls['userName'].setValue('prueba');
+    component.registerUserForm.controls['email'].setValue('b@prueba.com');
+    component.registerUserForm.controls['password'].setValue('998766');
+    component.registerUserForm.controls['lastName'].setValue('a');
+    component.registerUserForm.controls['firstName'].setValue('b');
+    component.registerUserForm.controls['userName'].setValue('c');
     spyOn(component, 'onSubmit');
     let button2 = fixture.debugElement.query(By.css('#boton'));
     button2.triggerEventHandler('click', null);
@@ -79,21 +79,21 @@ describe('RegistrarUsuarioComponent', () => {
 
   //prueba que form sin llenar sea invalido
   it('form should be invalid', async(() => {
-    component.registerForm.controls['email'].setValue('');
-    component.registerForm.controls['password'].setValue('');
-    component.registerForm.controls['lastName'].setValue('');
-    component.registerForm.controls['firstName'].setValue('');
-    component.registerForm.controls['userName'].setValue('');
-    expect(component.registerForm.valid).toBeFalsy();
+    component.registerUserForm.controls['email'].setValue('');
+    component.registerUserForm.controls['password'].setValue('');
+    component.registerUserForm.controls['lastName'].setValue('');
+    component.registerUserForm.controls['firstName'].setValue('');
+    component.registerUserForm.controls['userName'].setValue('');
+    expect(component.registerUserForm.valid).toBeFalsy();
   }));
 
   // prueba que form llenado sea valido
   it('form should be valid', async(() => {
-    component.registerForm.controls['email'].setValue('prueba@prueba.com');
-    component.registerForm.controls['password'].setValue('1234');
-    component.registerForm.controls['lastName'].setValue('prueba');
-    component.registerForm.controls['firstName'].setValue('prueba');
-    component.registerForm.controls['userName'].setValue('prueba');
-    expect(component.registerForm.valid).toBeTruthy();
+    component.registerUserForm.controls['email'].setValue('prueba@prueba.com');
+    component.registerUserForm.controls['password'].setValue('76577');
+    component.registerUserForm.controls['lastName'].setValue('h');
+    component.registerUserForm.controls['firstName'].setValue('j');
+    component.registerUserForm.controls['userName'].setValue('n');
+    expect(component.registerUserForm.valid).toBeTruthy();
   }));
 });

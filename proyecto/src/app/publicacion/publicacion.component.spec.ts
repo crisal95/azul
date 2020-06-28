@@ -13,7 +13,6 @@ import {UserData, PostData} from '../shared/models';
 describe('PublicacionComponent', () => {
   let component: PublicacionComponent;
   let fixture: ComponentFixture<PublicacionComponent>;
-  let app;
   let compiled;
 
   beforeEach(async(() => {
@@ -33,7 +32,6 @@ describe('PublicacionComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PublicacionComponent);
     component = fixture.componentInstance;
-    app = fixture.debugElement.componentInstance;
     component.userData = userData;
     component.postData = postData;
     fixture.detectChanges();

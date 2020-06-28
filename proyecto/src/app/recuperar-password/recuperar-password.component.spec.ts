@@ -62,7 +62,7 @@ describe('RecuperarPasswordComponent', () => {
 
    //prueba  form lleno y submit
    it('should call the onSubmit method', fakeAsync(() => {
-    component.registerForm.controls['email'].setValue('prueba@prueba.com');
+    component.recoverPasswordForm.controls['email'].setValue('a@a.com');
     spyOn(component, 'onSubmit');
     let button2 = fixture.debugElement.query(By.css('#boton'));
     button2.triggerEventHandler('click', null);
@@ -75,14 +75,14 @@ describe('RecuperarPasswordComponent', () => {
 
   //prueba que form sin llenar sea invalido
   it('form should be invalid', async(() => {
-    component.registerForm.controls['email'].setValue('');
-    expect(component.registerForm.valid).toBeFalsy();
+    component.recoverPasswordForm.controls['email'].setValue('');
+    expect(component.recoverPasswordForm.valid).toBeFalsy();
   }));
 
   // prueba que form llenado sea valido
   it('form should be valid', async(() => {
-    component.registerForm.controls['email'].setValue('prueba@prueba.com');
-    expect(component.registerForm.valid).toBeTruthy();
+    component.recoverPasswordForm.controls['email'].setValue('a@a.com');
+    expect(component.recoverPasswordForm.valid).toBeTruthy();
   }));
 
 });

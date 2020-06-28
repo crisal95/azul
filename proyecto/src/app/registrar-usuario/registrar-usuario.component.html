@@ -10,7 +10,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">¡Aquí puedes crear tu cuenta!</h1>
               </div>
-              <form [formGroup]="registerForm">
+              <form [formGroup]="registerUserForm">
                 <div class="form-group">
                   <input
                     type="text"
@@ -61,7 +61,7 @@
                 id="boton"
                   href="login"
                   class="btn btn-primary btn-user btn-block boton"
-                  [disabled]="!registerForm.valid"
+                  [disabled]="!registerUserForm.valid"
                   (click)="onSubmit()"
                 >
                   Registrar cuenta

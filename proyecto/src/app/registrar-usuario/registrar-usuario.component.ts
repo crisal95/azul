@@ -11,7 +11,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./registrar-usuario.component.css']
 })
 export class RegistrarUsuarioComponent implements OnInit {
-  registerForm: FormGroup;
+  registerUserForm: FormGroup;
   constructor(
     private firebaseAuth: AngularFireAuth,
     private userService: UserService,
@@ -24,7 +24,7 @@ export class RegistrarUsuarioComponent implements OnInit {
 
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
+    this.registerUserForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['',  [Validators.email, Validators.required]],
@@ -36,11 +36,11 @@ export class RegistrarUsuarioComponent implements OnInit {
   onSubmit() {
     this.firebaseAuth
       .createUserWithEmailAndPassword(
-        this.registerForm.value.email,
-        this.registerForm.value.password
+        this.registerUserForm.value.email,
+        this.registerUserForm.value.password
       )
       .then(userData => {
-        this.userService.setUserDataOnFirebase(userData.user.uid, this.registerForm, null, null);
+        this.userService.setUserDataOnFirebase(userData.user.uid, this.registerUserForm, null, null);
         this.router.navigate(['home']);
       })
       .catch(error => {

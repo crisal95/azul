@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div class="dropdown no-arrow">
+    <div class="dropdown no-arrow" *ngIf="this.userLoggedInId === this.postData.userId">
       <a
         class="dropdown-toggle"
         href="#"
@@ -32,7 +32,9 @@
         aria-labelledby="dropdownMenuLink"
       >
         <div class="dropdown-header">Action:</div>
-        <a class="dropdown-item" href="#">Delete</a>
+        <a class="dropdown-item" (click)="delete(this.postData.userId, this.postData.key)"
+          >Delete</a
+        >
       </div>
     </div>
   </div>
@@ -42,7 +44,38 @@
       <img class="img rounded mt-2" src="{{ this.postData.img }}" alt="Post image." />
     </div>
   </div>
-  <div class="card-footer text-muted">
-    [Reactions]
+  <div class="card-footer text-muted d-flex">
+    <button type="button" class="btn btn-light btn-sm mr-auto">
+      <div
+        *ngIf="this.usersReactionIds.length <= 0; then noReactionsBlock; else reactionsBlock"
+      ></div>
+      <ng-template #noReactionsBlock></ng-template>
+      <ng-template #reactionsBlock>
+        <span class="mr-2">{{ this.usersReactionIds.length }}</span>
+        <div
+          *ngIf="this.usersReactionIds.length == 1; then oneReactionBlock; else manyReactionsBlock"
+        ></div>
+        <ng-template #oneReactionBlock><span class="text">Like</span></ng-template>
+        <ng-template #manyReactionsBlock><span class="text">Likes</span></ng-template>
+      </ng-template>
+    </button>
+    <div *ngIf="userLikeThisPost; else userNotLikeThisPost">
+      <button
+        type="button"
+        class="btn btn-secondary btn-circle btn-sm text-right"
+        (click)="unlikePost()"
+      >
+        <em class="fas fa-thumbs-up"></em>
+      </button>
+    </div>
+    <ng-template #userNotLikeThisPost>
+      <button
+        type="button"
+        class="btn btn-primary btn-circle btn-sm text-right"
+        (click)="likePost()"
+      >
+        <em class="fas fa-thumbs-up"></em>
+      </button>
+    </ng-template>
   </div>
 </div>

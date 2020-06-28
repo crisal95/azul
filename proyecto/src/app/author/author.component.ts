@@ -120,7 +120,7 @@ export class AuthorComponent implements OnInit {
               ...(e.payload.val() as PostData)
             };
           });
-          this.posts = this.posts.reverse();
+          this.posts.reverse();
         });
     });
   }

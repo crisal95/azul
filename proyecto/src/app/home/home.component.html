@@ -7,6 +7,7 @@
         *ngFor="let post of this.posts"
         [userData]="getUserObjectFromPost(post)"
         [postData]="post"
+        [userLoggedInId]="this.userId"
       ></app-publicacion>
     </div>
   </div>

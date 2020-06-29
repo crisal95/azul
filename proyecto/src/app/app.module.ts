@@ -33,6 +33,7 @@ import { PublicacionComponent } from './publicacion/publicacion.component';
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import {AngularFirePerformanceModule} from '@angular/fire/performance';
+import { RouteGuardLoggedIn } from './shared/route-guard-loggedIn';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,7 @@ import {AngularFirePerformanceModule} from '@angular/fire/performance';
     AngularFireStorageModule,
     AngularFirePerformanceModule
   ],
-  providers: [UserService, RouteGuard, NotificationService, PostService, SpinnerService],
+  providers: [UserService, RouteGuard, NotificationService, PostService, SpinnerService, RouteGuardLoggedIn],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

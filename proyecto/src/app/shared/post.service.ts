@@ -14,24 +14,6 @@ export class PostService {
     private firebaseAuth: AngularFireAuth
   ) {}
 
-  getAllPosts() {
-    // return this.posts;
-  }
-
-  // addNewPost(title: string, content: string) {
-  //   const newKey = this.posts.length + 1;
-
-  //   const newPost: PostData = {
-  //     author: 'test123',
-  //     content: content,
-  //     creationDate: new Date().toString(),
-  //     title: title,
-  //     key: newKey.toString(10),
-  //     img: 'https://placeimg.com/320/240/any/sepia'
-  //   };
-
-  //   this.posts.push(newPost);
-  // }
 
   addNewPostAsync(content: string, imgUrl: string) {
     return this.firebaseAuth.currentUser.then(userData => {

@@ -19,6 +19,7 @@ import { EditarInformacionModalComponent } from '../editar-informacion-modal/edi
 import { PublicacionComponent } from '../publicacion/publicacion.component';
 import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 import { UsersListComponent } from '../users-list/users-list.component';
+import {PostData, UserData} from '../shared/models';
 
 
 describe('HomeComponent', () => {
@@ -98,4 +99,35 @@ describe('HomeComponent', () => {
   it('should initialize', fakeAsync(() => {
     component.ngOnInit();
   }));
+
+  it('should return a user from usersList', () => {
+    let postData: PostData = {
+      key: '',
+      content: '',
+      img: '',
+      created: 0,
+      userId: '1',
+      creationDate: ''
+    };
+    let userData: UserData = {
+      userId: '1',
+      fullName: 'prueba',
+      created: 0,
+      lastName: 'prueba',
+      firstName: 'prueba',
+      userName: 'prueba1',
+      lastUpdate: 0,
+      email: '',
+      img: '',
+      followers: null,
+      following: null
+    };
+    component.usersData.push(userData);
+   const userId = component.getUserObjectFromPost(postData);
+    expect(userId.userId).toBe("1");
+  });
+  it('should assign a value', () => {
+    component.onImagePicked("Prueba");
+    expect(component.uploadedFileUrl).toBe("Prueba");
+  });
 });

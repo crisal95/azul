@@ -7,9 +7,7 @@ import {ToastrModule} from 'ngx-toastr';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../../environments/environment';
-
-// import {WrapperComponent} from '../wrapper/wrapper.component';
-// import {SidebarComponent} from '../sidebar/sidebar.component';
+import {UserData} from '../shared/models';
 
 describe('ContentWrapperComponent', () => {
   let component: ContentWrapperComponent;
@@ -35,5 +33,24 @@ describe('ContentWrapperComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should assign a string value', () => {
+    let userData: UserData = {
+      userId: '1',
+      fullName: 'prueba',
+      created: 0,
+      lastName: 'prueba',
+      firstName: 'prueba',
+      userName: 'prueba1',
+      lastUpdate: 0,
+      email: '',
+      img: '',
+      followers: null,
+      following: null
+    };
+    component.usersList.push(userData);
+    component.inputForm.value.searchInput = "prueba";
+    component.onClick();
+    expect(component.user.fullName).toBe("prueba");
   });
 });

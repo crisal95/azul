@@ -60,7 +60,6 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  onSubmit(form: NgForm) {}
 
   onImagePicked(imageUrl: string) {
     this.uploadedFileUrl = imageUrl;

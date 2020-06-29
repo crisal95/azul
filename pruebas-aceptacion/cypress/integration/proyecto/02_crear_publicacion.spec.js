@@ -3,7 +3,7 @@
 
 context('Crear publicacion', () => {
   beforeEach(() => {
-    cy.visit('localhost:4200')
+    cy.visit('')
   })
 
   it('Hacer login y crear publicacion', () => {

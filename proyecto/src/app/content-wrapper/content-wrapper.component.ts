@@ -79,11 +79,10 @@ export class ContentWrapperComponent implements OnInit {
             }
           }
         }
-
-        if (this.user) {
-          this.inputForm.reset();
-          this.router.navigate(['/author'], {queryParams: {userId: this.user.userId}});
-        }
+      }
+      if (this.user) {
+        this.inputForm.reset();
+        this.router.navigate(['/author'], {queryParams: {userId: this.user.userId}});
       }
     }
   }

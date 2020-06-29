@@ -42,6 +42,7 @@ export class CrearPublicacionComponent implements OnInit {
               // this.posts = this.postService.getAllPosts();
               this.spinnerService.hideMainSpinner();
               this.publicacionForm.reset();
+              this.uploadedFileUrl = "";
             })
             .catch(error => {
               this.notificationServie.showErrorMessage('Error!!!', 'Error creando publicación');

@@ -51,6 +51,7 @@ export class AuthorComponent implements OnInit {
   }
 
   getParams() {
+    this.user  = null;
     // Gets URL param
     this.visitor = this.activatedRoute.snapshot.queryParamMap.get('userId');
 

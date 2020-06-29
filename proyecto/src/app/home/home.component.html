@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="card-columns">
-      <app-crear-publicacion></app-crear-publicacion>
+      <app-crear-publicacion [boolModal]=false></app-crear-publicacion>
       <!-- User posts -->
       <div *ngIf="this.posts.length > 0; then postsBlock; else noPostsBlock"></div>
       <ng-template #postsBlock>

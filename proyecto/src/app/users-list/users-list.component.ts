@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, ViewChild, OnInit} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {UserData} from '../shared/models';
@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   selector: 'app-users-list',
   templateUrl: './users-list.component.html'
 })
-export class UsersListComponent implements OnChanges {
+export class UsersListComponent implements OnChanges, OnInit {
   @Input() listType: string;
   @Input() userId: string;
   @ViewChild('closebutton', {static: false}) closebutton;
@@ -32,6 +32,15 @@ export class UsersListComponent implements OnChanges {
     if (this.userId && this.listType) {
       this.getUsers(this.userId, this.listType.toLowerCase());
     }
+  }
+
+  ngOnInit(): void {
+    this.users = [];
+    this.usersIds = [];
+    if (this.userId && this.listType) {
+      this.getUsers(this.userId, this.listType.toLowerCase());
+    }
+
   }
 
   getUsers(userId: string, mode: string) {

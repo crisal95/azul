@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 
 import {FileUploaderComponent} from './file-uploader.component';
 
@@ -7,6 +7,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../../environments/environment';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import { By } from  '@angular/platform-browser';
 
 describe('FileUploaderComponent', () => {
   let component: FileUploaderComponent;
@@ -33,4 +34,31 @@ describe('FileUploaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+     //prueba que boton de seleccionar imagen
+     it('should call the onUploadImage method', fakeAsync(() => {
+      spyOn(component, 'onUploadImage');
+
+      let button2 = fixture.debugElement.query(By.css('#boton'));
+      button2.triggerEventHandler('click', null);
+      tick();
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(component.onUploadImage).toHaveBeenCalledTimes(1);
+      });
+    }));
+
+
+    it('should return a string', () => {
+      expect(component.generateRandomName()).toString();
+    });
+
+    it('should assign a string value', () => {
+      component.onImagePicked("Prueba");
+      expect(component.uploadedFileUrl).toBe("Prueba");
+    });
+    it('should return empty', () => {
+      expect(component.onUploadImage()).toBe();
+    });
 });

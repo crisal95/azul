@@ -11,7 +11,6 @@ import {RouteGuard} from './shared/route-guard';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastrModule} from 'ngx-toastr';
 import {NotificationService} from './shared/notification.service';
-import {HeaderComponent} from './header/header.component';
 import {PostService} from './shared/post.service';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {SpinnerService} from './shared/spinner.service';
@@ -40,7 +39,6 @@ import {AngularFirePerformanceModule} from '@angular/fire/performance';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    HeaderComponent,
     AuthorComponent,
     NotificationComponent,
     FileUploaderComponent,

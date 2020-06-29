@@ -54,6 +54,8 @@ describe('UsersListComponent', () => {
   });
 
   it('should close modal when function closeModal() is called', fakeAsync(() => {
+    component.users.push(userData);
+    fixture.detectChanges();
     spyOn(component, 'closeModal');
     let button = fixture.debugElement.query(By.css('#closeModalLink')).nativeElement.click();
     tick(); // simulates the passage of time until all pending asynchronous activities finish

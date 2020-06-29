@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 
 import {LoginComponent} from './login.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -17,6 +17,7 @@ import { EditarInformacionModalComponent } from '../editar-informacion-modal/edi
 import { PublicacionComponent } from '../publicacion/publicacion.component';
 import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-password.component';
 import { UsersListComponent } from '../users-list/users-list.component';
+import { By } from '@angular/platform-browser';
 
 
 describe('LoginComponent', () => {
@@ -58,4 +59,33 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+     //prueba que boton de submit este habilitado cuando form lleno
+     it('should call the onSubmit method', fakeAsync(() => {
+      component.registerForm.controls['email'].setValue('prueba@prueba.com');
+      component.registerForm.controls['password'].setValue('1234');
+      spyOn(component, 'onSubmit');
+      let button2 = fixture.debugElement.query(By.css('#boton'));
+      button2.triggerEventHandler('click', null);
+      tick();
+      fixture.detectChanges();
+      fixture.whenStable().then(() => {
+        expect(component.onSubmit).toHaveBeenCalledTimes(1);
+      });
+    }));
+
+    //prueba que form sin llenar sea invalido
+    it('form should be invalid', async(() => {
+      component.registerForm.controls['email'].setValue('');
+      component.registerForm.controls['password'].setValue('');
+      expect(component.registerForm.valid).toBeFalsy();
+    }));
+
+    // prueba que form llenado sea valido
+    it('form should be valid', async(() => {
+      component.registerForm.controls['email'].setValue('prueba@prueba.com');
+      component.registerForm.controls['password'].setValue('1234');
+      expect(component.registerForm.valid).toBeTruthy();
+    }));
 });

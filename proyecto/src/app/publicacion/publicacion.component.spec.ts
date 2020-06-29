@@ -12,6 +12,7 @@ import {UserData, PostData} from '../shared/models';
 describe('PublicacionComponent', () => {
   let component: PublicacionComponent;
   let fixture: ComponentFixture<PublicacionComponent>;
+  let compiled;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -41,10 +42,17 @@ describe('PublicacionComponent', () => {
     component.userData = userData;
     component.postData = postData;
     fixture.detectChanges();
+    compiled = fixture.debugElement.nativeElement;
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+
+
+  it('should render app-wrapper', () => {
+    expect(compiled.querySelector('img').textContent).toBeDefined();
   });
 
   it('should show like button when post is not liked', () => {

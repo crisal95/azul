@@ -43,18 +43,4 @@ jobs:
       #   env:
       #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
-      - name: Notificar exito en Slack
-        if: success()
-        uses: rtCamp/action-slack-notify@v2.0.2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_COLOR: good
-          SLACK_TITLE: Build Exitoso
-
-      - name: Notificar error en Slack
-        if: failure()
-        uses: rtCamp/action-slack-notify@v2.0.2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_COLOR: danger
-          SLACK_TITLE: Error en el build
+   

@@ -24,7 +24,7 @@
     "bootstrap": "^4.5.0",
     "chance": "^1.1.4",
     "firebase": "^7.14.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ngx-spinner": "^9.0.2",
     "ngx-toastr": "^11.3.3",
     "rxjs": "~6.4.0",
